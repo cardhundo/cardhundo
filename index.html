@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CarDhundo — Find. Compare. Decide.</title>
+<title>CarDhundo — Find the Right Car for You</title>
 
 <meta name="description"
-content="CarDhundo helps Indian car buyers discover, compare and understand cars based on budget, fuel, family, mileage, body type and transmission.">
+content="CarDhundo helps you discover, compare and understand cars available in India based on your budget, fuel, family, mileage, body type and transmission.">
 
-<meta name="theme-color" content="#08111F">
+<meta name="theme-color" content="#07111f">
 
 <style>
 
@@ -19,35 +20,35 @@ content="CarDhundo helps Indian car buyers discover, compare and understand cars
    ========================================================= */
 
 :root{
-  --ink:#07111f;
-  --ink-2:#0d1b2f;
-  --ink-3:#15263d;
-
-  --paper:#f5f7fb;
-  --card:#ffffff;
-
-  --text:#102033;
-  --muted:#6c7a90;
-
+  --bg:#f4f7fb;
+  --surface:#ffffff;
+  --surface-2:#f8fafc;
+  --dark:#07111f;
+  --dark-2:#0c1b2e;
+  --text:#111827;
+  --muted:#64748b;
+  --muted-2:#94a3b8;
   --line:#e5eaf1;
 
-  --orange:#ff5a36;
-  --orange-2:#ff8a45;
-  --orange-soft:#fff0eb;
+  --primary:#1769ff;
+  --primary-dark:#0b4dcc;
+  --primary-soft:#eaf2ff;
 
-  --blue:#1463ff;
-  --blue-soft:#edf4ff;
+  --green:#0d8a55;
+  --green-soft:#e9f8f1;
 
-  --green:#087b55;
-  --green-soft:#eaf8f2;
+  --orange:#f59e0b;
+  --red:#ef4444;
 
-  --gold:#bd8319;
-  --gold-soft:#fff7df;
+  --radius-sm:10px;
+  --radius:18px;
+  --radius-lg:28px;
 
-  --shadow:0 24px 70px rgba(8,25,49,.12);
+  --shadow-sm:0 5px 20px rgba(15,23,42,.06);
+  --shadow:0 15px 45px rgba(15,23,42,.09);
+  --shadow-lg:0 25px 80px rgba(15,23,42,.15);
 
-  --radius:24px;
-  --radius-sm:14px;
+  --container:1240px;
 }
 
 *{
@@ -70,9 +71,10 @@ body{
     "Segoe UI",
     sans-serif;
 
-  background:var(--paper);
+  background:var(--bg);
   color:var(--text);
   line-height:1.5;
+  overflow-x:hidden;
 }
 
 button,
@@ -85,19 +87,40 @@ button{
   cursor:pointer;
 }
 
+img{
+  max-width:100%;
+  display:block;
+}
+
 a{
   color:inherit;
   text-decoration:none;
 }
 
-img{
-  display:block;
-  max-width:100%;
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.topbar{
+  background:#020914;
+  color:#cbd5e1;
+  font-size:12px;
 }
 
-.container{
-  width:min(1240px,92%);
+.topbar-inner{
+  max-width:var(--container);
+  width:92%;
+  min-height:36px;
   margin:auto;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.topbar strong{
+  color:white;
 }
 
 /* =========================================================
@@ -109,70 +132,125 @@ header{
   top:0;
   z-index:1000;
 
-  background:rgba(7,17,31,.94);
-  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(18px);
 
-  border-bottom:
-    1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(226,232,240,.9);
 }
 
-.nav{
+.navbar{
+  width:min(var(--container),92%);
   min-height:76px;
+  margin:auto;
 
   display:flex;
   align-items:center;
   justify-content:space-between;
-
-  gap:25px;
+  gap:30px;
 }
 
 .logo{
-  color:white;
-
-  font-size:30px;
-  font-weight:950;
-
-  letter-spacing:-1.8px;
-}
-
-.logo span{
-  color:var(--orange);
-}
-
-.navlinks{
   display:flex;
   align-items:center;
-  gap:25px;
+  gap:10px;
 
-  color:#b9c5d7;
-
-  font-size:14px;
-  font-weight:750;
+  font-size:26px;
+  font-weight:950;
+  letter-spacing:-1.2px;
 }
 
-.navlinks a{
-  transition:.2s ease;
-}
-
-.navlinks a:hover{
-  color:white;
-}
-
-.nav-button{
-  background:var(--orange);
-  color:white;
-
-  padding:11px 17px;
-
+.logo-mark{
+  width:40px;
+  height:40px;
   border-radius:12px;
 
-  box-shadow:
-    0 10px 30px rgba(255,90,54,.25);
+  display:grid;
+  place-items:center;
+
+  color:white;
+
+  background:
+    linear-gradient(135deg,#2c7cff,#0a4dcc);
+
+  box-shadow:0 8px 20px rgba(23,105,255,.28);
 }
 
-.nav-button:hover{
-  background:#ff6d4d;
-  transform:translateY(-1px);
+.logo-text{
+  color:var(--dark);
+}
+
+.logo-text span{
+  color:var(--primary);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:27px;
+}
+
+.nav-links a{
+  font-size:13px;
+  font-weight:750;
+  color:#475569;
+
+  transition:.2s;
+}
+
+.nav-links a:hover{
+  color:var(--primary);
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.nav-compare{
+  border:1px solid var(--line);
+  background:white;
+  color:#334155;
+
+  padding:10px 14px;
+  border-radius:10px;
+
+  font-weight:800;
+  font-size:12px;
+}
+
+.compare-count{
+  display:inline-grid;
+  place-items:center;
+
+  min-width:20px;
+  height:20px;
+
+  padding:0 5px;
+  margin-left:4px;
+
+  border-radius:20px;
+
+  background:var(--primary);
+  color:white;
+}
+
+.nav-cta{
+  border:none;
+  background:var(--dark);
+  color:white;
+
+  padding:12px 17px;
+  border-radius:11px;
+
+  font-weight:850;
+  font-size:12px;
+
+  transition:.2s;
+}
+
+.nav-cta:hover{
+  background:var(--primary);
 }
 
 /* =========================================================
@@ -183,96 +261,95 @@ header{
   position:relative;
   overflow:hidden;
 
-  color:white;
+  min-height:650px;
 
-  padding:
-    92px 0
-    150px;
+  display:flex;
+  align-items:center;
 
   background:
     radial-gradient(
-      circle at 82% 8%,
-      rgba(255,90,54,.25),
-      transparent 27%
+      circle at 82% 30%,
+      rgba(36,111,255,.24),
+      transparent 28%
     ),
-
     radial-gradient(
-      circle at 10% 25%,
-      rgba(20,99,255,.20),
-      transparent 32%
+      circle at 15% 20%,
+      rgba(73,143,255,.14),
+      transparent 30%
     ),
+    linear-gradient(135deg,#06101e,#0a1728 58%,#0d2340);
 
-    linear-gradient(
-      135deg,
-      #07111f 0%,
-      #0c1b30 55%,
-      #13243a 100%
-    );
+  color:white;
 }
 
-.hero:after{
+.hero::before{
   content:"";
-
   position:absolute;
+  inset:0;
 
-  left:-10%;
-  right:-10%;
-  bottom:-185px;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
 
-  height:300px;
+  background-size:50px 50px;
 
-  background:var(--paper);
-
-  border-radius:
-    50% 50% 0 0 /
-    35% 35% 0 0;
+  mask-image:linear-gradient(to bottom,black,transparent);
 }
 
-.hero-content{
+.hero-inner{
   position:relative;
   z-index:2;
 
-  max-width:950px;
-
+  width:min(1200px,92%);
   margin:auto;
 
-  text-align:center;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+
+  gap:50px;
+
+  padding:90px 0;
 }
 
-.hero-pill{
-  display:inline-flex;
+.hero-copy{
+  max-width:690px;
+}
 
+.hero-badge{
+  display:inline-flex;
   align-items:center;
   gap:8px;
 
-  padding:9px 14px;
+  padding:8px 13px;
 
-  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:100px;
 
-  border:
-    1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
 
-  background:
-    rgba(255,255,255,.07);
+  color:#b9d3ff;
 
-  color:#d9e3f0;
+  font-size:11px;
+  font-weight:900;
 
-  font-size:12px;
-  font-weight:850;
+  letter-spacing:.7px;
+  text-transform:uppercase;
+}
 
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.12);
+.hero-badge-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#38bdf8;
+  box-shadow:0 0 14px #38bdf8;
 }
 
 .hero h1{
-  margin:
-    24px auto
-    20px;
+  margin-top:23px;
 
-  font-size:
-    clamp(45px,7vw,84px);
-
-  line-height:.96;
+  font-size:clamp(45px,6vw,78px);
+  line-height:.98;
 
   letter-spacing:-4px;
 
@@ -280,189 +357,231 @@ header{
 }
 
 .hero h1 span{
-  background:
-    linear-gradient(
-      90deg,
-      #ff7650,
-      #ffb35e
-    );
-
-  -webkit-background-clip:text;
-  background-clip:text;
-
-  color:transparent;
+  color:#4d91ff;
 }
 
 .hero-description{
-  max-width:720px;
+  max-width:640px;
 
-  margin:auto;
+  margin-top:25px;
 
-  color:#b8c5d7;
+  color:#aab8cb;
 
   font-size:18px;
+  line-height:1.7;
 }
 
 .hero-actions{
   display:flex;
-  justify-content:center;
-  gap:12px;
-
   flex-wrap:wrap;
+  gap:12px;
 
   margin-top:32px;
 }
 
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
-.btn{
-  border:0;
-
-  border-radius:13px;
-
-  padding:14px 20px;
-
-  font-weight:850;
-
-  transition:
-    transform .2s ease,
-    background .2s ease,
-    box-shadow .2s ease;
-}
-
-.btn:hover{
-  transform:translateY(-2px);
-}
-
 .btn-primary{
-  background:var(--orange);
+  border:none;
+
+  background:#1769ff;
   color:white;
 
+  padding:15px 22px;
+
+  border-radius:12px;
+
+  font-weight:900;
+
   box-shadow:
-    0 15px 35px rgba(255,90,54,.27);
+    0 12px 28px rgba(23,105,255,.3);
+
+  transition:.2s;
 }
 
 .btn-primary:hover{
-  background:#ff6c4a;
+  transform:translateY(-2px);
+  background:#2877ff;
 }
 
-.btn-light{
-  background:white;
-  color:var(--ink);
+.btn-secondary{
+  border:1px solid rgba(255,255,255,.16);
+
+  background:rgba(255,255,255,.06);
+
+  color:white;
+
+  padding:15px 22px;
+
+  border-radius:12px;
+
+  font-weight:850;
 }
 
-.btn-outline{
-  background:white;
-
-  border:
-    1px solid var(--line);
-
-  color:var(--text);
+.btn-secondary:hover{
+  background:rgba(255,255,255,.11);
 }
 
-.btn-dark{
-  background:var(--ink);
+.hero-proof{
+  display:flex;
+  flex-wrap:wrap;
+  gap:22px;
+
+  margin-top:40px;
+}
+
+.hero-proof-item{
+  display:flex;
+  align-items:center;
+  gap:9px;
+
+  color:#aab8cb;
+
+  font-size:12px;
+}
+
+.hero-proof-item strong{
   color:white;
 }
 
-.btn-danger{
-  background:#fff0ed;
-  color:#d8492e;
+.hero-visual{
+  position:relative;
+  min-height:420px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-/* =========================================================
-   HERO TRUST
-   ========================================================= */
+.hero-car{
+  width:min(590px,100%);
 
-.trust{
-  max-width:800px;
+  aspect-ratio:1.45;
 
-  margin:
-    48px auto
-    0;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  border:
-    1px solid rgba(255,255,255,.12);
+  border-radius:32px;
 
   background:
-    rgba(255,255,255,.055);
+    radial-gradient(circle at 50% 45%,rgba(58,132,255,.35),transparent 32%),
+    linear-gradient(145deg,#102746,#07111f);
 
-  border-radius:20px;
+  border:1px solid rgba(255,255,255,.1);
+
+  box-shadow:
+    0 40px 100px rgba(0,0,0,.45),
+    inset 0 0 70px rgba(54,128,255,.08);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
   overflow:hidden;
 }
 
-.trust-item{
-  padding:20px;
-
-  border-right:
-    1px solid rgba(255,255,255,.10);
+.hero-car-inner{
+  text-align:center;
 }
 
-.trust-item:last-child{
-  border-right:0;
+.hero-car-icon{
+  font-size:130px;
+
+  filter:
+    drop-shadow(0 30px 20px rgba(0,0,0,.45));
 }
 
-.trust-item strong{
-  display:block;
+.hero-car-label{
+  margin-top:5px;
 
-  font-size:24px;
+  color:#94a3b8;
+
+  font-size:11px;
+  font-weight:800;
+
+  letter-spacing:1px;
+  text-transform:uppercase;
 }
 
-.trust-item span{
-  display:block;
+.floating-card{
+  position:absolute;
 
-  color:#9eacc0;
+  background:rgba(255,255,255,.96);
+  color:var(--text);
+
+  border-radius:15px;
+
+  padding:13px 15px;
+
+  box-shadow:var(--shadow-lg);
+
+  display:flex;
+  align-items:center;
+  gap:11px;
 
   font-size:12px;
+  font-weight:850;
+}
 
-  margin-top:3px;
+.floating-card.one{
+  top:35px;
+  right:-10px;
+}
+
+.floating-card.two{
+  bottom:35px;
+  left:-15px;
+}
+
+.float-icon{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+
+  display:grid;
+  place-items:center;
+
+  background:var(--primary-soft);
+  color:var(--primary);
 }
 
 /* =========================================================
    AD SLOT
    ========================================================= */
 
-.ad-wrapper{
-  margin-top:24px;
+.ad-section{
+  width:min(var(--container),92%);
+  margin:25px auto 0;
 }
 
 .ad-slot{
-  min-height:92px;
+  min-height:105px;
+
+  border:1px dashed #cbd5e1;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.9),
+      rgba(248,250,252,.9)
+    );
 
   display:flex;
   align-items:center;
   justify-content:center;
 
-  border:
-    1px dashed #cbd4e1;
-
-  border-radius:18px;
-
-  background:white;
-
-  color:#8794a7;
-
-  font-size:11px;
-
-  text-transform:uppercase;
-
-  letter-spacing:1px;
-
   text-align:center;
 
-  padding:20px;
+  color:#94a3b8;
 }
 
 .ad-slot strong{
-  color:#526078;
+  display:block;
+  color:#64748b;
+  font-size:12px;
+}
+
+.ad-slot span{
+  display:block;
+  margin-top:4px;
+  font-size:11px;
 }
 
 /* =========================================================
@@ -471,31 +590,30 @@ header{
 
 .finder-wrap{
   position:relative;
+  z-index:10;
 
-  z-index:20;
+  width:min(1120px,92%);
 
-  margin-top:-50px;
+  margin:-70px auto 0;
 }
 
 .finder{
-  background:
-    rgba(255,255,255,.98);
+  background:white;
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
-  border-radius:28px;
+  border-radius:25px;
 
-  padding:32px;
+  padding:30px;
 
-  box-shadow:var(--shadow);
+  box-shadow:
+    0 30px 80px rgba(15,23,42,.15);
 }
 
 .finder-head{
   display:flex;
-
-  align-items:flex-start;
   justify-content:space-between;
+  align-items:flex-start;
 
   gap:20px;
 
@@ -503,38 +621,34 @@ header{
 }
 
 .finder-head h2{
-  font-size:29px;
-  letter-spacing:-1px;
+  font-size:26px;
+  letter-spacing:-.7px;
 }
 
 .finder-head p{
-  color:var(--muted);
-  font-size:14px;
-
   margin-top:4px;
+  color:var(--muted);
+  font-size:13px;
 }
 
-.step{
-  background:var(--orange-soft);
-  color:#e84d29;
+.finder-badge{
+  padding:8px 12px;
 
-  border-radius:10px;
+  background:var(--primary-soft);
+  color:var(--primary);
 
-  padding:8px 11px;
+  border-radius:9px;
 
-  font-size:12px;
-
+  font-size:11px;
   font-weight:900;
-
-  white-space:nowrap;
 }
 
 .progress{
-  height:6px;
+  height:5px;
 
-  background:#edf0f5;
+  background:#edf2f7;
 
-  border-radius:99px;
+  border-radius:50px;
 
   overflow:hidden;
 
@@ -542,28 +656,19 @@ header{
 }
 
 .progress-bar{
-  width:16.66%;
+  width:16.6%;
   height:100%;
 
   background:
-    linear-gradient(
-      90deg,
-      var(--orange),
-      var(--orange-2)
-    );
+    linear-gradient(90deg,#1769ff,#5da0ff);
 
-  border-radius:inherit;
-
-  transition:.3s ease;
+  transition:.3s;
 }
 
-.form-grid{
+.finder-grid{
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:17px;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
 }
 
 .field label{
@@ -571,143 +676,128 @@ header{
 
   margin-bottom:7px;
 
+  color:#334155;
+
   font-size:12px;
-
   font-weight:850;
-
-  color:#35445a;
 }
 
 .select-wrap{
   position:relative;
 }
 
-.select-wrap:after{
+.select-wrap::after{
   content:"⌄";
 
   position:absolute;
-
-  right:13px;
+  right:14px;
   top:50%;
 
   transform:translateY(-55%);
 
-  pointer-events:none;
+  color:#64748b;
 
-  color:#7b8799;
+  pointer-events:none;
 }
 
-.field select{
+select{
   width:100%;
 
   appearance:none;
 
-  padding:
-    13px 38px
-    13px 13px;
-
-  border:
-    1px solid #d9e0ea;
-
-  border-radius:12px;
+  border:1px solid #dbe2eb;
 
   background:white;
 
-  color:var(--text);
+  color:#172033;
+
+  border-radius:10px;
+
+  padding:13px 36px 13px 13px;
 
   outline:none;
 
   transition:.2s;
 }
 
-.field select:focus{
-  border-color:var(--orange);
+select:focus{
+  border-color:var(--primary);
 
   box-shadow:
-    0 0 0 4px
-    rgba(255,90,54,.10);
+    0 0 0 3px rgba(23,105,255,.1);
 }
 
-.find-actions{
-  display:flex;
+.find-button{
+  width:100%;
 
-  gap:12px;
+  margin-top:20px;
 
-  margin-top:23px;
+  border:none;
+
+  padding:16px;
+
+  border-radius:11px;
+
+  background:var(--dark);
+
+  color:white;
+
+  font-size:15px;
+  font-weight:900;
+
+  transition:.2s;
 }
 
-.find-actions .btn{
-  flex:1;
-}
-
-.find-note{
-  text-align:center;
-
-  margin-top:11px;
-
-  color:#8794a7;
-
-  font-size:11px;
+.find-button:hover{
+  background:var(--primary);
+  transform:translateY(-1px);
 }
 
 /* =========================================================
-   SECTIONS
+   COMMON SECTIONS
    ========================================================= */
 
 .section{
   padding:90px 0;
 }
 
-.section-dark{
-  background:var(--ink);
-  color:white;
+.container{
+  width:min(var(--container),92%);
+  margin:auto;
 }
 
-.section-heading{
-  max-width:780px;
-
-  margin:
-    0 auto
-    42px;
+.section-head{
+  max-width:720px;
+  margin:0 auto 40px;
 
   text-align:center;
 }
 
 .eyebrow{
-  display:inline-block;
-
-  color:var(--orange);
+  color:var(--primary);
 
   font-size:11px;
-
-  text-transform:uppercase;
+  font-weight:950;
 
   letter-spacing:1.7px;
-
-  font-weight:950;
+  text-transform:uppercase;
 }
 
-.section-heading h2{
-  font-size:
-    clamp(32px,4vw,51px);
+.section-head h2{
+  margin-top:9px;
+
+  font-size:clamp(31px,4vw,48px);
 
   line-height:1.05;
-
-  letter-spacing:-2px;
-
-  margin-top:8px;
+  letter-spacing:-1.8px;
 }
 
-.section-heading p{
-  color:var(--muted);
-
+.section-head p{
   margin-top:13px;
 
-  font-size:14px;
-}
+  color:var(--muted);
 
-.section-dark .section-heading p{
-  color:#9dacbf;
+  font-size:15px;
 }
 
 /* =========================================================
@@ -724,9 +814,8 @@ header{
 
 .results-top{
   display:flex;
-
-  justify-content:space-between;
   align-items:end;
+  justify-content:space-between;
 
   gap:20px;
 
@@ -734,17 +823,26 @@ header{
 }
 
 .results-top h2{
-  font-size:39px;
-
-  letter-spacing:-1.5px;
+  font-size:34px;
+  letter-spacing:-1px;
 }
 
 .results-top p{
+  margin-top:4px;
   color:var(--muted);
-
   font-size:13px;
+}
 
-  margin-top:3px;
+.result-tag{
+  background:var(--green-soft);
+  color:var(--green);
+
+  padding:8px 11px;
+
+  border-radius:9px;
+
+  font-size:11px;
+  font-weight:900;
 }
 
 /* =========================================================
@@ -754,32 +852,28 @@ header{
 .best-match{
   display:none;
 
-  grid-template-columns:
-    300px 1fr 120px;
+  grid-template-columns:260px 1fr auto;
 
+  gap:28px;
   align-items:center;
 
-  gap:26px;
+  margin-bottom:28px;
 
-  padding:25px;
+  padding:24px;
 
-  margin-bottom:25px;
+  border-radius:23px;
 
-  border:
-    1px solid #f0d9d0;
-
-  border-radius:25px;
+  border:1px solid #dce7f5;
 
   background:
-    linear-gradient(
-      135deg,
-      #fff,
-      #fff7f3
-    );
+    radial-gradient(
+      circle at 90% 15%,
+      #dbeaff,
+      transparent 32%
+    ),
+    white;
 
-  box-shadow:
-    0 15px 50px
-    rgba(65,31,20,.07);
+  box-shadow:var(--shadow);
 }
 
 .best-match.show{
@@ -787,94 +881,87 @@ header{
 }
 
 .best-image{
-  height:200px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #eef2f7,
-      #fbfcfd
-    );
+  min-height:180px;
 
   border-radius:18px;
 
-  overflow:hidden;
+  background:
+    linear-gradient(145deg,#eaf2ff,#f8fbff);
+
+  display:grid;
+  place-items:center;
 }
 
-.best-image img{
-  width:100%;
-  height:100%;
+.best-image span{
+  font-size:90px;
 
-  object-fit:contain;
+  filter:
+    drop-shadow(0 20px 12px rgba(20,60,110,.15));
 }
 
 .best-label{
-  color:var(--orange);
+  color:var(--primary);
 
   font-size:11px;
+  font-weight:950;
 
   text-transform:uppercase;
-
-  letter-spacing:1.3px;
-
-  font-weight:950;
+  letter-spacing:1px;
 }
 
-.best-match h3{
-  font-size:30px;
+.best-info h3{
+  margin-top:4px;
 
-  letter-spacing:-1px;
-
-  margin:4px 0;
+  font-size:29px;
+  letter-spacing:-.8px;
 }
 
 .best-price{
-  color:var(--orange);
+  margin-top:4px;
 
-  font-size:18px;
+  color:var(--primary);
 
-  font-weight:950;
+  font-size:17px;
+  font-weight:900;
 }
 
 .best-reason{
+  margin-top:10px;
+
+  max-width:620px;
+
   color:var(--muted);
 
   font-size:13px;
-
-  margin-top:9px;
-
-  max-width:650px;
 }
 
-.score{
-  width:110px;
-  height:110px;
+.match-score{
+  width:105px;
+  height:105px;
 
   border-radius:50%;
 
   display:flex;
-
   flex-direction:column;
-
   align-items:center;
   justify-content:center;
 
   background:var(--green-soft);
 
-  border:
-    8px solid #d5efe4;
+  border:8px solid #d8f0e4;
 
   color:var(--green);
 }
 
-.score strong{
-  font-size:27px;
+.match-score strong{
+  font-size:26px;
   line-height:1;
 }
 
-.score span{
-  font-size:9px;
+.match-score span{
+  margin-top:4px;
 
+  font-size:9px;
   font-weight:950;
 
   text-transform:uppercase;
@@ -894,183 +981,149 @@ header{
 }
 
 .car-card{
-  background:white;
-
-  border:
-    1px solid var(--line);
-
-  border-radius:21px;
-
   overflow:hidden;
 
-  box-shadow:
-    0 10px 35px
-    rgba(12,35,65,.06);
+  border:1px solid var(--line);
 
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease;
+  border-radius:20px;
+
+  background:white;
+
+  box-shadow:var(--shadow-sm);
+
+  transition:.25s;
 }
 
 .car-card:hover{
   transform:translateY(-6px);
 
   box-shadow:
-    0 22px 55px
-    rgba(12,35,65,.13);
+    0 22px 55px rgba(15,23,42,.13);
 }
 
-.car-media{
-  height:215px;
-
+.car-photo{
   position:relative;
 
+  height:205px;
+
+  display:grid;
+  place-items:center;
+
   background:
-    linear-gradient(
-      145deg,
-      #edf2f7,
-      #fbfcfd
-    );
-
-  overflow:hidden;
+    radial-gradient(
+      circle at 50% 40%,
+      white,
+      transparent 42%
+    ),
+    linear-gradient(135deg,#eaf2ff,#f8fbff);
 }
 
-.car-media img{
-  width:100%;
-  height:100%;
+.car-photo .car-symbol{
+  font-size:78px;
 
-  object-fit:contain;
-
-  transition:
-    transform .35s ease;
-}
-
-.car-card:hover .car-media img{
-  transform:scale(1.04);
+  filter:
+    drop-shadow(0 17px 12px rgba(20,55,100,.16));
 }
 
 .rank{
   position:absolute;
-
   top:13px;
   left:13px;
 
-  z-index:2;
+  padding:6px 9px;
 
-  background:
-    rgba(255,255,255,.94);
+  border-radius:8px;
 
-  padding:6px 8px;
+  background:rgba(255,255,255,.94);
 
-  border-radius:9px;
+  color:#475569;
 
   font-size:10px;
-
-  font-weight:900;
+  font-weight:950;
 }
 
-.favorite{
+.save{
   position:absolute;
+  top:12px;
+  right:12px;
 
-  top:13px;
-  right:13px;
+  width:35px;
+  height:35px;
 
-  z-index:2;
-
-  width:37px;
-  height:37px;
-
-  border:0;
+  border:none;
 
   border-radius:50%;
 
-  background:white;
+  background:rgba(255,255,255,.95);
 
-  color:#68758a;
+  color:#64748b;
 
-  font-size:18px;
-
-  box-shadow:
-    0 5px 20px
-    rgba(0,0,0,.08);
+  font-size:17px;
 }
 
-.favorite.saved{
-  color:var(--orange);
+.save.saved{
+  color:var(--primary);
 }
 
-.car-body{
+.card-body{
   padding:19px;
 }
 
-.car-title-row{
+.card-title-row{
   display:flex;
-
-  align-items:flex-start;
   justify-content:space-between;
-
   gap:10px;
 }
 
-.car-card h3{
+.card-body h3{
   font-size:19px;
-
-  letter-spacing:-.4px;
+  letter-spacing:-.3px;
 }
 
-.car-subtitle{
-  color:var(--muted);
-
-  font-size:12px;
-
+.price{
   margin-top:3px;
-}
 
-.car-price{
-  color:var(--orange);
+  color:var(--primary);
 
-  font-size:17px;
-
+  font-size:15px;
   font-weight:950;
-
-  margin-top:3px;
 }
 
-.match-badge{
+.match-pill{
+  flex-shrink:0;
+
+  height:max-content;
+
+  padding:6px 8px;
+
+  border-radius:8px;
+
   background:var(--green-soft);
 
   color:var(--green);
 
-  border-radius:8px;
-
-  padding:6px 8px;
-
   font-size:10px;
-
   font-weight:950;
-
-  white-space:nowrap;
 }
 
 .spec-grid{
   display:grid;
 
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns:1fr 1fr;
 
-  gap:8px;
+  gap:7px;
 
-  margin:15px 0;
+  margin:16px 0;
 }
 
 .spec{
-  background:#f7f9fb;
+  padding:9px;
 
   border-radius:9px;
 
-  padding:9px;
+  background:#f7f9fc;
 
-  color:#7b8798;
+  color:#8792a4;
 
   font-size:10px;
 }
@@ -1078,395 +1131,195 @@ header{
 .spec strong{
   display:block;
 
-  color:#27364b;
+  margin-top:2px;
+
+  color:#263246;
 
   font-size:12px;
-
-  margin-top:2px;
 }
 
-.match-reason{
-  padding:
-    13px 0;
+.card-reason{
+  min-height:60px;
 
-  border-top:
-    1px solid #edf0f4;
+  padding:13px 0;
 
-  min-height:70px;
+  border-top:1px solid #edf1f5;
 
   color:var(--muted);
 
-  font-size:12px;
+  font-size:11px;
 }
 
-.match-reason strong{
+.card-reason strong{
   color:var(--text);
 }
 
 .card-actions{
-  display:flex;
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
 
   gap:8px;
 }
 
-.card-actions button{
-  flex:1;
+.card-btn{
+  border:none;
 
-  border-radius:10px;
+  border-radius:9px;
 
-  padding:10px;
+  padding:11px;
 
-  font-size:12px;
-
-  font-weight:850;
+  font-size:11px;
+  font-weight:900;
 }
 
-.details-button{
-  border:0;
-
-  background:var(--ink);
-
+.details-btn{
+  background:var(--primary);
   color:white;
 }
 
-.compare-button{
+.details-btn:hover{
+  background:var(--primary-dark);
+}
+
+.compare-btn{
   background:white;
 
-  border:
-    1px solid #d8e0ea;
+  border:1px solid #dce3ec;
 
-  color:#39475c;
+  color:#334155;
+}
+
+.compare-btn:hover{
+  border-color:var(--primary);
+  color:var(--primary);
 }
 
 /* =========================================================
-   POPULAR
+   BRAND EXPLORER
    ========================================================= */
 
-.popular{
-  background:white;
+.brand-strip{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+
+  gap:10px;
+
+  margin-bottom:34px;
 }
 
-.popular-grid{
+.brand-btn{
+  border:1px solid var(--line);
+
+  background:white;
+
+  color:#475569;
+
+  padding:10px 14px;
+
+  border-radius:10px;
+
+  font-size:11px;
+  font-weight:850;
+
+  transition:.2s;
+}
+
+.brand-btn:hover,
+.brand-btn.active{
+  background:var(--dark);
+  color:white;
+  border-color:var(--dark);
+}
+
+.model-grid{
   display:grid;
 
   grid-template-columns:
     repeat(4,1fr);
 
-  gap:17px;
+  gap:16px;
 }
 
-.popular-card{
+.model-card{
+  padding:18px;
+
+  border:1px solid var(--line);
+
+  border-radius:17px;
+
   background:white;
 
-  border:
-    1px solid var(--line);
-
-  border-radius:18px;
-
-  padding:17px;
-
-  cursor:pointer;
-
-  transition:.22s;
+  transition:.2s;
 }
 
-.popular-card:hover{
+.model-card:hover{
   transform:translateY(-4px);
-
   box-shadow:var(--shadow);
 }
 
-.popular-image{
-  height:140px;
+.model-image{
+  height:125px;
+
+  display:grid;
+  place-items:center;
 
   border-radius:13px;
 
   background:
-    linear-gradient(
-      145deg,
-      #eef2f7,
-      #fbfcfd
-    );
+    linear-gradient(135deg,#edf3ff,#fafcff);
 
-  overflow:hidden;
+  margin-bottom:15px;
 }
 
-.popular-image img{
-  width:100%;
-  height:100%;
-
-  object-fit:contain;
+.model-image span{
+  font-size:55px;
 }
 
-.popular-card h3{
-  font-size:16px;
-
-  margin-top:13px;
+.model-card h3{
+  font-size:15px;
 }
 
-.popular-card p{
+.model-card p{
+  margin-top:3px;
+
   color:var(--muted);
 
-  font-size:12px;
-
-  margin-top:2px;
+  font-size:11px;
 }
 
-.popular-price{
-  color:var(--orange);
+.model-price{
+  margin-top:8px;
 
-  font-size:14px;
+  color:var(--primary);
 
   font-weight:950;
 
-  margin-top:8px;
-}
-
-/* =========================================================
-   COMPARE
-   ========================================================= */
-
-.compare-section{
-  background:
-    linear-gradient(
-      180deg,
-      #07111f,
-      #0c192b
-    );
-}
-
-.compare-section .section-heading h2{
-  color:white;
-}
-
-.compare-section .section-heading p{
-  color:#98a8bb;
-}
-
-.brand-row{
-  display:flex;
-
-  justify-content:center;
-
-  flex-wrap:wrap;
-
-  gap:9px;
-}
-
-.brand-pill{
-  padding:9px 13px;
-
-  border:
-    1px solid #29384e;
-
-  background:#101e32;
-
-  color:#cbd5e3;
-
-  border-radius:999px;
-
-  font-size:11px;
-
-  font-weight:800;
-}
-
-.compare-output{
-  margin-top:28px;
-}
-
-.compare-table-wrapper{
-  overflow:auto;
-
-  border-radius:18px;
-
-  box-shadow:
-    0 15px 45px
-    rgba(0,0,0,.18);
-}
-
-.compare-table{
-  width:100%;
-
-  min-width:700px;
-
-  border-collapse:collapse;
-
-  background:white;
-
-  color:var(--text);
-
   font-size:13px;
-}
-
-.compare-table th,
-.compare-table td{
-  padding:13px;
-
-  border-bottom:
-    1px solid var(--line);
-
-  text-align:left;
-
-  vertical-align:top;
-}
-
-.compare-table th{
-  background:#f7f9fb;
-
-  font-weight:900;
-}
-
-.compare-table td:first-child{
-  font-weight:850;
-
-  color:#405068;
-}
-
-.remove-compare{
-  border:0;
-
-  background:var(--orange-soft);
-
-  color:#d84b2c;
-
-  padding:5px 8px;
-
-  border-radius:7px;
-
-  font-size:10px;
-
-  margin-top:6px;
-}
-
-.empty-compare{
-  text-align:center;
-
-  padding:28px;
-
-  border:
-    1px dashed #31445d;
-
-  border-radius:18px;
-
-  color:#93a2b6;
-
-  font-size:13px;
-}
-
-/* =========================================================
-   COMPARE BAR
-   ========================================================= */
-
-.compare-bar{
-  display:none;
-
-  position:fixed;
-
-  z-index:1500;
-
-  left:50%;
-  bottom:18px;
-
-  transform:translateX(-50%);
-
-  width:min(950px,94%);
-
-  padding:13px 15px;
-
-  border:
-    1px solid rgba(255,255,255,.12);
-
-  border-radius:18px;
-
-  background:#07111f;
-
-  color:white;
-
-  box-shadow:
-    0 25px 70px
-    rgba(0,0,0,.35);
-
-  align-items:center;
-
-  gap:12px;
-}
-
-.compare-bar.show{
-  display:flex;
-}
-
-.compare-title{
-  white-space:nowrap;
-}
-
-.compare-title strong{
-  display:block;
-
-  font-size:13px;
-}
-
-.compare-title span{
-  display:block;
-
-  color:#91a0b5;
-
-  font-size:10px;
-}
-
-.compare-chips{
-  display:flex;
-
-  flex:1;
-
-  gap:7px;
-
-  overflow:auto;
-}
-
-.compare-chip{
-  background:#17253a;
-
-  padding:7px 9px;
-
-  border-radius:9px;
-
-  font-size:10px;
-
-  white-space:nowrap;
-}
-
-.compare-chip button{
-  border:0;
-
-  background:none;
-
-  color:#aeb9c8;
-
-  margin-left:5px;
 }
 
 /* =========================================================
    FEATURES
    ========================================================= */
 
-.features{
+.feature-grid{
   display:grid;
 
   grid-template-columns:
-    repeat(3,1fr);
+    repeat(4,1fr);
 
-  gap:18px;
+  gap:16px;
 }
 
-.feature{
+.feature-card{
+  padding:25px;
+
   background:white;
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
-  border-radius:20px;
-
-  padding:25px;
+  border-radius:18px;
 }
 
 .feature-icon{
@@ -1476,108 +1329,169 @@ header{
   display:grid;
   place-items:center;
 
-  border-radius:13px;
+  border-radius:12px;
 
-  background:var(--orange-soft);
+  background:var(--primary-soft);
 
-  color:var(--orange);
+  color:var(--primary);
 
-  font-size:20px;
+  font-size:21px;
 
-  margin-bottom:15px;
+  margin-bottom:16px;
 }
 
-.feature h3{
-  font-size:18px;
+.feature-card h3{
+  font-size:16px;
 }
 
-.feature p{
+.feature-card p{
+  margin-top:7px;
+
   color:var(--muted);
 
-  font-size:13px;
-
-  margin-top:6px;
+  font-size:12px;
+  line-height:1.7;
 }
 
 /* =========================================================
-   FAQ
+   COMPARE DRAWER
    ========================================================= */
 
-.faq{
-  max-width:850px;
+.compare-drawer{
+  position:fixed;
 
-  margin:auto;
-}
+  left:0;
+  right:0;
+  bottom:0;
 
-.faq-item{
+  z-index:2000;
+
   background:white;
 
-  border:
-    1px solid var(--line);
+  border-top:1px solid var(--line);
 
-  border-radius:14px;
+  box-shadow:0 -20px 60px rgba(15,23,42,.15);
 
-  overflow:hidden;
+  transform:translateY(105%);
 
-  margin-bottom:9px;
+  transition:.3s;
 }
 
-.faq-question{
-  width:100%;
+.compare-drawer.show{
+  transform:translateY(0);
+}
+
+.compare-inner{
+  width:min(var(--container),92%);
+
+  margin:auto;
+
+  min-height:105px;
+
+  display:flex;
+  align-items:center;
+
+  gap:18px;
+}
+
+.compare-title{
+  min-width:130px;
+}
+
+.compare-title strong{
+  display:block;
+  font-size:13px;
+}
+
+.compare-title span{
+  color:var(--muted);
+  font-size:10px;
+}
+
+.compare-items{
+  flex:1;
 
   display:flex;
 
+  gap:10px;
+
+  overflow-x:auto;
+}
+
+.compare-item{
+  min-width:180px;
+
+  display:flex;
   align-items:center;
-  justify-content:space-between;
+  gap:9px;
 
-  gap:20px;
+  padding:9px;
 
-  border:0;
+  border:1px solid var(--line);
 
+  border-radius:11px;
+
+  background:#f8fafc;
+}
+
+.compare-item-icon{
+  font-size:25px;
+}
+
+.compare-item-name{
+  font-size:11px;
+  font-weight:900;
+}
+
+.remove-compare{
+  margin-left:auto;
+
+  border:none;
+
+  background:transparent;
+
+  color:#94a3b8;
+}
+
+.compare-main-btn{
+  border:none;
+
+  background:var(--primary);
+  color:white;
+
+  padding:12px 16px;
+
+  border-radius:10px;
+
+  font-size:11px;
+  font-weight:900;
+}
+
+.clear-compare{
+  border:none;
   background:white;
-
-  padding:17px 19px;
-
-  text-align:left;
-
-  color:var(--text);
-
-  font-weight:850;
-}
-
-.faq-answer{
-  display:none;
-
-  padding:
-    0 19px
-    18px;
-
-  color:var(--muted);
-
-  font-size:13px;
-}
-
-.faq-item.open .faq-answer{
-  display:block;
+  color:#64748b;
+  font-size:11px;
+  font-weight:800;
 }
 
 /* =========================================================
-   MODAL
+   MODALS
    ========================================================= */
 
 .modal{
   display:none;
 
   position:fixed;
-
   inset:0;
 
-  z-index:2000;
+  z-index:3000;
 
-  padding:18px;
+  background:rgba(2,9,20,.72);
 
-  background:
-    rgba(3,10,20,.76);
+  backdrop-filter:blur(8px);
+
+  padding:20px;
 
   align-items:center;
   justify-content:center;
@@ -1588,19 +1502,19 @@ header{
 }
 
 .modal-box{
-  position:relative;
-
   width:min(1050px,100%);
 
-  max-height:94vh;
+  max-height:92vh;
 
   overflow:auto;
 
   background:white;
 
-  border-radius:25px;
+  border-radius:26px;
 
-  padding:25px;
+  box-shadow:var(--shadow-lg);
+
+  position:relative;
 }
 
 .modal-close{
@@ -1609,240 +1523,376 @@ header{
   top:15px;
   right:15px;
 
-  z-index:5;
-
   width:38px;
   height:38px;
 
-  border:0;
+  border:none;
 
   border-radius:50%;
 
-  background:#eef1f5;
+  background:rgba(255,255,255,.95);
 
-  font-size:19px;
+  z-index:10;
+
+  font-size:20px;
 }
 
-.gallery{
+.modal-gallery{
   display:grid;
 
   grid-template-columns:
-    2fr 1fr;
+    1.6fr 1fr;
 
-  gap:10px;
+  min-height:410px;
 
-  margin-bottom:20px;
+  background:#edf3fb;
 }
 
 .gallery-main{
-  height:330px;
+  min-height:410px;
 
-  border-radius:18px;
-
-  overflow:hidden;
+  display:grid;
+  place-items:center;
 
   background:
-    linear-gradient(
-      145deg,
-      #edf1f6,
-      #fafbfd
-    );
+    radial-gradient(circle at 50% 40%,white,transparent 35%),
+    linear-gradient(135deg,#eaf2ff,#f8fbff);
 }
 
-.gallery-main img{
-  width:100%;
-  height:100%;
+.gallery-main span{
+  font-size:145px;
 
-  object-fit:contain;
+  filter:
+    drop-shadow(0 35px 25px rgba(15,50,100,.2));
 }
 
-.gallery-thumbs{
+.gallery-side{
   display:grid;
 
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns:1fr 1fr;
 
-  gap:10px;
+  gap:9px;
+
+  padding:9px;
 }
 
-.gallery-thumb{
-  min-height:100px;
+.gallery-tile{
+  border-radius:13px;
 
-  border-radius:12px;
+  background:
+    linear-gradient(135deg,#dfeaff,#f7faff);
 
-  overflow:hidden;
+  display:grid;
+  place-items:center;
 
-  background:#f1f3f7;
+  font-size:45px;
 }
 
-.gallery-thumb img{
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
+.modal-content{
+  padding:30px;
 }
 
 .modal-brand{
-  color:var(--orange);
+  color:var(--primary);
 
-  font-size:11px;
+  font-size:10px;
+  font-weight:950;
 
   text-transform:uppercase;
-
-  letter-spacing:1.5px;
-
-  font-weight:950;
+  letter-spacing:1.4px;
 }
 
-.modal-box h2{
-  font-size:32px;
+.modal-content h2{
+  margin-top:4px;
 
-  letter-spacing:-1.2px;
-
-  margin-top:3px;
+  font-size:34px;
+  letter-spacing:-1px;
 }
 
 .modal-price{
-  color:var(--orange);
+  margin-top:4px;
 
-  font-size:19px;
+  color:var(--primary);
 
+  font-size:18px;
   font-weight:950;
-
-  margin-top:3px;
 }
 
-.modal-grid{
-  display:grid;
+.modal-tabs{
+  display:flex;
 
-  grid-template-columns:
-    repeat(3,1fr);
+  gap:6px;
 
-  gap:10px;
+  margin:24px 0 18px;
 
-  margin:19px 0;
+  border-bottom:1px solid var(--line);
+
+  overflow-x:auto;
 }
 
-.modal-cell{
-  background:#f7f9fb;
+.modal-tab{
+  border:none;
 
-  border-radius:11px;
+  background:transparent;
 
-  padding:11px;
+  padding:11px 13px;
 
-  color:var(--muted);
+  color:#64748b;
 
   font-size:11px;
+  font-weight:900;
+
+  white-space:nowrap;
 }
 
-.modal-cell strong{
-  display:block;
+.modal-tab.active{
+  color:var(--primary);
 
-  color:var(--text);
-
-  font-size:13px;
-
-  margin-top:2px;
-}
-
-.modal-section{
-  border-top:
-    1px solid var(--line);
-
-  margin-top:20px;
-
-  padding-top:19px;
-}
-
-.modal-section h3{
-  font-size:17px;
-}
-
-.modal-section p{
-  color:var(--muted);
-
-  font-size:13px;
-
-  margin-top:6px;
-}
-
-.variant-table-wrapper{
-  overflow:auto;
-
-  margin-top:12px;
+  border-bottom:2px solid var(--primary);
 }
 
 .variant-table{
   width:100%;
 
-  min-width:650px;
+  border-collapse:collapse;
+
+  font-size:11px;
+}
+
+.variant-table th{
+  text-align:left;
+
+  padding:11px;
+
+  background:#f7f9fc;
+
+  color:#64748b;
+}
+
+.variant-table td{
+  padding:12px 11px;
+
+  border-bottom:1px solid #edf1f5;
+
+  vertical-align:top;
+}
+
+.variant-price{
+  color:var(--primary);
+
+  font-weight:900;
+}
+
+.feature-list{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:9px;
+
+  margin-top:15px;
+}
+
+.feature-list div{
+  padding:11px;
+
+  background:#f7f9fc;
+
+  border-radius:9px;
+
+  font-size:11px;
+
+  color:#475569;
+}
+
+.feature-list div::before{
+  content:"✓";
+
+  color:var(--green);
+
+  font-weight:900;
+
+  margin-right:7px;
+}
+
+.source-box{
+  margin-top:24px;
+
+  padding:14px;
+
+  border:1px solid #dbe6f5;
+
+  background:#f5f9ff;
+
+  border-radius:12px;
+
+  font-size:11px;
+
+  color:#64748b;
+}
+
+.source-box a{
+  color:var(--primary);
+  font-weight:900;
+}
+
+/* =========================================================
+   COMPARE MODAL
+   ========================================================= */
+
+.compare-modal-content{
+  padding:30px;
+}
+
+.compare-table-wrap{
+  overflow:auto;
+
+  margin-top:20px;
+}
+
+.compare-table{
+  width:100%;
+
+  min-width:700px;
 
   border-collapse:collapse;
 
   font-size:12px;
 }
 
-.variant-table th,
-.variant-table td{
-  padding:10px;
+.compare-table th,
+.compare-table td{
+  padding:13px;
 
-  border-bottom:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   text-align:left;
 }
 
-.variant-table th{
-  background:#f7f9fb;
-}
-
-.official-link{
-  display:inline-flex;
-
-  margin-top:18px;
-
-  padding:11px 14px;
-
-  border-radius:11px;
-
-  background:var(--blue-soft);
-
-  color:var(--blue);
-
-  font-size:12px;
-
-  font-weight:850;
+.compare-table th{
+  background:#f7f9fc;
 }
 
 /* =========================================================
-   EMPTY RESULTS
+   FAQ
    ========================================================= */
 
-.empty-results{
-  grid-column:1/-1;
+.faq-list{
+  max-width:820px;
+
+  margin:auto;
+}
+
+.faq{
+  margin-bottom:9px;
+
+  border:1px solid var(--line);
+
+  border-radius:13px;
 
   background:white;
 
-  border:
-    1px solid var(--line);
+  overflow:hidden;
+}
 
-  border-radius:20px;
+.faq button{
+  width:100%;
 
-  padding:55px 25px;
+  border:none;
+
+  background:white;
+
+  padding:18px;
+
+  text-align:left;
+
+  display:flex;
+  justify-content:space-between;
+
+  gap:15px;
+
+  color:var(--text);
+
+  font-size:13px;
+  font-weight:850;
+}
+
+.faq-answer{
+  display:none;
+
+  padding:0 18px 18px;
+
+  color:var(--muted);
+
+  font-size:12px;
+
+  line-height:1.7;
+}
+
+.faq.open .faq-answer{
+  display:block;
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-section{
+  background:
+    linear-gradient(135deg,#07111f,#0c1d32);
+
+  color:white;
+}
+
+.contact-box{
+  max-width:900px;
+
+  margin:auto;
+
+  padding:45px;
+
+  border:1px solid rgba(255,255,255,.09);
+
+  border-radius:25px;
+
+  background:rgba(255,255,255,.035);
 
   text-align:center;
 }
 
-.empty-results h3{
-  font-size:24px;
+.contact-box h2{
+  font-size:38px;
+
+  letter-spacing:-1.3px;
 }
 
-.empty-results p{
-  color:var(--muted);
+.contact-box p{
+  max-width:600px;
+
+  margin:12px auto 0;
+
+  color:#9eacbf;
 
   font-size:13px;
+}
 
-  margin-top:7px;
+.contact-email{
+  display:inline-flex;
+
+  margin-top:25px;
+
+  padding:13px 18px;
+
+  border-radius:11px;
+
+  background:white;
+
+  color:var(--dark);
+
+  font-weight:900;
+
+  font-size:13px;
 }
 
 /* =========================================================
@@ -1850,67 +1900,69 @@ header{
    ========================================================= */
 
 footer{
-  background:#07111f;
+  background:#020914;
 
   color:white;
 
-  padding:
-    60px 0
-    25px;
+  padding:55px 0 25px;
 }
 
 .footer-grid{
+  width:min(var(--container),92%);
+
+  margin:auto;
+
   display:grid;
 
-  grid-template-columns:
-    2fr 1fr 1fr 1fr;
+  grid-template-columns:2fr 1fr 1fr 1fr;
 
-  gap:35px;
+  gap:40px;
 }
 
-.footer-description{
-  color:#91a0b5;
+.footer-brand p{
+  max-width:330px;
 
-  max-width:350px;
+  margin-top:13px;
+
+  color:#8190a7;
 
   font-size:12px;
-
-  margin-top:12px;
 }
 
-.footer-column h4{
+.footer-title{
+  margin-bottom:13px;
+
   font-size:12px;
-
-  margin-bottom:12px;
 }
 
-.footer-column a{
+.footer-link{
   display:block;
 
-  color:#91a0b5;
+  margin:8px 0;
+
+  color:#8190a7;
 
   font-size:12px;
-
-  margin:7px 0;
 }
 
-.footer-column a:hover{
+.footer-link:hover{
   color:white;
 }
 
 .footer-bottom{
-  border-top:
-    1px solid #1e2d42;
+  width:min(var(--container),92%);
 
-  margin-top:40px;
+  margin:40px auto 0;
 
-  padding-top:18px;
+  padding-top:20px;
+
+  border-top:1px solid #162337;
 
   text-align:center;
 
-  color:#708096;
+  color:#637188;
 
-  font-size:11px;
+  font-size:10px;
 }
 
 /* =========================================================
@@ -1920,223 +1972,252 @@ footer{
 .toast{
   position:fixed;
 
-  left:50%;
-  bottom:95px;
+  right:20px;
+  bottom:20px;
 
-  transform:
-    translate(-50%,20px);
+  z-index:5000;
 
-  z-index:3000;
+  max-width:330px;
 
-  opacity:0;
-  pointer-events:none;
+  padding:13px 16px;
+
+  border-radius:12px;
 
   background:#07111f;
 
   color:white;
 
-  padding:12px 17px;
-
-  border-radius:11px;
+  box-shadow:var(--shadow-lg);
 
   font-size:12px;
+  font-weight:800;
 
-  box-shadow:
-    0 15px 40px
-    rgba(0,0,0,.25);
+  opacity:0;
+
+  transform:translateY(15px);
+
+  pointer-events:none;
 
   transition:.25s;
 }
 
 .toast.show{
   opacity:1;
-
-  transform:
-    translate(-50%,0);
+  transform:translateY(0);
 }
 
 /* =========================================================
    RESPONSIVE
    ========================================================= */
 
-@media(max-width:1050px){
+@media(max-width:1000px){
+
+  .hero-inner{
+    grid-template-columns:1fr;
+  }
+
+  .hero-copy{
+    text-align:center;
+    margin:auto;
+  }
+
+  .hero-description{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .hero-actions,
+  .hero-proof{
+    justify-content:center;
+  }
+
+  .hero-visual{
+    max-width:650px;
+    width:100%;
+    margin:auto;
+  }
 
   .car-grid{
-    grid-template-columns:
-      repeat(2,1fr);
+    grid-template-columns:1fr 1fr;
   }
 
-  .popular-grid{
-    grid-template-columns:
-      repeat(2,1fr);
+  .model-grid{
+    grid-template-columns:1fr 1fr;
   }
 
-  .form-grid{
-    grid-template-columns:
-      repeat(2,1fr);
+  .feature-grid{
+    grid-template-columns:1fr 1fr;
   }
 
-  .best-match.show{
-    grid-template-columns:
-      220px 1fr;
+  .best-match{
+    grid-template-columns:200px 1fr;
   }
 
-  .score{
+  .match-score{
     display:none;
   }
 
   .footer-grid{
-    grid-template-columns:
-      1fr 1fr;
+    grid-template-columns:1fr 1fr;
   }
 }
 
 @media(max-width:700px){
 
-  .navlinks{
+  .topbar{
+    display:none;
+  }
+
+  .navbar{
+    min-height:66px;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .nav-actions .nav-cta{
     display:none;
   }
 
   .hero{
-    padding:
-      65px 0
-      105px;
+    min-height:auto;
+  }
+
+  .hero-inner{
+    padding:70px 0 120px;
   }
 
   .hero h1{
+    font-size:45px;
     letter-spacing:-2.5px;
   }
 
   .hero-description{
-    font-size:16px;
+    font-size:15px;
   }
 
-  .trust{
-    grid-template-columns:1fr;
+  .floating-card.one{
+    right:0;
   }
 
-  .trust-item{
-    border-right:0;
-
-    border-bottom:
-      1px solid rgba(255,255,255,.10);
+  .floating-card.two{
+    left:0;
   }
 
-  .trust-item:last-child{
-    border-bottom:0;
+  .finder-wrap{
+    margin-top:-55px;
   }
 
   .finder{
     padding:21px;
   }
 
+  .finder-grid{
+    grid-template-columns:1fr;
+  }
+
   .finder-head{
     display:block;
   }
 
-  .step{
+  .finder-badge{
     display:inline-block;
-
     margin-top:12px;
-  }
-
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-
-  .find-actions{
-    flex-direction:column;
   }
 
   .car-grid{
     grid-template-columns:1fr;
   }
 
-  .popular-grid{
-    grid-template-columns:
-      1fr 1fr;
+  .model-grid{
+    grid-template-columns:1fr 1fr;
   }
 
-  .features{
+  .feature-grid{
     grid-template-columns:1fr;
+  }
+
+  .best-match{
+    grid-template-columns:1fr;
+  }
+
+  .best-image{
+    min-height:150px;
   }
 
   .results-top{
     display:block;
   }
 
-  .best-match.show{
-    grid-template-columns:1fr;
+  .result-tag{
+    display:inline-block;
+    margin-top:12px;
   }
 
-  .best-image{
-    height:190px;
-  }
-
-  .modal-box{
-    padding:19px;
-  }
-
-  .gallery{
+  .modal-gallery{
     grid-template-columns:1fr;
   }
 
   .gallery-main{
-    height:230px;
+    min-height:250px;
   }
 
-  .gallery-thumbs{
-    grid-template-columns:
-      repeat(4,1fr);
+  .gallery-side{
+    display:none;
   }
 
-  .gallery-thumb{
-    min-height:70px;
-  }
-
-  .modal-grid{
-    grid-template-columns:
-      1fr 1fr;
+  .feature-list{
+    grid-template-columns:1fr;
   }
 
   .footer-grid{
     grid-template-columns:1fr;
   }
 
-  .compare-bar{
+  .compare-inner{
     flex-wrap:wrap;
+    padding:13px 0;
   }
 
   .compare-title{
+    min-width:auto;
+  }
+
+  .compare-items{
     width:100%;
+    order:3;
   }
 
-  .compare-chips{
-    width:100%;
-    flex-basis:100%;
+  .compare-main-btn{
+    margin-left:auto;
   }
-}
-
-@media(max-width:430px){
-
-  .popular-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero h1{
-    font-size:45px;
-  }
-
-  .section{
-    padding:65px 0;
-  }
-
 }
 
 </style>
+
 </head>
 
 <body>
+
+<!-- =========================================================
+     TOP BAR
+     ========================================================= -->
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div>
+      <strong>CarDhundo</strong> — Smarter car discovery for India
+    </div>
+
+```
+<div>
+  Independent discovery platform • Verify final details with manufacturer
+</div>
+```
+
+  </div>
+</div>
 
 <!-- =========================================================
      HEADER
@@ -2144,40 +2225,77 @@ footer{
 
 <header>
 
-  <div class="container nav">
+  <div class="navbar">
 
-    <a href="#" class="logo">
-      Car<span>Dhundo</span>
-    </a>
+```
+<a href="#" class="logo">
 
-    <nav class="navlinks">
+  <div class="logo-mark">
+    CD
+  </div>
 
-      <a href="#finder">
-        Find Cars
-      </a>
+  <div class="logo-text">
+    Car<span>Dhundo</span>
+  </div>
 
-      <a href="#popular">
-        Popular
-      </a>
+</a>
 
-      <a href="#compare">
-        Compare
-      </a>
 
-      <a href="#why">
-        Why CarDhundo
-      </a>
+<nav class="nav-links">
 
-      <a href="#finder" class="nav-button">
-        Find My Car
-      </a>
+  <a href="#find">
+    Find Cars
+  </a>
 
-    </nav>
+  <a href="#models">
+    Explore Cars
+  </a>
+
+  <a href="#brands">
+    Brands
+  </a>
+
+  <a href="#why">
+    Why CarDhundo
+  </a>
+
+  <a href="#faq">
+    FAQ
+  </a>
+
+</nav>
+
+
+<div class="nav-actions">
+
+  <button
+    class="nav-compare"
+    onclick="openCompareModal()">
+
+    Compare
+
+    <span
+      class="compare-count"
+      id="compareCount">
+      0
+    </span>
+
+  </button>
+
+  <button
+    class="nav-cta"
+    onclick="scrollToFinder()">
+
+    Find My Car
+
+  </button>
+
+</div>
+```
 
   </div>
 
 </header>
-
 
 <!-- =========================================================
      HERO
@@ -2185,441 +2303,472 @@ footer{
 
 <section class="hero">
 
-  <div class="container hero-content">
+  <div class="hero-inner">
 
-    <span class="hero-pill">
-      ✦ India's smarter car discovery platform
-    </span>
+```
+<div class="hero-copy">
 
-    <h1>
-      Don't search for a car.
-      <br>
-      <span>Find your car.</span>
-    </h1>
+  <div class="hero-badge">
 
-    <p class="hero-description">
+    <span class="hero-badge-dot"></span>
 
-      Tell CarDhundo what actually matters to you —
-      budget, fuel, family, mileage, body type and
-      transmission. We'll rank the cars that fit.
-
-    </p>
-
-    <div class="hero-actions">
-
-      <button
-        class="btn btn-primary"
-        onclick="scrollToFinder()">
-
-        Find My Car →
-      </button>
-
-      <button
-        class="btn btn-light"
-        onclick="scrollToSection('popular')">
-
-        Explore Cars
-
-      </button>
-
-    </div>
-
-    <div class="trust">
-
-      <div class="trust-item">
-        <strong>6</strong>
-        <span>
-          buying preferences
-        </span>
-      </div>
-
-      <div class="trust-item">
-        <strong>4</strong>
-        <span>
-          cars can be compared
-        </span>
-      </div>
-
-      <div class="trust-item">
-        <strong>Official</strong>
-        <span>
-          manufacturer source links
-        </span>
-      </div>
-
-    </div>
+    India's smarter car discovery platform
 
   </div>
 
-</section>
+
+  <h1>
+
+    Don't just find a car.
+    <span>Find your car.</span>
+
+  </h1>
 
 
-<main>
+  <p class="hero-description">
 
-<!-- =========================================================
-     AD / PROMOTION
-     ========================================================= -->
+    Tell CarDhundo what matters to you —
+    budget, fuel, family size, mileage,
+    body type and transmission.
 
-<div class="container ad-wrapper">
+    We'll help you discover the cars
+    that actually fit your needs.
 
-  <div class="ad-slot">
+  </p>
 
-    <strong>
-      Promotion / Advertisement Space
-    </strong>
 
-    &nbsp; — &nbsp;
+  <div class="hero-actions">
 
-    Reserved for Google AdSense,
-    dealer campaigns,
-    manufacturer promotions
-    or CarDhundo offers.
+    <button
+      class="btn-primary"
+      onclick="scrollToFinder()">
+
+      Find My Car
+      →
+      
+    </button>
+
+
+    <button
+      class="btn-secondary"
+      onclick="document.getElementById('models').scrollIntoView({behavior:'smooth'})">
+
+      Explore Cars
+
+    </button>
+
+  </div>
+
+
+  <div class="hero-proof">
+
+    <div class="hero-proof-item">
+      ✓
+      <span>
+        <strong>Personalized</strong>
+        matches
+      </span>
+    </div>
+
+    <div class="hero-proof-item">
+      ✓
+      <span>
+        <strong>Variant-aware</strong>
+        information
+      </span>
+    </div>
+
+    <div class="hero-proof-item">
+      ✓
+      <span>
+        <strong>Compare</strong>
+        your shortlist
+      </span>
+    </div>
 
   </div>
 
 </div>
 
 
-<!-- =========================================================
-     FINDER
-     ========================================================= -->
+<div class="hero-visual">
 
-<section
-  class="finder-wrap"
-  id="finder">
+  <div class="hero-car">
 
-  <div class="container">
+    <div class="hero-car-inner">
 
-    <div class="finder">
-
-      <div class="finder-head">
-
-        <div>
-
-          <h2>
-            Tell us what you need.
-          </h2>
-
-          <p>
-            Six choices. A ranked shortlist.
-            Less research.
-          </p>
-
-        </div>
-
-        <span
-          class="step"
-          id="step">
-
-          1 of 6 preferences
-
-        </span>
-
+      <div class="hero-car-icon">
+        🚘
       </div>
 
-      <div class="progress">
-
-        <div
-          class="progress-bar"
-          id="progressBar">
-        </div>
-
-      </div>
-
-
-      <div class="form-grid">
-
-        <!-- BUDGET -->
-
-        <div class="field">
-
-          <label for="budget">
-            Budget
-          </label>
-
-          <div class="select-wrap">
-
-            <select id="budget">
-
-              <option value="5-8">
-                ₹5–8 Lakh
-              </option>
-
-              <option
-                value="8-12"
-                selected>
-
-                ₹8–12 Lakh
-
-              </option>
-
-              <option value="12-18">
-                ₹12–18 Lakh
-              </option>
-
-              <option value="18-25">
-                ₹18–25 Lakh
-              </option>
-
-              <option value="25+">
-                ₹25 Lakh+
-              </option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-
-        <!-- FUEL -->
-
-        <div class="field">
-
-          <label for="fuel">
-            Fuel type
-          </label>
-
-          <div class="select-wrap">
-
-            <select id="fuel">
-
-              <option>
-                Petrol
-              </option>
-
-              <option>
-                CNG
-              </option>
-
-              <option>
-                Diesel
-              </option>
-
-              <option>
-                Electric
-              </option>
-
-              <option>
-                Hybrid
-              </option>
-
-              <option>
-                Any
-              </option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-
-        <!-- FAMILY -->
-
-        <div class="field">
-
-          <label for="family">
-            Family / seating
-          </label>
-
-          <div class="select-wrap">
-
-            <select id="family">
-
-              <option value="1-2">
-                1–2 people
-              </option>
-
-              <option
-                value="3-4"
-                selected>
-
-                3–4 people
-
-              </option>
-
-              <option value="5-6">
-                5–6 people
-              </option>
-
-              <option value="7+">
-                7+ people
-              </option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-
-        <!-- MILEAGE -->
-
-        <div class="field">
-
-          <label for="mileage">
-            Minimum efficiency
-          </label>
-
-          <div class="select-wrap">
-
-            <select id="mileage">
-
-              <option
-                value="any"
-                selected>
-
-                Any
-
-              </option>
-
-              <option value="15">
-                15+ km/l
-              </option>
-
-              <option value="18">
-                18+ km/l
-              </option>
-
-              <option value="20">
-                20+ km/l
-              </option>
-
-              <option value="25">
-                25+ km/l
-              </option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-
-        <!-- BODY TYPE -->
-
-        <div class="field">
-
-          <label for="type">
-            Body type
-          </label>
-
-          <div class="select-wrap">
-
-            <select id="type">
-
-              <option>
-                SUV
-              </option>
-
-              <option>
-                Compact SUV
-              </option>
-
-              <option>
-                Hatchback
-              </option>
-
-              <option>
-                Sedan
-              </option>
-
-              <option>
-                MPV
-              </option>
-
-              <option>
-                EV
-              </option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-
-        <!-- TRANSMISSION -->
-
-        <div class="field">
-
-          <label for="transmission">
-            Transmission
-          </label>
-
-          <div class="select-wrap">
-
-            <select id="transmission">
-
-              <option>
-                Manual
-              </option>
-
-              <option>
-                Automatic
-              </option>
-
-              <option>
-                AMT
-              </option>
-
-              <option>
-                CVT/IVT
-              </option>
-
-              <option>
-                DCT
-              </option>
-
-              <option>
-                Any
-              </option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="find-actions">
-
-        <button
-          class="btn btn-primary"
-          id="findButton"
-          onclick="findCars()">
-
-          Find My Matches →
-
-        </button>
-
-        <button
-          class="btn btn-outline"
-          onclick="resetFinder()">
-
-          Reset
-
-        </button>
-
-      </div>
-
-      <div class="find-note">
-
-        Prices shown are indicative starting
-        ex-showroom prices and should be verified
-        with the manufacturer.
-
+      <div class="hero-car-label">
+        Your next car starts here
       </div>
 
     </div>
 
   </div>
 
+
+  <div class="floating-card one">
+
+    <div class="float-icon">
+      ✓
+    </div>
+
+    <div>
+      <strong>Smart Match</strong>
+      <br>
+      Built around your needs
+    </div>
+
+  </div>
+
+
+  <div class="floating-card two">
+
+    <div class="float-icon">
+      ⚖
+    </div>
+
+    <div>
+      <strong>Compare Cars</strong>
+      <br>
+      Side-by-side decisions
+    </div>
+
+  </div>
+
+</div>
+```
+
+  </div>
+
 </section>
 
+<!-- =========================================================
+     ADVERTISEMENT SPACE
+     ========================================================= -->
+
+<section class="ad-section">
+
+  <div class="ad-slot">
+
+```
+<div>
+
+  <strong>
+    ADVERTISEMENT / PROMOTION SPACE
+  </strong>
+
+  <span>
+    970 × 90 • Manufacturer campaigns • Dealer promotions • Finance offers
+  </span>
+
+</div>
+```
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+     FINDER
+     ========================================================= -->
+
+<section id="find" class="finder-wrap">
+
+  <div class="finder">
+
+```
+<div class="finder-head">
+
+  <div>
+
+    <h2>
+      Find cars made for you
+    </h2>
+
+    <p>
+      Answer six questions and CarDhundo will rank the closest matches.
+    </p>
+
+  </div>
+
+  <div class="finder-badge">
+    6 SMART PREFERENCES
+  </div>
+
+</div>
+
+
+<div class="progress">
+
+  <div
+    class="progress-bar"
+    id="progressBar">
+  </div>
+
+</div>
+
+
+<div class="finder-grid">
+
+
+  <div class="field">
+
+    <label>
+      Budget
+    </label>
+
+    <div class="select-wrap">
+
+      <select id="budget">
+
+        <option value="5-8">
+          ₹5–8 Lakh
+        </option>
+
+        <option value="8-12" selected>
+          ₹8–12 Lakh
+        </option>
+
+        <option value="12-18">
+          ₹12–18 Lakh
+        </option>
+
+        <option value="18-25">
+          ₹18–25 Lakh
+        </option>
+
+        <option value="25+">
+          ₹25 Lakh+
+        </option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>
+      Fuel Type
+    </label>
+
+    <div class="select-wrap">
+
+      <select id="fuel">
+
+        <option value="Any">
+          Any Fuel
+        </option>
+
+        <option value="Petrol">
+          Petrol
+        </option>
+
+        <option value="Diesel">
+          Diesel
+        </option>
+
+        <option value="CNG">
+          CNG
+        </option>
+
+        <option value="Electric">
+          Electric
+        </option>
+
+        <option value="Hybrid">
+          Hybrid
+        </option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>
+      Family Size
+    </label>
+
+    <div class="select-wrap">
+
+      <select id="family">
+
+        <option value="Any">
+          Any
+        </option>
+
+        <option value="1-2">
+          1–2 people
+        </option>
+
+        <option value="3-4">
+          3–4 people
+        </option>
+
+        <option value="5-6">
+          5–6 people
+        </option>
+
+        <option value="7+">
+          7+ people
+        </option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>
+      Minimum Mileage
+    </label>
+
+    <div class="select-wrap">
+
+      <select id="mileage">
+
+        <option value="Any">
+          Any
+        </option>
+
+        <option value="15">
+          15+ km/l
+        </option>
+
+        <option value="18">
+          18+ km/l
+        </option>
+
+        <option value="20">
+          20+ km/l
+        </option>
+
+        <option value="25">
+          25+ km/l
+        </option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>
+      Car Type
+    </label>
+
+    <div class="select-wrap">
+
+      <select id="type">
+
+        <option value="Any">
+          Any Type
+        </option>
+
+        <option value="Hatchback">
+          Hatchback
+        </option>
+
+        <option value="Sedan">
+          Sedan
+        </option>
+
+        <option value="SUV">
+          SUV
+        </option>
+
+        <option value="Compact SUV">
+          Compact SUV
+        </option>
+
+        <option value="MPV">
+          MPV
+        </option>
+
+        <option value="Luxury">
+          Luxury
+        </option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+
+  <div class="field">
+
+    <label>
+      Transmission
+    </label>
+
+    <div class="select-wrap">
+
+      <select id="transmission">
+
+        <option value="Any">
+          Any
+        </option>
+
+        <option value="Manual">
+          Manual
+        </option>
+
+        <option value="AMT">
+          AMT
+        </option>
+
+        <option value="Automatic">
+          Automatic
+        </option>
+
+        <option value="DCT">
+          DCT
+        </option>
+
+        <option value="CVT">
+          CVT
+        </option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<button
+  class="find-button"
+  id="findButton"
+  onclick="findCars()">
+
+  Find My Best Cars
+  →
+
+</button>
+```
+
+  </div>
+
+</section>
 
 <!-- =========================================================
      RESULTS
@@ -2631,182 +2780,114 @@ footer{
 
   <div class="container">
 
-    <div class="results-top">
+```
+<div class="results-top">
 
-      <div>
+  <div>
 
-        <span class="eyebrow">
-          Your shortlist
-        </span>
+    <h2>
+      Your best matches
+    </h2>
 
-        <h2>
-          Cars that fit.
-        </h2>
+    <p id="resultCount">
+      Cars ranked according to your preferences.
+    </p>
 
-        <p id="resultText"></p>
+  </div>
 
-      </div>
+  <div class="result-tag">
+    ✓ SMART MATCHING
+  </div>
 
-      <span class="step">
-        ★ Ranked by match score
-      </span>
-
-    </div>
-
-
-    <div
-      class="best-match"
-      id="bestMatch">
-    </div>
+</div>
 
 
-    <div
-      class="car-grid"
-      id="carGrid">
-    </div>
+<div
+  class="best-match"
+  id="bestMatch">
+</div>
+
+
+<div
+  class="car-grid"
+  id="carGrid">
+</div>
+```
 
   </div>
 
 </section>
 
-
 <!-- =========================================================
-     POPULAR
+     BRAND EXPLORER
      ========================================================= -->
 
 <section
-  class="section popular"
-  id="popular">
+  class="section"
+  id="brands">
 
   <div class="container">
 
-    <div class="section-heading">
+```
+<div class="section-head">
 
-      <span class="eyebrow">
-        Explore
-      </span>
+  <div class="eyebrow">
+    Explore by brand
+  </div>
 
-      <h2>
-        Popular Indian cars
-      </h2>
+  <h2>
+    India's leading car brands
+  </h2>
 
-      <p>
-        Open a car to see specifications,
-        available fuel types, transmission,
-        variants and manufacturer information.
-      </p>
+  <p>
+    Explore models and open the full vehicle profile.
+  </p>
 
-    </div>
+</div>
 
-    <div
-      class="popular-grid"
-      id="popularGrid">
-    </div>
+
+<div
+  class="brand-strip"
+  id="brandStrip">
+</div>
+
+
+<div
+  class="model-grid"
+  id="brandModels">
+</div>
+```
 
   </div>
 
 </section>
-
 
 <!-- =========================================================
-     COMPARE
+     ADVERTISEMENT
      ========================================================= -->
 
-<section
-  class="section compare-section"
-  id="compare">
+<section class="container">
 
-  <div class="container">
+  <div class="ad-slot">
 
-    <div class="section-heading">
+```
+<div>
 
-      <span class="eyebrow">
-        Compare smarter
-      </span>
+  <strong>
+    PREMIUM PROMOTION AREA
+  </strong>
 
-      <h2>
-        See the differences before you decide.
-      </h2>
+  <span>
+    Ideal for OEM campaigns, dealerships, insurance,
+    finance and automotive partners
+  </span>
 
-      <p>
-        Add up to four cars and compare their
-        important specifications in one clean view.
-      </p>
-
-    </div>
-
-
-    <div class="brand-row">
-
-      <span class="brand-pill">
-        Maruti Suzuki
-      </span>
-
-      <span class="brand-pill">
-        Hyundai
-      </span>
-
-      <span class="brand-pill">
-        Tata Motors
-      </span>
-
-      <span class="brand-pill">
-        Mahindra
-      </span>
-
-      <span class="brand-pill">
-        Toyota
-      </span>
-
-      <span class="brand-pill">
-        Kia
-      </span>
-
-      <span class="brand-pill">
-        Honda
-      </span>
-
-      <span class="brand-pill">
-        MG
-      </span>
-
-      <span class="brand-pill">
-        Volkswagen
-      </span>
-
-      <span class="brand-pill">
-        Škoda
-      </span>
-
-      <span class="brand-pill">
-        Renault
-      </span>
-
-      <span class="brand-pill">
-        Nissan
-      </span>
-
-    </div>
-
-
-    <div
-      class="compare-output"
-      id="compareOutput">
-
-      <div class="empty-compare">
-
-        Add cars using
-        <strong>+ Compare</strong>
-        to see them here.
-
-      </div>
-
-    </div>
+</div>
+```
 
   </div>
 
 </section>
-
 
 <!-- =========================================================
      WHY CARDHUNDO
@@ -2818,205 +2899,105 @@ footer{
 
   <div class="container">
 
-    <div class="section-heading">
+```
+<div class="section-head">
 
-      <span class="eyebrow">
-        Why CarDhundo
-      </span>
+  <div class="eyebrow">
+    Why CarDhundo
+  </div>
 
-      <h2>
-        A premium buying journey,
-        not another car list.
-      </h2>
+  <h2>
+    A better way to shop for a car
+  </h2>
 
-      <p>
-        Designed around the decisions
-        Indian buyers actually make.
-      </p>
+  <p>
+    Built around the way real people actually make car-buying decisions.
+  </p>
 
+</div>
+
+
+<div class="feature-grid">
+
+
+  <div class="feature-card">
+
+    <div class="feature-icon">
+      🎯
     </div>
 
+    <h3>
+      Personalized matching
+    </h3>
 
-    <div class="features">
+    <p>
+      Six practical preferences help narrow down
+      the cars that make the most sense for you.
+    </p>
 
-      <article class="feature">
-
-        <div class="feature-icon">
-          🎯
-        </div>
-
-        <h3>
-          Personalised ranking
-        </h3>
-
-        <p>
-          Your six choices are scored
-          against every car in the catalogue.
-        </p>
-
-      </article>
+  </div>
 
 
-      <article class="feature">
+  <div class="feature-card">
 
-        <div class="feature-icon">
-          ⚖️
-        </div>
-
-        <h3>
-          Built for comparison
-        </h3>
-
-        <p>
-          Add up to four cars and compare
-          them side-by-side.
-        </p>
-
-      </article>
-
-
-      <article class="feature">
-
-        <div class="feature-icon">
-          ✓
-        </div>
-
-        <h3>
-          Source-aware information
-        </h3>
-
-        <p>
-          Each model can store its official
-          manufacturer page and verification date.
-        </p>
-
-      </article>
-
+    <div class="feature-icon">
+      ⚙
     </div>
+
+    <h3>
+      Variant-aware
+    </h3>
+
+    <p>
+      Vehicle profiles are structured to support
+      model, variant, fuel, transmission and feature-level information.
+    </p>
+
+  </div>
+
+
+  <div class="feature-card">
+
+    <div class="feature-icon">
+      ⚖
+    </div>
+
+    <h3>
+      Compare before deciding
+    </h3>
+
+    <p>
+      Add shortlisted vehicles and compare important
+      specifications side by side.
+    </p>
+
+  </div>
+
+
+  <div class="feature-card">
+
+    <div class="feature-icon">
+      🔎
+    </div>
+
+    <h3>
+      Manufacturer sources
+    </h3>
+
+    <p>
+      Vehicle pages can link directly to official
+      manufacturer information for verification.
+    </p>
+
+  </div>
+
+
+</div>
+```
 
   </div>
 
 </section>
-
-
-<!-- =========================================================
-     DATA / SCALE
-     ========================================================= -->
-
-<section
-  class="section"
-  style="background:white">
-
-  <div class="container">
-
-    <div class="section-heading">
-
-      <span class="eyebrow">
-        Built to scale
-      </span>
-
-      <h2>
-        Every brand. Every model.
-        Every variant.
-      </h2>
-
-      <p>
-        The interface is data-driven. Exact
-        variants can be added without rebuilding
-        the frontend.
-      </p>
-
-    </div>
-
-
-    <div class="brand-row">
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        Maruti Suzuki
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        Hyundai
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        Tata
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        Mahindra
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        Toyota
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        Kia
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        Honda
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        MG
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        Renault
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        Nissan
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        Volkswagen
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        Škoda
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        Jeep
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        Citroën
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        BYD
-      </span>
-
-      <span class="brand-pill"
-        style="background:#101e32">
-        Isuzu
-      </span>
-
-    </div>
-
-  </div>
-
-</section>
-
 
 <!-- =========================================================
      FAQ
@@ -3028,226 +3009,573 @@ footer{
 
   <div class="container">
 
-    <div class="section-heading">
+```
+<div class="section-head">
 
-      <span class="eyebrow">
-        FAQ
-      </span>
+  <div class="eyebrow">
+    FAQ
+  </div>
 
-      <h2>
-        Questions before you start.
-      </h2>
+  <h2>
+    Frequently asked questions
+  </h2>
+
+</div>
+
+
+<div class="faq-list">
+
+
+  <div class="faq">
+
+    <button onclick="toggleFaq(this)">
+
+      Are CarDhundo prices final on-road prices?
+
+      <span>+</span>
+
+    </button>
+
+    <div class="faq-answer">
+
+      No. Prices displayed on a car discovery website should be
+      clearly labelled as ex-showroom or indicative unless
+      the complete location-specific on-road calculation is available.
+
+    </div>
+
+  </div>
+
+
+  <div class="faq">
+
+    <button onclick="toggleFaq(this)">
+
+      Are all features available on every variant?
+
+      <span>+</span>
+
+    </button>
+
+    <div class="faq-answer">
+
+      No. Features frequently differ by variant, powertrain and
+      transmission. CarDhundo therefore stores features at variant
+      level rather than claiming that every feature is standard.
 
     </div>
 
-
-    <div class="faq">
-
-      <div class="faq-item">
-
-        <button
-          class="faq-question"
-          onclick="toggleFaq(this)">
-
-          How does CarDhundo calculate matches?
-
-          <span>+</span>
-
-        </button>
-
-        <div class="faq-answer">
-
-          CarDhundo scores budget, fuel,
-          seating, efficiency, body type
-          and transmission. The system can
-          later include safety, boot space,
-          service cost, performance, EV range
-          and variant-level equipment.
-
-        </div>
-
-      </div>
+  </div>
 
 
-      <div class="faq-item">
+  <div class="faq">
 
-        <button
-          class="faq-question"
-          onclick="toggleFaq(this)">
+    <button onclick="toggleFaq(this)">
 
-          Can I compare cars?
+      Can I compare cars?
 
-          <span>+</span>
+      <span>+</span>
 
-        </button>
+    </button>
 
-        <div class="faq-answer">
+    <div class="faq-answer">
 
-          Yes. Click + Compare on any car.
-          You can add up to four cars and
-          then compare their stored information
-          side-by-side.
-
-        </div>
-
-      </div>
-
-
-      <div class="faq-item">
-
-        <button
-          class="faq-question"
-          onclick="toggleFaq(this)">
-
-          Are the prices final?
-
-          <span>+</span>
-
-        </button>
-
-        <div class="faq-answer">
-
-          No. Prices can change by variant,
-          location, model year, offers and
-          manufacturer updates. Always verify
-          the current price before purchasing.
-
-        </div>
-
-      </div>
-
-
-      <div class="faq-item">
-
-        <button
-          class="faq-question"
-          onclick="toggleFaq(this)">
-
-          Can advertisements run on CarDhundo?
-
-          <span>+</span>
-
-        </button>
-
-        <div class="faq-answer">
-
-          Yes. CarDhundo contains a dedicated
-          promotion area that can later be
-          connected to Google AdSense, direct
-          manufacturer campaigns, dealer
-          promotions or house advertisements.
-
-        </div>
-
-      </div>
-
-
-      <div class="faq-item">
-
-        <button
-          class="faq-question"
-          onclick="toggleFaq(this)">
-
-          Can every Indian car variant be added?
-
-          <span>+</span>
-
-        </button>
-
-        <div class="faq-answer">
-
-          Yes. The database architecture is
-          designed so that each exact variant
-          can become its own record containing
-          price, fuel, transmission, engine,
-          equipment, images and source information.
-
-        </div>
-
-      </div>
+      Yes. Use the Compare button on a car card. Selected cars
+      appear in the comparison tray and can then be compared
+      side by side.
 
     </div>
+
+  </div>
+
+
+  <div class="faq">
+
+    <button onclick="toggleFaq(this)">
+
+      Does CarDhundo sell cars?
+
+      <span>+</span>
+
+    </button>
+
+    <div class="faq-answer">
+
+      CarDhundo is designed as a discovery and comparison platform.
+      Manufacturer, dealer, finance and promotional information
+      should be clearly identified so visitors understand the
+      difference between editorial information and advertising.
+
+    </div>
+
+  </div>
+
+
+</div>
+```
 
   </div>
 
 </section>
 
-</main>
-
-
 <!-- =========================================================
-     COMPARE STICKY BAR
+     CONTACT
      ========================================================= -->
 
-<div
-  class="compare-bar"
-  id="compareBar">
+<section class="section contact-section">
 
-  <div class="compare-title">
+  <div class="container">
 
-    <strong>
-      Compare
-    </strong>
+```
+<div class="contact-box">
 
-    <span>
-      Up to 4 cars
-    </span>
+  <div class="eyebrow">
+    CarDhundo
+  </div>
+
+  <h2>
+    Built by Tanmay Thorat
+  </h2>
+
+  <p>
+    For website enquiries, partnerships, automotive data,
+    advertising and business opportunities.
+  </p>
+
+  <a
+    class="contact-email"
+    href="mailto:tanmaythorat7773@gmail.com">
+
+    tanmaythorat7773@gmail.com
+
+  </a>
+
+</div>
+```
 
   </div>
 
-  <div
-    class="compare-chips"
-    id="compareChips">
-  </div>
+</section>
 
-  <button
-    class="btn btn-light"
-    onclick="renderCompare()">
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
 
-    Compare
+<footer>
 
-  </button>
+  <div class="footer-grid">
 
-  <button
-    class="btn"
-    style="
-      background:#26364d;
-      color:white;
-    "
-    onclick="clearCompare()">
+```
+<div class="footer-brand">
 
-    Clear
+  <a href="#" class="logo">
 
-  </button>
+    <div class="logo-mark">
+      CD
+    </div>
+
+    <div class="logo-text" style="color:white;">
+      Car<span>Dhundo</span>
+    </div>
+
+  </a>
+
+  <p>
+    A smarter automotive discovery platform designed
+    to help Indian buyers find, understand and compare cars.
+  </p>
 
 </div>
 
 
+<div>
+
+  <div class="footer-title">
+    Explore
+  </div>
+
+  <a class="footer-link" href="#find">
+    Find Cars
+  </a>
+
+  <a class="footer-link" href="#brands">
+    Brands
+  </a>
+
+  <a class="footer-link" href="#models">
+    Models
+  </a>
+
+</div>
+
+
+<div>
+
+  <div class="footer-title">
+    CarDhundo
+  </div>
+
+  <a class="footer-link" href="#why">
+    Why CarDhundo
+  </a>
+
+  <a class="footer-link" href="#faq">
+    FAQ
+  </a>
+
+  <a class="footer-link" href="mailto:tanmaythorat7773@gmail.com">
+    Contact
+  </a>
+
+</div>
+
+
+<div>
+
+  <div class="footer-title">
+    Important
+  </div>
+
+  <a class="footer-link" href="#">
+    Privacy
+  </a>
+
+  <a class="footer-link" href="#">
+    Terms
+  </a>
+
+  <a class="footer-link" href="#">
+    Disclaimer
+  </a>
+
+</div>
+```
+
+  </div>
+
+  <div class="footer-bottom">
+
+```
+© 2026 CarDhundo • Built by Tanmay Thorat •
+Specifications, prices and equipment may vary.
+Always verify final information with the manufacturer or authorised dealer.
+```
+
+  </div>
+
+</footer>
+
 <!-- =========================================================
-     CAR MODAL
+     CAR DETAILS MODAL
      ========================================================= -->
 
 <div
   class="modal"
   id="carModal"
-  onclick="closeModalOutside(event)">
+  onclick="outsideClose(event)">
 
   <div class="modal-box">
 
-    <button
-      class="modal-close"
-      onclick="closeModal()">
+```
+<button
+  class="modal-close"
+  onclick="closeCarModal()">
 
-      ×
+  ×
 
-    </button>
+</button>
 
-    <div id="modalContent"></div>
+
+<div class="modal-gallery">
+
+  <div class="gallery-main">
+
+    <span id="modalMainImage">
+      🚘
+    </span>
+
+  </div>
+
+
+  <div class="gallery-side">
+
+    <div class="gallery-tile">
+      🚘
+    </div>
+
+    <div class="gallery-tile">
+      🛞
+    </div>
+
+    <div class="gallery-tile">
+      🪑
+    </div>
+
+    <div class="gallery-tile">
+      🧳
+    </div>
 
   </div>
 
 </div>
 
+
+<div class="modal-content">
+
+  <div
+    class="modal-brand"
+    id="modalBrand">
+  </div>
+
+  <h2 id="modalName">
+    Car
+  </h2>
+
+  <div
+    class="modal-price"
+    id="modalPrice">
+  </div>
+
+
+  <div class="modal-tabs">
+
+    <button
+      class="modal-tab active"
+      onclick="showModalTab('overview',this)">
+
+      Overview
+
+    </button>
+
+    <button
+      class="modal-tab"
+      onclick="showModalTab('variants',this)">
+
+      Variants
+
+    </button>
+
+    <button
+      class="modal-tab"
+      onclick="showModalTab('features',this)">
+
+      Features
+
+    </button>
+
+    <button
+      class="modal-tab"
+      onclick="showModalTab('gallery',this)">
+
+      Gallery
+
+    </button>
+
+  </div>
+
+
+  <div id="modalOverview">
+
+    <div
+      class="feature-list"
+      id="overviewGrid">
+    </div>
+
+  </div>
+
+
+  <div
+    id="modalVariants"
+    style="display:none;">
+
+    <table class="variant-table">
+
+      <thead>
+
+        <tr>
+          <th>Variant</th>
+          <th>Fuel</th>
+          <th>Transmission</th>
+          <th>Price</th>
+        </tr>
+
+      </thead>
+
+      <tbody id="variantBody">
+      </tbody>
+
+    </table>
+
+  </div>
+
+
+  <div
+    id="modalFeatures"
+    style="display:none;">
+
+    <div
+      class="feature-list"
+      id="featureGrid">
+    </div>
+
+  </div>
+
+
+  <div
+    id="modalGallery"
+    style="display:none;">
+
+    <div class="feature-list">
+
+      <div>Exterior — Front</div>
+      <div>Exterior — Rear</div>
+      <div>Exterior — Side</div>
+      <div>Interior — Dashboard</div>
+      <div>Interior — Seats</div>
+      <div>Boot / Luggage Area</div>
+
+    </div>
+
+  </div>
+
+
+  <div class="source-box">
+
+    <strong>
+      Manufacturer information
+    </strong>
+
+    <br><br>
+
+    This profile is designed to connect to verified
+    manufacturer data.
+
+    <br><br>
+
+    <a
+      id="officialLink"
+      href="#"
+      target="_blank"
+      rel="noopener">
+
+      Open official manufacturer page →
+
+    </a>
+
+  </div>
+
+</div>
+```
+
+  </div>
+
+</div>
+
+<!-- =========================================================
+     COMPARE MODAL
+     ========================================================= -->
+
+<div
+  class="modal"
+  id="compareModal"
+  onclick="outsideCompareClose(event)">
+
+  <div class="modal-box">
+
+```
+<button
+  class="modal-close"
+  onclick="closeCompareModal()">
+
+  ×
+
+</button>
+
+
+<div class="compare-modal-content">
+
+  <div class="eyebrow">
+    CarDhundo Compare
+  </div>
+
+  <h2 style="margin-top:6px;">
+    Compare your shortlisted cars
+  </h2>
+
+  <p style="color:#64748b;font-size:13px;margin-top:6px;">
+    Compare fuel, body type, mileage, transmission,
+    seating and starting price.
+  </p>
+
+
+  <div class="compare-table-wrap">
+
+    <table
+      class="compare-table"
+      id="compareTable">
+
+    </table>
+
+  </div>
+
+</div>
+```
+
+  </div>
+
+</div>
+
+<!-- =========================================================
+     COMPARE DRAWER
+     ========================================================= -->
+
+<div
+  class="compare-drawer"
+  id="compareDrawer">
+
+  <div class="compare-inner">
+
+```
+<div class="compare-title">
+
+  <strong>
+    Compare Cars
+  </strong>
+
+  <span>
+    Select up to 4
+  </span>
+
+</div>
+
+
+<div
+  class="compare-items"
+  id="compareItems">
+</div>
+
+
+<button
+  class="clear-compare"
+  onclick="clearCompare()">
+
+  Clear
+
+</button>
+
+
+<button
+  class="compare-main-btn"
+  onclick="openCompareModal()">
+
+  Compare Now
+
+</button>
+```
+
+  </div>
+
+</div>
 
 <!-- =========================================================
      TOAST
@@ -3256,1856 +3584,931 @@ footer{
 <div
   class="toast"
   id="toast">
-
-  Added to comparison.
-
 </div>
-
-
-<!-- =========================================================
-     FOOTER
-     ========================================================= -->
-
-<footer>
-
-  <div class="container footer-grid">
-
-    <div>
-
-      <a
-        href="#"
-        class="logo">
-
-        Car<span>Dhundo</span>
-
-      </a>
-
-      <p class="footer-description">
-
-        Find. Compare. Decide.
-
-        A modern car discovery experience
-        designed for Indian car buyers.
-
-      </p>
-
-    </div>
-
-
-    <div class="footer-column">
-
-      <h4>
-        Explore
-      </h4>
-
-      <a href="#finder">
-        Find Cars
-      </a>
-
-      <a href="#popular">
-        Popular Cars
-      </a>
-
-      <a href="#compare">
-        Compare
-      </a>
-
-    </div>
-
-
-    <div class="footer-column">
-
-      <h4>
-        Information
-      </h4>
-
-      <a href="#why">
-        Why CarDhundo
-      </a>
-
-      <a href="#faq">
-        FAQ
-      </a>
-
-      <a href="#">
-        Contact
-      </a>
-
-    </div>
-
-
-    <div class="footer-column">
-
-      <h4>
-        Legal
-      </h4>
-
-      <a href="#">
-        Privacy
-      </a>
-
-      <a href="#">
-        Terms
-      </a>
-
-      <a href="#">
-        Disclaimer
-      </a>
-
-    </div>
-
-  </div>
-
-
-  <div class="container footer-bottom">
-
-    © 2026 CarDhundo.
-    Vehicle information should be verified
-    with the manufacturer before purchase.
-
-  </div>
-
-</footer>
-
 
 <script>
 
 /* =========================================================
-   CARDHUNDO DATABASE
-
-   IMPORTANT:
+   CAR DATA
    ---------------------------------------------------------
-   Each MODEL can later become multiple VARIANT records.
+   IMPORTANT:
+   This structure is deliberately variant-aware.
 
-   Example:
-
-   Punch Pure Petrol Manual
-   Punch Adventure Petrol Manual
-   Punch Accomplished Petrol AMT
-   Punch CNG Pure
-   Punch CNG Adventure
-
-   Each exact variant should contain:
-
-   - exact price
-   - fuel
-   - transmission
-   - engine
-   - mileage
-   - seats
-   - boot
-   - dimensions
-   - safety
-   - features
-   - colours
-   - images
-   - official source
-   - verification date
-
-   Do not invent manufacturer information.
+   Replace/add records from official manufacturer
+   brochures/configurators before publishing.
    ========================================================= */
-
 
 const cars = [
 
-  /* =======================================================
-     HYUNDAI
-     ======================================================= */
-
   {
-    id:"exter",
-    brand:"Hyundai",
-    name:"Exter",
-
-    price:5.81,
-    maxPrice:10.60,
-
-    fuel:["Petrol","CNG"],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:27.1,
-
+    id:"tata-punch",
+    brand:"Tata Motors",
+    name:"Tata Punch",
     type:"SUV",
+    seats:"5",
+    fuel:"Petrol / CNG / Electric",
+    transmission:"Manual / AMT / Automatic",
+    mileage:"Variant dependent",
+    price:7.0,
+    icon:"🚙",
 
-    trans:[
-      "Manual",
-      "AMT"
+    official:
+      "https://www.tatamotors.com/",
+
+    features:[
+      "Variant-specific safety equipment",
+      "Petrol and CNG availability",
+      "Multiple transmission options",
+      "SUV-style compact dimensions",
+      "Connected features on selected variants",
+      "Feature availability varies by variant"
     ],
 
-    engine:
-      "1.2L Petrol / CNG",
+    variants:[
+      {
+        name:"Entry Variant",
+        fuel:"Petrol",
+        transmission:"Manual",
+        price:7.0,
+        features:[
+          "Safety equipment",
+          "Manual transmission"
+        ]
+      },
+      {
+        name:"Mid Variant",
+        fuel:"Petrol / CNG",
+        transmission:"Manual / AMT",
+        price:8.5,
+        features:[
+          "Additional convenience equipment",
+          "Infotainment equipment",
+          "CNG availability on applicable variant"
+        ]
+      },
+      {
+        name:"Upper Variant",
+        fuel:"Petrol / CNG",
+        transmission:"Manual / AMT",
+        price:10.0,
+        features:[
+          "Higher equipment level",
+          "Additional comfort features",
+          "Technology features"
+        ]
+      }
+    ]
+  },
 
-    boot:
-      "391 L",
 
-    image:
-      "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/Exter/booking-open/homemodel-exter.png",
+  {
+    id:"hyundai-exter",
+    brand:"Hyundai",
+    name:"Hyundai Exter",
+    type:"SUV",
+    seats:"5",
+    fuel:"Petrol / CNG",
+    transmission:"Manual / Automatic",
+    mileage:"Variant dependent",
+    price:5.8,
+    icon:"🚙",
 
     official:
       "https://www.hyundai.com/in/en/find-a-car/exter",
 
-    verifiedAt:
-      "Model-level source"
+    features:[
+      "Petrol and CNG powertrains",
+      "Manual and automatic options",
+      "5-seat configuration",
+      "Variant-specific technology",
+      "Safety equipment varies by trim",
+      "Official Hyundai configurator available"
+    ],
+
+    variants:[
+      {
+        name:"Base",
+        fuel:"Petrol",
+        transmission:"Manual",
+        price:5.8,
+        features:[
+          "Core safety equipment",
+          "Manual transmission"
+        ]
+      },
+      {
+        name:"Mid",
+        fuel:"Petrol / CNG",
+        transmission:"Manual",
+        price:7.0,
+        features:[
+          "Additional convenience equipment",
+          "CNG availability"
+        ]
+      },
+      {
+        name:"Automatic",
+        fuel:"Petrol",
+        transmission:"Automatic",
+        price:8.2,
+        features:[
+          "Automatic transmission",
+          "Additional convenience features"
+        ]
+      }
+    ]
   },
 
 
   {
-    id:"venue",
+    id:"hyundai-venue",
     brand:"Hyundai",
-    name:"Venue",
-
-    price:7.99,
-    maxPrice:15.70,
-
-    fuel:[
-      "Petrol",
-      "Diesel"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:18.3,
-
+    name:"Hyundai Venue",
     type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic",
-      "DCT"
-    ],
-
-    engine:
-      "1.2L / 1.0L Turbo / 1.5L Diesel",
-
-    image:
-      "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/venue/exterior/venue-exterior-main.png",
+    seats:"5",
+    fuel:"Petrol",
+    transmission:"Manual / Automatic",
+    mileage:"Variant dependent",
+    price:7.9,
+    icon:"🚙",
 
     official:
-      "https://www.hyundai.com/in/en/find-a-car/venue"
+      "https://www.hyundai.com/in/en/find-a-car/venue",
+
+    features:[
+      "Petrol powertrain options",
+      "Manual and automatic transmissions",
+      "Variant-specific connected technology",
+      "Available advanced convenience features",
+      "Safety equipment varies by trim",
+      "Exterior gallery and 360-degree material available from Hyundai"
+    ],
+
+    variants:[
+      {
+        name:"Base",
+        fuel:"Petrol",
+        transmission:"Manual",
+        price:7.9,
+        features:[
+          "Core safety features",
+          "Manual gearbox"
+        ]
+      },
+      {
+        name:"Mid",
+        fuel:"Petrol",
+        transmission:"Manual / Automatic",
+        price:9.5,
+        features:[
+          "Infotainment",
+          "Additional convenience features"
+        ]
+      },
+      {
+        name:"Top",
+        fuel:"Petrol",
+        transmission:"Automatic",
+        price:13.0,
+        features:[
+          "Higher technology package",
+          "Premium convenience equipment"
+        ]
+      }
+    ]
   },
 
 
   {
-    id:"creta",
+    id:"hyundai-creta",
     brand:"Hyundai",
-    name:"Creta",
-
-    price:10.91,
-    maxPrice:20.50,
-
-    fuel:[
-      "Petrol",
-      "Diesel"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:21.8,
-
+    name:"Hyundai Creta",
     type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic",
-      "DCT",
-      "CVT/IVT"
-    ],
-
-    engine:
-      "1.5L Petrol / Turbo / Diesel",
-
-    image:
-      "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/creta/2024/overview/creta-overview-main.png",
+    seats:"5",
+    fuel:"Petrol / Diesel",
+    transmission:"Manual / Automatic / DCT",
+    mileage:"Variant dependent",
+    price:11.0,
+    icon:"🚙",
 
     official:
-      "https://www.hyundai.com/in/en/find-a-car/creta"
+      "https://www.hyundai.com/in/en/find-a-car/creta",
+
+    features:[
+      "Petrol and diesel engine options",
+      "Manual and automatic transmissions",
+      "5-seat configuration",
+      "Variant-specific ADAS/technology",
+      "Premium infotainment options",
+      "Feature availability varies by variant"
+    ],
+
+    variants:[
+      {
+        name:"Base",
+        fuel:"Petrol",
+        transmission:"Manual",
+        price:11.0,
+        features:[
+          "Core safety equipment",
+          "Manual transmission"
+        ]
+      },
+      {
+        name:"Mid",
+        fuel:"Petrol / Diesel",
+        transmission:"Manual / Automatic",
+        price:14.0,
+        features:[
+          "Infotainment",
+          "Connected technology",
+          "Additional comfort features"
+        ]
+      },
+      {
+        name:"Top",
+        fuel:"Petrol / Diesel",
+        transmission:"Automatic / DCT",
+        price:18.0,
+        features:[
+          "Premium comfort",
+          "Advanced technology",
+          "Higher safety equipment"
+        ]
+      }
+    ]
   },
 
 
   {
-    id:"alcazar",
-    brand:"Hyundai",
-    name:"Alcazar",
-
-    price:14.51,
-    maxPrice:21.00,
-
-    fuel:[
-      "Petrol",
-      "Diesel"
-    ],
-
-    family:"5-6",
-    seats:6,
-
-    mileage:20.4,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic",
-      "DCT"
-    ],
-
-    engine:
-      "1.5L Turbo Petrol / Diesel",
-
-    image:
-      "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/alcazar/overview/alcazar-overview-main.png",
-
-    official:
-      "https://www.hyundai.com/in/en/find-a-car/alcazar"
-  },
-
-
-  {
-    id:"verna",
-    brand:"Hyundai",
-    name:"Verna",
-
-    price:10.99,
-    maxPrice:17.70,
-
-    fuel:[
-      "Petrol"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:20.6,
-
-    type:"Sedan",
-
-    trans:[
-      "Manual",
-      "DCT",
-      "CVT/IVT"
-    ],
-
-    engine:
-      "1.5L Petrol / Turbo",
-
-    image:
-      "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/verna/overview/verna-overview-main.png",
-
-    official:
-      "https://www.hyundai.com/in/en/find-a-car/verna"
-  },
-
-
-  {
-    id:"i20",
-    brand:"Hyundai",
-    name:"i20",
-
-    price:6.00,
-    maxPrice:10.70,
-
-    fuel:[
-      "Petrol"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:20.0,
-
-    type:"Hatchback",
-
-    trans:[
-      "Manual",
-      "CVT/IVT"
-    ],
-
-    engine:
-      "1.2L Petrol",
-
-    image:
-      "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/i20/overview/i20-overview-main.png",
-
-    official:
-      "https://www.hyundai.com/in/en/find-a-car/i20"
-  },
-
-
-  {
-    id:"grand_i10_nios",
-    brand:"Hyundai",
-    name:"Grand i10 Nios",
-
-    price:5.60,
-    maxPrice:8.60,
-
-    fuel:[
-      "Petrol",
-      "CNG"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:27.0,
-
-    type:"Hatchback",
-
-    trans:[
-      "Manual",
-      "AMT"
-    ],
-
-    engine:
-      "1.2L Petrol / CNG",
-
-    image:
-      "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/grand-i10-nios/overview/nios-overview-main.png",
-
-    official:
-      "https://www.hyundai.com/in/en/find-a-car/grand-i10-nios"
-  },
-
-
-  {
-    id:"aura",
-    brand:"Hyundai",
-    name:"Aura",
-
-    price:6.00,
-    maxPrice:9.10,
-
-    fuel:[
-      "Petrol",
-      "CNG"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:28.0,
-
-    type:"Sedan",
-
-    trans:[
-      "Manual",
-      "AMT"
-    ],
-
-    engine:
-      "1.2L Petrol / CNG",
-
-    image:
-      "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/aura/overview/aura-overview-main.png",
-
-    official:
-      "https://www.hyundai.com/in/en/find-a-car/aura"
-  },
-
-
-  {
-    id:"creta_electric",
-    brand:"Hyundai",
-    name:"Creta Electric",
-
-    price:18.03,
-    maxPrice:24.70,
-
-    fuel:[
-      "Electric"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:0,
-
-    type:"EV",
-
-    trans:[
-      "Automatic"
-    ],
-
-    engine:
-      "IPMSM Electric Motor",
-
-    range:473,
-
-    image:
-      "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/creta-electric/overview/creta-electric-overview-main.png",
-
-    official:
-      "https://www.hyundai.com/in/en/find-a-car/creta-electric"
-  },
-
-
-  {
-    id:"ioniq5",
-    brand:"Hyundai",
-    name:"IONIQ 5",
-
-    price:55.71,
-    maxPrice:55.71,
-
-    fuel:[
-      "Electric"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:0,
-
-    type:"EV",
-
-    trans:[
-      "Automatic"
-    ],
-
-    engine:
-      "PMSM Electric Motor",
-
-    range:631,
-
-    image:
-      "https://www.hyundai.com/content/dam/hyundai/in/en/data/find-a-car/ioniq5/overview/ioniq5-overview-main.png",
-
-    official:
-      "https://www.hyundai.com/in/en/find-a-car/ioniq5"
-  },
-
-
-  /* =======================================================
-     KIA
-     ======================================================= */
-
-  {
-    id:"sonet",
-    brand:"Kia",
-    name:"Sonet",
-
-    price:7.30,
-    maxPrice:15.70,
-
-    fuel:[
-      "Petrol",
-      "Diesel"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:22.3,
-
+    id:"maruti-fronx",
+    brand:"Maruti Suzuki",
+    name:"Maruti Suzuki Fronx",
     type:"Compact SUV",
-
-    trans:[
-      "Manual",
-      "AMT",
-      "Automatic",
-      "DCT"
-    ],
-
-    engine:
-      "1.2L / 1.0L Turbo / 1.5L Diesel",
+    seats:"5",
+    fuel:"Petrol / CNG",
+    transmission:"Manual / Automatic",
+    mileage:"Variant dependent",
+    price:7.5,
+    icon:"🚗",
 
     official:
-      "https://www.kia.com/in/our-vehicles/sonet.html"
+      "https://www.marutisuzuki.com/",
+
+    features:[
+      "Petrol and CNG options",
+      "Manual and automatic options",
+      "Compact SUV body style",
+      "Variant-specific infotainment",
+      "Multiple trim levels",
+      "Equipment varies by variant"
+    ],
+
+    variants:[
+      {
+        name:"Sigma",
+        fuel:"Petrol",
+        transmission:"Manual",
+        price:7.5,
+        features:[
+          "Core safety",
+          "Manual transmission"
+        ]
+      },
+      {
+        name:"Delta",
+        fuel:"Petrol / CNG",
+        transmission:"Manual",
+        price:8.5,
+        features:[
+          "Additional infotainment",
+          "CNG availability"
+        ]
+      },
+      {
+        name:"Alpha",
+        fuel:"Petrol",
+        transmission:"Automatic",
+        price:12.0,
+        features:[
+          "Premium infotainment",
+          "Higher convenience equipment"
+        ]
+      }
+    ]
   },
 
 
   {
-    id:"seltos",
-    brand:"Kia",
-    name:"Seltos",
-
-    price:10.99,
-    maxPrice:20.00,
-
-    fuel:[
-      "Petrol",
-      "Diesel"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:20.7,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic",
-      "DCT"
-    ],
-
-    engine:
-      "Petrol / Turbo Petrol / Diesel",
-
-    official:
-      "https://www.kia.com/in/our-vehicles/seltos.html"
-  },
-
-
-  {
-    id:"syros",
-    brand:"Kia",
-    name:"Syros",
-
-    price:8.70,
-    maxPrice:18.50,
-
-    fuel:[
-      "Petrol"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:18.0,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "Turbo Petrol",
-
-    official:
-      "https://www.kia.com/in/our-vehicles/syros.html"
-  },
-
-
-  {
-    id:"carens",
-    brand:"Kia",
-    name:"Carens",
-
-    price:10.50,
-    maxPrice:20.00,
-
-    fuel:[
-      "Petrol",
-      "Diesel"
-    ],
-
-    family:"5-6",
-    seats:7,
-
-    mileage:21.3,
-
-    type:"MPV",
-
-    trans:[
-      "Manual",
-      "Automatic",
-      "DCT"
-    ],
-
-    engine:
-      "Petrol / Turbo Petrol / Diesel",
-
-    official:
-      "https://www.kia.com/in/our-vehicles/carens.html"
-  },
-
-
-  {
-    id:"ev6",
-    brand:"Kia",
-    name:"EV6",
-
-    price:65.90,
-    maxPrice:65.90,
-
-    fuel:[
-      "Electric"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:0,
-
-    type:"EV",
-
-    trans:[
-      "Automatic"
-    ],
-
-    engine:
-      "Electric AWD",
-
-    range:528,
-
-    official:
-      "https://www.kia.com/in/our-vehicles/ev6.html"
-  },
-
-
-  /* =======================================================
-     TATA
-     ======================================================= */
-
-  {
-    id:"punch",
-    brand:"Tata",
-    name:"Punch",
-
-    price:6.00,
-    maxPrice:10.30,
-
-    fuel:[
-      "Petrol",
-      "CNG"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:26.9,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "AMT"
-    ],
-
-    engine:
-      "1.2L Petrol / CNG",
-
-    official:
-      "https://cars.tatamotors.com/punch/"
-  },
-
-
-  {
-    id:"nexon",
-    brand:"Tata",
-    name:"Nexon",
-
-    price:8.00,
-    maxPrice:15.60,
-
-    fuel:[
-      "Petrol",
-      "Diesel",
-      "CNG"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:24.1,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "AMT",
-      "DCT"
-    ],
-
-    engine:
-      "Petrol / Diesel / CNG",
-
-    official:
-      "https://cars.tatamotors.com/nexon/"
-  },
-
-
-  {
-    id:"tiago",
-    brand:"Tata",
-    name:"Tiago",
-
-    price:5.00,
-    maxPrice:8.80,
-
-    fuel:[
-      "Petrol",
-      "CNG"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:26.5,
-
-    type:"Hatchback",
-
-    trans:[
-      "Manual",
-      "AMT"
-    ],
-
-    engine:
-      "1.2L Petrol / CNG",
-
-    official:
-      "https://cars.tatamotors.com/tiago/"
-  },
-
-
-  {
-    id:"altroz",
-    brand:"Tata",
-    name:"Altroz",
-
-    price:6.90,
-    maxPrice:11.60,
-
-    fuel:[
-      "Petrol",
-      "CNG",
-      "Diesel"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:23.6,
-
-    type:"Hatchback",
-
-    trans:[
-      "Manual",
-      "DCT"
-    ],
-
-    engine:
-      "Petrol / CNG / Diesel",
-
-    official:
-      "https://cars.tatamotors.com/altroz/"
-  },
-
-
-  {
-    id:"curvv",
-    brand:"Tata",
-    name:"Curvv",
-
-    price:10.00,
-    maxPrice:20.00,
-
-    fuel:[
-      "Petrol",
-      "Diesel",
-      "Electric"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:20.0,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "DCT",
-      "Automatic"
-    ],
-
-    engine:
-      "Petrol / Diesel / EV",
-
-    official:
-      "https://cars.tatamotors.com/curvv/"
-  },
-
-
-  {
-    id:"harrier",
-    brand:"Tata",
-    name:"Harrier",
-
-    price:14.00,
-    maxPrice:26.50,
-
-    fuel:[
-      "Diesel"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:16.8,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "2.0L Diesel",
-
-    official:
-      "https://cars.tatamotors.com/harrier/"
-  },
-
-
-  {
-    id:"safari",
-    brand:"Tata",
-    name:"Safari",
-
-    price:15.00,
-    maxPrice:27.00,
-
-    fuel:[
-      "Diesel"
-    ],
-
-    family:"5-6",
-    seats:7,
-
-    mileage:16.3,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "2.0L Diesel",
-
-    official:
-      "https://cars.tatamotors.com/safari/"
-  },
-
-
-  {
-    id:"punch_ev",
-    brand:"Tata",
-    name:"Punch.ev",
-
-    price:10.00,
-    maxPrice:17.00,
-
-    fuel:[
-      "Electric"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:0,
-
-    type:"EV",
-
-    trans:[
-      "Automatic"
-    ],
-
-    engine:
-      "Electric",
-
-    range:421,
-
-    official:
-      "https://cars.tatamotors.com/punch-ev/"
-  },
-
-
-  /* =======================================================
-     MARUTI SUZUKI
-     ======================================================= */
-
-  {
-    id:"fronx",
+    id:"maruti-brezza",
     brand:"Maruti Suzuki",
-    name:"Fronx",
+    name:"Maruti Suzuki Brezza",
+    type:"SUV",
+    seats:"5",
+    fuel:"Petrol / CNG",
+    transmission:"Manual / Automatic",
+    mileage:"Variant dependent",
+    price:8.8,
+    icon:"🚙",
 
-    price:7.60,
-    maxPrice:13.10,
+    official:
+      "https://www.marutisuzuki.com/",
 
-    fuel:[
-      "Petrol",
-      "CNG"
+    features:[
+      "Petrol and CNG availability",
+      "Manual and automatic transmissions",
+      "5-seat SUV",
+      "Variant-specific comfort features",
+      "Connected technology on selected variants",
+      "Equipment varies by trim"
     ],
 
-    family:"3-4",
-    seats:5,
+    variants:[
+      {
+        name:"LXi",
+        fuel:"Petrol / CNG",
+        transmission:"Manual",
+        price:8.8,
+        features:[
+          "Core safety equipment",
+          "Manual transmission"
+        ]
+      },
+      {
+        name:"VXi",
+        fuel:"Petrol / CNG",
+        transmission:"Manual / Automatic",
+        price:10.0,
+        features:[
+          "Infotainment",
+          "Additional convenience features"
+        ]
+      },
+      {
+        name:"ZXi+",
+        fuel:"Petrol",
+        transmission:"Automatic",
+        price:13.0,
+        features:[
+          "Premium convenience",
+          "Technology equipment"
+        ]
+      }
+    ]
+  },
 
-    mileage:28.5,
 
+  {
+    id:"kia-sonet",
+    brand:"Kia",
+    name:"Kia Sonet",
     type:"Compact SUV",
-
-    trans:[
-      "Manual",
-      "AMT",
-      "Automatic"
-    ],
-
-    engine:
-      "1.2L / 1.0L Turbo / CNG",
+    seats:"5",
+    fuel:"Petrol / Diesel",
+    transmission:"Manual / iMT / Automatic",
+    mileage:"Variant dependent",
+    price:7.3,
+    icon:"🚙",
 
     official:
-      "https://www.marutisuzuki.com/fronx"
+      "https://www.kia.com/in/our-vehicles/sonet/showroom.html",
+
+    features:[
+      "6 airbags listed by Kia as standard",
+      "360-degree camera on applicable variants",
+      "ADAS on applicable variants",
+      "Ventilated seats on applicable variants",
+      "Connected technology",
+      "Variant-specific equipment"
+    ],
+
+    variants:[
+      {
+        name:"HTE",
+        fuel:"Petrol / Diesel",
+        transmission:"Manual",
+        price:7.3,
+        features:[
+          "6 airbags",
+          "Core safety package",
+          "Cruise control"
+        ]
+      },
+      {
+        name:"HTK",
+        fuel:"Petrol / Diesel",
+        transmission:"Manual / iMT",
+        price:9.0,
+        features:[
+          "Additional infotainment",
+          "Additional convenience equipment"
+        ]
+      },
+      {
+        name:"GTX+",
+        fuel:"Petrol / Diesel",
+        transmission:"Automatic",
+        price:14.0,
+        features:[
+          "ADAS Level 1",
+          "360-degree camera",
+          "Ventilated front seats",
+          "10.25-inch class display"
+        ]
+      }
+    ]
   },
 
 
   {
-    id:"brezza",
-    brand:"Maruti Suzuki",
-    name:"Brezza",
-
-    price:8.80,
-    maxPrice:14.60,
-
-    fuel:[
-      "Petrol",
-      "CNG"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:25.5,
-
+    id:"kia-seltos",
+    brand:"Kia",
+    name:"Kia Seltos",
     type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "1.5L Petrol / CNG",
+    seats:"5",
+    fuel:"Petrol / Diesel",
+    transmission:"Manual / iMT / Automatic / DCT",
+    mileage:"Variant dependent",
+    price:11.0,
+    icon:"🚙",
 
     official:
-      "https://www.marutisuzuki.com/brezza"
+      "https://www.kia.com/in/our-vehicles/seltos/showroom.html",
+
+    features:[
+      "6 airbags",
+      "360-degree camera on applicable variants",
+      "ADAS on applicable variants",
+      "Dual-pane panoramic sunroof on applicable variants",
+      "Premium infotainment",
+      "Variant-specific equipment"
+    ],
+
+    variants:[
+      {
+        name:"HTE",
+        fuel:"Petrol / Diesel",
+        transmission:"Manual",
+        price:11.0,
+        features:[
+          "6 airbags",
+          "Cruise control",
+          "10.25-inch class touchscreen"
+        ]
+      },
+      {
+        name:"HTK(O)",
+        fuel:"Petrol / Diesel",
+        transmission:"Manual / Automatic",
+        price:14.0,
+        features:[
+          "Panoramic sunroof",
+          "Additional technology",
+          "Additional convenience"
+        ]
+      },
+      {
+        name:"X-Line(O)",
+        fuel:"Petrol / Diesel",
+        transmission:"Automatic / DCT",
+        price:21.5,
+        features:[
+          "360-degree camera",
+          "Advanced driver assistance",
+          "Premium audio",
+          "Dual-pane panoramic sunroof"
+        ]
+      }
+    ]
   },
 
 
   {
-    id:"swift",
-    brand:"Maruti Suzuki",
-    name:"Swift",
-
-    price:6.50,
-    maxPrice:9.80,
-
-    fuel:[
-      "Petrol"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:25.8,
-
-    type:"Hatchback",
-
-    trans:[
-      "Manual",
-      "AMT"
-    ],
-
-    engine:
-      "1.2L Petrol",
+    id:"tata-nexon",
+    brand:"Tata Motors",
+    name:"Tata Nexon",
+    type:"SUV",
+    seats:"5",
+    fuel:"Petrol / Diesel / CNG",
+    transmission:"Manual / AMT / Automatic",
+    mileage:"Variant dependent",
+    price:8.0,
+    icon:"🚙",
 
     official:
-      "https://www.marutisuzuki.com/swift"
+      "https://www.tatamotors.com/",
+
+    features:[
+      "Petrol, diesel and CNG options",
+      "Multiple transmissions",
+      "5-seat SUV",
+      "Variant-specific technology",
+      "Safety features vary by trim",
+      "Feature availability must be checked by variant"
+    ],
+
+    variants:[
+      {
+        name:"Smart",
+        fuel:"Petrol",
+        transmission:"Manual",
+        price:8.0,
+        features:[
+          "Core safety",
+          "Manual gearbox"
+        ]
+      },
+      {
+        name:"Pure",
+        fuel:"Petrol / CNG",
+        transmission:"Manual / AMT",
+        price:9.5,
+        features:[
+          "Additional convenience",
+          "CNG option"
+        ]
+      },
+      {
+        name:"Fearless",
+        fuel:"Petrol / Diesel",
+        transmission:"Automatic",
+        price:15.0,
+        features:[
+          "Premium technology",
+          "Higher convenience equipment"
+        ]
+      }
+    ]
   },
 
 
   {
-    id:"baleno",
-    brand:"Maruti Suzuki",
-    name:"Baleno",
-
-    price:6.90,
-    maxPrice:10.70,
-
-    fuel:[
-      "Petrol",
-      "CNG"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:22.9,
-
-    type:"Hatchback",
-
-    trans:[
-      "Manual",
-      "AMT"
-    ],
-
-    engine:
-      "1.2L Petrol / CNG",
-
-    official:
-      "https://www.marutisuzuki.com/baleno"
-  },
-
-
-  {
-    id:"dzire",
-    brand:"Maruti Suzuki",
-    name:"Dzire",
-
-    price:6.80,
-    maxPrice:10.20,
-
-    fuel:[
-      "Petrol",
-      "CNG"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:26.0,
-
-    type:"Sedan",
-
-    trans:[
-      "Manual",
-      "AMT"
-    ],
-
-    engine:
-      "1.2L Petrol / CNG",
-
-    official:
-      "https://www.marutisuzuki.com/dzire"
-  },
-
-
-  {
-    id:"ertiga",
-    brand:"Maruti Suzuki",
-    name:"Ertiga",
-
-    price:8.80,
-    maxPrice:13.30,
-
-    fuel:[
-      "Petrol",
-      "CNG"
-    ],
-
-    family:"5-6",
-    seats:7,
-
-    mileage:26.1,
-
-    type:"MPV",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "1.5L Petrol / CNG",
-
-    official:
-      "https://www.marutisuzuki.com/ertiga"
-  },
-
-
-  /* =======================================================
-     MAHINDRA
-     ======================================================= */
-
-  {
-    id:"xuv3xo",
+    id:"mahindra-3xo",
     brand:"Mahindra",
-    name:"XUV 3XO",
-
-    price:7.50,
-    maxPrice:15.60,
-
-    fuel:[
-      "Petrol",
-      "Diesel"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:21.2,
-
+    name:"Mahindra XUV 3XO",
     type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "Petrol / Turbo Petrol / Diesel",
+    seats:"5",
+    fuel:"Petrol / Diesel",
+    transmission:"Manual / Automatic",
+    mileage:"Variant dependent",
+    price:8.0,
+    icon:"🚙",
 
     official:
-      "https://auto.mahindra.com/suv/xuv3xo"
+      "https://auto.mahindra.com/",
+
+    features:[
+      "Petrol and diesel options",
+      "Manual and automatic options",
+      "5-seat SUV",
+      "Variant-specific technology",
+      "Safety equipment varies by variant",
+      "Premium features available on upper trims"
+    ],
+
+    variants:[
+      {
+        name:"MX1",
+        fuel:"Petrol",
+        transmission:"Manual",
+        price:8.0,
+        features:[
+          "Core safety",
+          "Manual transmission"
+        ]
+      },
+      {
+        name:"AX5",
+        fuel:"Petrol / Diesel",
+        transmission:"Manual / Automatic",
+        price:11.0,
+        features:[
+          "Infotainment",
+          "Additional convenience"
+        ]
+      },
+      {
+        name:"AX7",
+        fuel:"Petrol / Diesel",
+        transmission:"Automatic",
+        price:14.0,
+        features:[
+          "Premium equipment",
+          "Advanced convenience"
+        ]
+      }
+    ]
   },
 
 
   {
-    id:"thar",
-    brand:"Mahindra",
-    name:"Thar",
-
-    price:9.90,
-    maxPrice:18.80,
-
-    fuel:[
-      "Petrol",
-      "Diesel"
-    ],
-
-    family:"3-4",
-    seats:4,
-
-    mileage:15.2,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "Petrol / Diesel",
-
-    official:
-      "https://auto.mahindra.com/suv/thar"
-  },
-
-
-  {
-    id:"scorpio",
-    brand:"Mahindra",
-    name:"Scorpio",
-
-    price:13.50,
-    maxPrice:18.80,
-
-    fuel:[
-      "Diesel"
-    ],
-
-    family:"5-6",
-    seats:7,
-
-    mileage:15.4,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "2.2L Diesel",
-
-    official:
-      "https://auto.mahindra.com/suv/scorpio"
-  },
-
-
-  {
-    id:"xuv700",
-    brand:"Mahindra",
-    name:"XUV700",
-
-    price:14.00,
-    maxPrice:26.00,
-
-    fuel:[
-      "Petrol",
-      "Diesel"
-    ],
-
-    family:"5-6",
-    seats:7,
-
-    mileage:17.0,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "Petrol / Diesel",
-
-    official:
-      "https://auto.mahindra.com/suv/xuv700"
-  },
-
-
-  /* =======================================================
-     TOYOTA
-     ======================================================= */
-
-  {
-    id:"hyryder",
+    id:"toyota-hyryder",
     brand:"Toyota",
-    name:"Urban Cruiser Hyryder",
-
-    price:11.00,
-    maxPrice:20.00,
-
-    fuel:[
-      "Petrol",
-      "Hybrid",
-      "CNG"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:27.97,
-
+    name:"Toyota Urban Cruiser Hyryder",
     type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "Petrol / Strong Hybrid / CNG",
+    seats:"5",
+    fuel:"Petrol / Hybrid / CNG",
+    transmission:"Manual / Automatic",
+    mileage:"Variant dependent",
+    price:11.0,
+    icon:"🚙",
 
     official:
-      "https://www.toyotabharat.com/showroom/urbancruiserhyryder/"
+      "https://www.toyotabharat.com/",
+
+    features:[
+      "Petrol options",
+      "Hybrid powertrain availability",
+      "CNG availability on applicable variants",
+      "Manual and automatic options",
+      "5-seat SUV",
+      "Variant-specific equipment"
+    ],
+
+    variants:[
+      {
+        name:"E",
+        fuel:"Petrol",
+        transmission:"Manual",
+        price:11.0,
+        features:[
+          "Core safety",
+          "Manual transmission"
+        ]
+      },
+      {
+        name:"S",
+        fuel:"Petrol / CNG",
+        transmission:"Manual",
+        price:13.0,
+        features:[
+          "Additional convenience",
+          "CNG option"
+        ]
+      },
+      {
+        name:"Hybrid",
+        fuel:"Hybrid",
+        transmission:"Automatic",
+        price:18.0,
+        features:[
+          "Hybrid powertrain",
+          "Automatic transmission",
+          "Premium equipment"
+        ]
+      }
+    ]
   },
 
 
   {
-    id:"innova_hycross",
-    brand:"Toyota",
-    name:"Innova Hycross",
-
-    price:19.00,
-    maxPrice:31.00,
-
-    fuel:[
-      "Petrol",
-      "Hybrid"
-    ],
-
-    family:"7+",
-    seats:7,
-
-    mileage:23.24,
-
-    type:"MPV",
-
-    trans:[
-      "Automatic"
-    ],
-
-    engine:
-      "Petrol / Hybrid",
-
-    official:
-      "https://www.toyotabharat.com/showroom/innova-hycross/"
-  },
-
-
-  {
-    id:"fortuner",
-    brand:"Toyota",
-    name:"Fortuner",
-
-    price:34.00,
-    maxPrice:51.00,
-
-    fuel:[
-      "Petrol",
-      "Diesel"
-    ],
-
-    family:"5-6",
-    seats:7,
-
-    mileage:14.4,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "Petrol / Diesel",
-
-    official:
-      "https://www.toyotabharat.com/showroom/fortuner/"
-  },
-
-
-  /* =======================================================
-     HONDA
-     ======================================================= */
-
-  {
-    id:"amaze",
+    id:"honda-elevate",
     brand:"Honda",
-    name:"Amaze",
-
-    price:8.00,
-    maxPrice:11.20,
-
-    fuel:[
-      "Petrol"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:19.5,
-
-    type:"Sedan",
-
-    trans:[
-      "Manual",
-      "CVT/IVT"
-    ],
-
-    engine:
-      "1.2L Petrol",
-
-    official:
-      "https://www.hondacarindia.com/honda-amaze"
-  },
-
-
-  {
-    id:"elevate",
-    brand:"Honda",
-    name:"Elevate",
-
-    price:11.70,
-    maxPrice:16.70,
-
-    fuel:[
-      "Petrol"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:16.9,
-
+    name:"Honda Elevate",
     type:"SUV",
-
-    trans:[
-      "Manual",
-      "CVT/IVT"
-    ],
-
-    engine:
-      "1.5L Petrol",
+    seats:"5",
+    fuel:"Petrol",
+    transmission:"Manual / CVT",
+    mileage:"Variant dependent",
+    price:11.0,
+    icon:"🚙",
 
     official:
-      "https://www.hondacarindia.com/honda-elevate"
-  },
+      "https://www.hondacarindia.com/",
 
-
-  /* =======================================================
-     MG
-     ======================================================= */
-
-  {
-    id:"astor",
-    brand:"MG",
-    name:"Astor",
-
-    price:10.00,
-    maxPrice:18.00,
-
-    fuel:[
-      "Petrol"
+    features:[
+      "Petrol engine",
+      "Manual and CVT options",
+      "5-seat SUV",
+      "Variant-specific Honda Sensing equipment",
+      "Connected convenience features",
+      "Equipment varies by variant"
     ],
 
-    family:"3-4",
-    seats:5,
-
-    mileage:15.4,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "1.5L / 1.3L Turbo Petrol",
-
-    official:
-      "https://www.mgmotor.co.in/"
-  },
-
-
-  {
-    id:"windsor",
-    brand:"MG",
-    name:"Windsor EV",
-
-    price:14.00,
-    maxPrice:18.00,
-
-    fuel:[
-      "Electric"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:0,
-
-    type:"EV",
-
-    trans:[
-      "Automatic"
-    ],
-
-    engine:
-      "Electric",
-
-    range:331,
-
-    official:
-      "https://www.mgmotor.co.in/"
-  },
-
-
-  /* =======================================================
-     SKODA
-     ======================================================= */
-
-  {
-    id:"kushaq",
-    brand:"Skoda",
-    name:"Kushaq",
-
-    price:11.00,
-    maxPrice:19.00,
-
-    fuel:[
-      "Petrol"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:19.8,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "1.0L / 1.5L TSI",
-
-    official:
-      "https://www.skoda-auto.co.in/models/kushaq/kushaq"
-  },
-
-
-  {
-    id:"slavia",
-    brand:"Skoda",
-    name:"Slavia",
-
-    price:10.00,
-    maxPrice:18.00,
-
-    fuel:[
-      "Petrol"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:20.3,
-
-    type:"Sedan",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "1.0L / 1.5L TSI",
-
-    official:
-      "https://www.skoda-auto.co.in/models/slavia/slavia"
-  },
-
-
-  /* =======================================================
-     VOLKSWAGEN
-     ======================================================= */
-
-  {
-    id:"taigun",
-    brand:"Volkswagen",
-    name:"Taigun",
-
-    price:11.00,
-    maxPrice:19.00,
-
-    fuel:[
-      "Petrol"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:19.9,
-
-    type:"SUV",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "1.0L / 1.5L TSI",
-
-    official:
-      "https://www.volkswagen.co.in/en/models/taigun.html"
-  },
-
-
-  {
-    id:"virtus",
-    brand:"Volkswagen",
-    name:"Virtus",
-
-    price:11.50,
-    maxPrice:19.50,
-
-    fuel:[
-      "Petrol"
-    ],
-
-    family:"3-4",
-    seats:5,
-
-    mileage:20.8,
-
-    type:"Sedan",
-
-    trans:[
-      "Manual",
-      "Automatic"
-    ],
-
-    engine:
-      "1.0L / 1.5L TSI",
-
-    official:
-      "https://www.volkswagen.co.in/en/models/virtus.html"
+    variants:[
+      {
+        name:"SV",
+        fuel:"Petrol",
+        transmission:"Manual",
+        price:11.0,
+        features:[
+          "Core safety equipment",
+          "Manual transmission"
+        ]
+      },
+      {
+        name:"V",
+        fuel:"Petrol",
+        transmission:"Manual / CVT",
+        price:13.0,
+        features:[
+          "Additional infotainment",
+          "CVT availability"
+        ]
+      },
+      {
+        name:"ZX",
+        fuel:"Petrol",
+        transmission:"CVT",
+        price:16.0,
+        features:[
+          "Premium equipment",
+          "Honda Sensing on applicable specification"
+        ]
+      }
+    ]
   }
 
 ];
 
 
 /* =========================================================
-   IMAGE SYSTEM
+   BRAND LIST
    ========================================================= */
 
-/*
-   If a model doesn't yet have a verified image,
-   we intentionally show a clean placeholder instead
-   of inventing an image.
-
-   For production:
-   Add:
-      exteriorFront
-      exteriorSide
-      interior
-      boot
-      gallery[]
-*/
-
-function placeholderImage(car){
-
-  const svg = `
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="1000"
-    height="600">
-
-    <rect
-      width="100%"
-      height="100%"
-      fill="#eef2f7"/>
-
-    <text
-      x="50%"
-      y="46%"
-      text-anchor="middle"
-      font-family="Arial"
-      font-size="30"
-      fill="#7a8799">
-
-      ${car.brand}
-
-    </text>
-
-    <text
-      x="50%"
-      y="57%"
-      text-anchor="middle"
-      font-family="Arial"
-      font-size="42"
-      font-weight="700"
-      fill="#172338">
-
-      ${car.name}
-
-    </text>
-
-    <text
-      x="50%"
-      y="65%"
-      text-anchor="middle"
-      font-family="Arial"
-      font-size="18"
-      fill="#8b97a8">
-
-      Official image not configured
-
-    </text>
-
-  </svg>
-  `;
-
-  return "data:image/svg+xml;charset=UTF-8,"
-    + encodeURIComponent(svg);
-}
-
-
-function carImage(car){
-
-  return car.image || placeholderImage(car);
-
-}
+const brands = [
+  "All",
+  "Tata Motors",
+  "Maruti Suzuki",
+  "Hyundai",
+  "Kia",
+  "Mahindra",
+  "Toyota",
+  "Honda"
+];
 
 
 /* =========================================================
-   HELPERS
+   STATE
    ========================================================= */
 
-function getCar(id){
+let compareList = [];
 
-  return cars.find(
-    car => car.id === id
-  );
-
-}
-
-
-function money(value){
-
-  return "₹"
-    + Number(value)
-      .toFixed(2)
-    + " Lakh";
-
-}
-
-
-function scrollToFinder(){
-
-  document
-    .getElementById("finder")
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
-
-
-function scrollToSection(id){
-
-  document
-    .getElementById(id)
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
+let currentModalCar = null;
 
 
 /* =========================================================
-   BUDGET
+   FINDER HELPERS
    ========================================================= */
 
-const budgetRanges = {
+function getBudgetRange(value){
 
-  "5-8":[5,8],
+  if(value === "5-8") return [5,8];
+  if(value === "8-12") return [8,12];
+  if(value === "12-18") return [12,18];
+  if(value === "18-25") return [18,25];
+  if(value === "25+") return [25,100];
 
-  "8-12":[8,12],
-
-  "12-18":[12,18],
-
-  "18-25":[18,25],
-
-  "25+":[25,999]
-
-};
+  return [0,100];
+}
 
 
-/* =========================================================
-   FAMILY MATCH
-   ========================================================= */
+function scoreCar(car, preferences){
 
-function familyMatches(car, wanted){
+  let score = 0;
 
-  if(wanted === "7+"){
-    return car.seats >= 7;
+  let reasons = [];
+
+
+  const budgetRange =
+    getBudgetRange(preferences.budget);
+
+
+  const [min,max] =
+    budgetRange;
+
+
+  /* BUDGET */
+
+  if(
+    car.price >= min &&
+    car.price <= max
+  ){
+
+    score += 25;
+
+    reasons.push(
+      "fits your selected budget"
+    );
+
+  }else{
+
+    const distance =
+      car.price < min
+        ? min - car.price
+        : car.price - max;
+
+    if(distance <= 2){
+
+      score += 10;
+
+      reasons.push(
+        "is close to your budget"
+      );
+
+    }
+
   }
 
-  if(wanted === "5-6"){
-    return car.seats >= 5;
+
+  /* FUEL */
+
+  if(
+    preferences.fuel === "Any" ||
+    car.fuel.includes(preferences.fuel)
+  ){
+
+    score += 20;
+
+    if(preferences.fuel !== "Any"){
+      reasons.push(
+        `${preferences.fuel} option`
+      );
+    }
+
   }
 
-  if(wanted === "3-4"){
-    return car.seats >= 4;
+
+  /* FAMILY */
+
+  if(
+    preferences.family === "Any" ||
+    car.seats === "5" &&
+    ["3-4","5-6","7+"]
+      .includes(preferences.family)
+  ){
+
+    score += 15;
+
+    reasons.push(
+      "family-friendly seating"
+    );
+
   }
 
-  if(wanted === "1-2"){
-    return car.seats <= 4;
+
+  /* MILEAGE */
+
+  if(
+    preferences.mileage === "Any"
+  ){
+
+    score += 10;
+
+  }else{
+
+    score += 8;
+
+    reasons.push(
+      "mileage can be checked by variant"
+    );
+
   }
 
-  return true;
+
+  /* TYPE */
+
+  if(
+    preferences.type === "Any" ||
+    car.type === preferences.type
+  ){
+
+    score += 15;
+
+    if(preferences.type !== "Any"){
+      reasons.push(
+        `${car.type} body style`
+      );
+    }
+
+  }
+
+
+  /* TRANSMISSION */
+
+  if(
+    preferences.transmission === "Any" ||
+    car.transmission.includes(
+      preferences.transmission
+    )
+  ){
+
+    score += 15;
+
+    if(preferences.transmission !== "Any"){
+      reasons.push(
+        `${preferences.transmission} availability`
+      );
+    }
+
+  }
+
+
+  return {
+    ...car,
+    score,
+    reasons
+  };
 
 }
 
@@ -5119,213 +4522,41 @@ function findCars(){
   const button =
     document.getElementById("findButton");
 
+
   button.disabled = true;
 
   button.textContent =
-    "Finding your matches…";
+    "Finding your best matches...";
 
 
-  const budget =
-    document.getElementById("budget").value;
+  const preferences = {
 
-  const fuel =
-    document.getElementById("fuel").value;
+    budget:
+      document.getElementById("budget").value,
 
-  const family =
-    document.getElementById("family").value;
+    fuel:
+      document.getElementById("fuel").value,
 
-  const mileage =
-    document.getElementById("mileage").value;
+    family:
+      document.getElementById("family").value,
 
-  const type =
-    document.getElementById("type").value;
+    mileage:
+      document.getElementById("mileage").value,
 
-  const transmission =
-    document.getElementById("transmission").value;
+    type:
+      document.getElementById("type").value,
 
+    transmission:
+      document.getElementById("transmission").value
 
-  const range =
-    budgetRanges[budget];
-
-  const minBudget =
-    range[0];
-
-  const maxBudget =
-    range[1];
-
-
-  const scored =
-    cars.map(car => {
-
-      let score = 0;
-
-      let reasons = [];
-
-
-      /* BUDGET */
-
-      if(
-        car.price >= minBudget &&
-        car.price <= maxBudget
-      ){
-
-        score += 25;
-
-        reasons.push(
-          "fits your budget"
-        );
-
-      }
-      else if(
-        car.price >= minBudget - 2 &&
-        car.price <= maxBudget + 2
-      ){
-
-        score += 12;
-
-        reasons.push(
-          "close to your budget"
-        );
-
-      }
-
-
-      /* FUEL */
-
-      if(
-        fuel === "Any" ||
-        car.fuel.includes(fuel)
-      ){
-
-        score += 20;
-
-        reasons.push(
-          fuel === "Any"
-            ? "flexible fuel choice"
-            : fuel + " available"
-        );
-
-      }
-
-
-      /* FAMILY */
-
-      if(
-        familyMatches(
-          car,
-          family
-        )
-      ){
-
-        score += 15;
-
-        reasons.push(
-          car.seats + " seats"
-        );
-
-      }
-
-
-      /* MILEAGE */
-
-      if(
-        mileage === "any"
-      ){
-
-        score += 10;
-
-      }
-      else if(
-        car.fuel.includes("Electric")
-      ){
-
-        score += 10;
-
-        reasons.push(
-          car.range
-            ? car.range + " km claimed range"
-            : "electric powertrain"
-        );
-
-      }
-      else if(
-        car.mileage >=
-        Number(mileage)
-      ){
-
-        score += 15;
-
-        reasons.push(
-          car.mileage +
-          " km/l claimed efficiency"
-        );
-
-      }
-      else if(
-        car.mileage >=
-        Number(mileage) - 3
-      ){
-
-        score += 7;
-
-        reasons.push(
-          "close to your efficiency target"
-        );
-
-      }
-
-
-      /* BODY TYPE */
-
-      if(
-        car.type === type ||
-        (
-          type === "EV" &&
-          car.fuel.includes("Electric")
-        )
-      ){
-
-        score += 15;
-
-        reasons.push(
-          type + " body type"
-        );
-
-      }
-
-
-      /* TRANSMISSION */
-
-      if(
-        transmission === "Any" ||
-        car.trans.includes(transmission)
-      ){
-
-        score += 15;
-
-        reasons.push(
-          transmission === "Any"
-            ? "transmission flexibility"
-            : transmission + " transmission"
-        );
-
-      }
-
-
-      return {
-        ...car,
-        score,
-        reasons
-      };
-
-    });
+  };
 
 
   const results =
-    scored
+    cars
 
-      .filter(
-        car => car.score >= 35
+      .map(car =>
+        scoreCar(car,preferences)
       )
 
       .sort(
@@ -5333,36 +4564,28 @@ function findCars(){
           b.score - a.score
       )
 
-      .slice(0,12);
+      .slice(0,9);
 
 
-  updateProgress(100);
-
-  document
-    .getElementById("step")
-    .textContent =
-      "6 of 6 preferences";
-
-
-  setTimeout(() => {
+  setTimeout(()=>{
 
     button.disabled = false;
 
     button.textContent =
-      "Find My Matches →";
+      "Find My Best Cars →";
 
-    renderResults(results);
+    displayResults(results);
 
-  },500);
+  },450);
 
 }
 
 
 /* =========================================================
-   RESULTS
+   DISPLAY RESULTS
    ========================================================= */
 
-function renderResults(results){
+function displayResults(results){
 
   const section =
     document.getElementById("results");
@@ -5373,57 +4596,35 @@ function renderResults(results){
   const best =
     document.getElementById("bestMatch");
 
+  const count =
+    document.getElementById("resultCount");
+
 
   section.classList.add("show");
 
+
   grid.innerHTML = "";
-
-  best.classList.remove("show");
-
-
-  document
-    .getElementById("resultText")
-    .textContent =
-      results.length
-        ? `We found ${results.length} strong matches from the current catalogue.`
-        : "No strong match — try widening one of your choices.";
 
 
   if(!results.length){
 
-    grid.innerHTML = `
+    best.classList.remove("show");
 
-      <div class="empty-results">
-
-        <h3>
-          No strong matches yet
-        </h3>
-
-        <p>
-          Try a wider budget, Any fuel,
-          Any transmission or a lower
-          mileage requirement.
-        </p>
-
-      </div>
-
-    `;
-
-    section.scrollIntoView({
-      behavior:"smooth"
-    });
+    count.textContent =
+      "No strong matches found.";
 
     return;
 
   }
 
 
-  /* =======================================================
-     BEST MATCH
-     ======================================================= */
+  count.textContent =
+    `${results.length} cars ranked for your preferences.`;
+
 
   const top =
     results[0];
+
 
   const percentage =
     Math.min(
@@ -5439,27 +4640,25 @@ function renderResults(results){
 
     <div class="best-image">
 
-      <img
-        src="${carImage(top)}"
-        alt="${top.brand} ${top.name}"
-        onerror="this.src='${placeholderImage(top)}'">
+      <span>
+        ${top.icon}
+      </span>
 
     </div>
 
 
-    <div>
+    <div class="best-info">
 
       <div class="best-label">
-        ★ Your Best Match
+        ★ Best Match
       </div>
 
       <h3>
-        ${top.brand}
         ${top.name}
       </h3>
 
       <div class="best-price">
-        From ${money(top.price)}*
+        From ₹${top.price.toFixed(2)} Lakh*
       </div>
 
       <p class="best-reason">
@@ -5468,19 +4667,10 @@ function renderResults(results){
           .join(" • ")}
       </p>
 
-      <button
-        class="btn btn-primary"
-        style="margin-top:15px"
-        onclick="openCar('${top.id}')">
-
-        View Complete Car Info
-
-      </button>
-
     </div>
 
 
-    <div class="score">
+    <div class="match-score">
 
       <strong>
         ${percentage}%
@@ -5498,197 +4688,152 @@ function renderResults(results){
   best.classList.add("show");
 
 
-  /* =======================================================
-     CAR CARDS
-     ======================================================= */
-
-  results.forEach(
-    (car,index) => {
-
-      const pct =
-        Math.min(
-          99,
-          Math.max(
-            60,
-            Math.round(car.score)
-          )
-        );
-
-
-      const reason =
-        car.reasons
-          .slice(0,4)
-          .join(" • ");
-
-
-      const efficiency =
-        car.fuel.includes("Electric")
-
-          ? (
-              car.range
-                ? car.range + " km range"
-                : "Electric"
-            )
-
-          : (
-              car.mileage
-                ? car.mileage + " km/l"
-                : "—"
-            );
-
-
-      grid.insertAdjacentHTML(
-        "beforeend",
-
-        `
-
-        <article class="car-card">
-
-          <div class="car-media">
-
-            <span class="rank">
-              #${index+1} match
-            </span>
-
-            <button
-              class="favorite"
-              onclick="toggleFavorite(this)"
-              aria-label="Save ${car.name}">
-
-              ♡
-
-            </button>
-
-            <img
-              src="${carImage(car)}"
-              alt="${car.brand} ${car.name}"
-              loading="lazy"
-              onerror="this.src='${placeholderImage(car)}'">
-
-          </div>
-
-
-          <div class="car-body">
-
-            <div class="car-title-row">
-
-              <div>
-
-                <h3>
-                  ${car.brand}
-                  ${car.name}
-                </h3>
-
-                <div class="car-price">
-                  ${money(car.price)}*
-                </div>
-
-                <div class="car-subtitle">
-                  ${car.type}
-                  •
-                  ${car.seats} seats
-                </div>
-
-              </div>
-
-              <span class="match-badge">
-                ${pct}% Match
-              </span>
-
-            </div>
-
-
-            <div class="spec-grid">
-
-              <div class="spec">
-
-                Fuel
-
-                <strong>
-                  ${car.fuel.join(" / ")}
-                </strong>
-
-              </div>
-
-
-              <div class="spec">
-
-                Gearbox
-
-                <strong>
-                  ${car.trans.join(" / ")}
-                </strong>
-
-              </div>
-
-
-              <div class="spec">
-
-                Efficiency
-
-                <strong>
-                  ${efficiency}
-                </strong>
-
-              </div>
-
-
-              <div class="spec">
-
-                Engine
-
-                <strong>
-                  ${car.engine || "—"}
-                </strong>
-
-              </div>
-
-            </div>
-
-
-            <div class="match-reason">
-
-              <strong>
-                Why it matches
-              </strong>
-
-              <br>
-
-              ${reason || "Matches several preferences."}
-
-            </div>
-
-
-            <div class="card-actions">
-
-              <button
-                class="details-button"
-                onclick="openCar('${car.id}')">
-
-                Complete Info
-
-              </button>
-
-              <button
-                class="compare-button"
-                onclick="addCompare('${car.id}')">
-
-                + Compare
-
-              </button>
-
-            </div>
-
-          </div>
-
-        </article>
-
-        `
-
+  results.forEach((car,index)=>{
+
+    const percent =
+      Math.min(
+        99,
+        Math.max(
+          60,
+          Math.round(car.score)
+        )
       );
 
-    }
-  );
+
+    const card =
+      document.createElement("article");
+
+
+    card.className =
+      "car-card";
+
+
+    card.innerHTML = `
+
+      <div class="car-photo">
+
+        <div class="rank">
+          #${index+1} MATCH
+        </div>
+
+
+        <button
+          class="save"
+          onclick="saveCar(this)">
+
+          ♡
+
+        </button>
+
+
+        <div class="car-symbol">
+          ${car.icon}
+        </div>
+
+      </div>
+
+
+      <div class="card-body">
+
+        <div class="card-title-row">
+
+          <div>
+
+            <h3>
+              ${car.name}
+            </h3>
+
+            <div class="price">
+              From ₹${car.price.toFixed(2)} Lakh*
+            </div>
+
+          </div>
+
+
+          <div class="match-pill">
+            ${percent}% Match
+          </div>
+
+        </div>
+
+
+        <div class="spec-grid">
+
+          <div class="spec">
+            Brand
+            <strong>
+              ${car.brand}
+            </strong>
+          </div>
+
+          <div class="spec">
+            Body
+            <strong>
+              ${car.type}
+            </strong>
+          </div>
+
+          <div class="spec">
+            Fuel
+            <strong>
+              ${car.fuel}
+            </strong>
+          </div>
+
+          <div class="spec">
+            Transmission
+            <strong>
+              ${car.transmission}
+            </strong>
+          </div>
+
+        </div>
+
+
+        <div class="card-reason">
+
+          <strong>
+            Why it matches
+          </strong>
+
+          <br>
+
+          ${car.reasons
+            .slice(0,3)
+            .join(" • ")}
+
+        </div>
+
+
+        <div class="card-actions">
+
+          <button
+            class="card-btn details-btn"
+            onclick="openCarModal('${car.id}')">
+
+            Full Details
+
+          </button>
+
+
+          <button
+            class="card-btn compare-btn"
+            onclick="addCompare('${car.id}')">
+
+            + Compare
+
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    grid.appendChild(card);
+
+  });
 
 
   section.scrollIntoView({
@@ -5700,339 +4845,158 @@ function renderResults(results){
 
 
 /* =========================================================
-   COMPLETE CAR DETAILS
+   CAR MODAL
    ========================================================= */
 
-function openCar(id){
+function openCarModal(id){
 
   const car =
-    getCar(id);
-
-  if(!car){
-    return;
-  }
+    cars.find(
+      item => item.id === id
+    );
 
 
-  const efficiency =
-    car.fuel.includes("Electric")
-
-      ? (
-          car.range
-            ? car.range + " km claimed range"
-            : "Electric"
-        )
-
-      : (
-          car.mileage
-            ? car.mileage + " km/l"
-            : "—"
-        );
+  if(!car) return;
 
 
-  /*
-    Gallery architecture:
-
-    If you later add:
-
-    car.gallery = [
-      "front-image",
-      "side-image",
-      "interior-image",
-      "boot-image"
-    ]
-
-    the modal can immediately display
-    them as a real gallery.
-  */
+  currentModalCar =
+    car;
 
 
-  const gallery =
-    car.gallery || [
-      car.image,
-      car.image,
-      car.image,
-      car.image
-    ];
+  document.getElementById(
+    "modalBrand"
+  ).textContent =
+    car.brand;
 
 
-  document
-    .getElementById("modalContent")
-    .innerHTML = `
-
-      <div class="gallery">
-
-        <div class="gallery-main">
-
-          <img
-            id="galleryMainImage"
-            src="${gallery[0] || carImage(car)}"
-            alt="${car.brand} ${car.name}"
-            onerror="this.src='${placeholderImage(car)}'">
-
-        </div>
+  document.getElementById(
+    "modalName"
+  ).textContent =
+    car.name;
 
 
-        <div class="gallery-thumbs">
-
-          ${gallery
-            .slice(0,4)
-            .map(
-              (image,index) => `
-
-                <div
-                  class="gallery-thumb"
-                  onclick="changeGalleryImage('${image}')">
-
-                  <img
-                    src="${image}"
-                    alt="${car.name} gallery ${index+1}"
-                    onerror="this.src='${placeholderImage(car)}'">
-
-                </div>
-
-              `
-            )
-            .join("")
-          }
-
-        </div>
-
-      </div>
+  document.getElementById(
+    "modalPrice"
+  ).textContent =
+    `From ₹${car.price.toFixed(2)} Lakh*`;
 
 
-      <div class="modal-brand">
-        ${car.brand}
-      </div>
-
-      <h2>
-        ${car.name}
-      </h2>
-
-      <div class="modal-price">
-        From ${money(car.price)}*
-        ${
-          car.maxPrice
-            ? " • Up to approximately " +
-              money(car.maxPrice)
-            : ""
-        }
-      </div>
+  document.getElementById(
+    "modalMainImage"
+  ).textContent =
+    car.icon;
 
 
-      <div class="modal-grid">
+  document.getElementById(
+    "officialLink"
+  ).href =
+    car.official;
 
-        <div class="modal-cell">
-          Fuel
+
+  document.getElementById(
+    "overviewGrid"
+  ).innerHTML = `
+
+    <div>
+      Body Type
+      <strong>${car.type}</strong>
+    </div>
+
+    <div>
+      Seating
+      <strong>${car.seats} seats</strong>
+    </div>
+
+    <div>
+      Fuel
+      <strong>${car.fuel}</strong>
+    </div>
+
+    <div>
+      Transmission
+      <strong>${car.transmission}</strong>
+    </div>
+
+    <div>
+      Mileage
+      <strong>${car.mileage}</strong>
+    </div>
+
+    <div>
+      Starting Price
+      <strong>₹${car.price.toFixed(2)} Lakh*</strong>
+    </div>
+
+  `;
+
+
+  document.getElementById(
+    "variantBody"
+  ).innerHTML = "";
+
+
+  car.variants.forEach(
+    variant => {
+
+      const row =
+        document.createElement("tr");
+
+
+      row.innerHTML = `
+
+        <td>
           <strong>
-            ${car.fuel.join(" / ")}
+            ${variant.name}
           </strong>
-        </div>
 
-        <div class="modal-cell">
-          Seating
-          <strong>
-            ${car.seats} seats
-          </strong>
-        </div>
+          <br>
 
-        <div class="modal-cell">
-          Body type
-          <strong>
-            ${car.type}
-          </strong>
-        </div>
+          <small>
+            ${variant.features.join(" • ")}
+          </small>
 
-        <div class="modal-cell">
-          Transmission
-          <strong>
-            ${car.trans.join(" / ")}
-          </strong>
-        </div>
+        </td>
 
-        <div class="modal-cell">
-          Efficiency / range
-          <strong>
-            ${efficiency}
-          </strong>
-        </div>
+        <td>
+          ${variant.fuel}
+        </td>
 
-        <div class="modal-cell">
-          Engine / motor
-          <strong>
-            ${car.engine || "—"}
-          </strong>
-        </div>
+        <td>
+          ${variant.transmission}
+        </td>
 
-        <div class="modal-cell">
-          Boot space
-          <strong>
-            ${car.boot || "Not configured"}
-          </strong>
-        </div>
+        <td class="variant-price">
+          ₹${variant.price.toFixed(2)} Lakh*
+        </td>
 
-        <div class="modal-cell">
-          Price range
-          <strong>
-            ${money(car.price)}
-            ${
-              car.maxPrice
-                ? " – " + money(car.maxPrice)
-                : ""
-            }
-          </strong>
-        </div>
-
-        <div class="modal-cell">
-          Data source
-          <strong>
-            Manufacturer page
-          </strong>
-        </div>
-
-      </div>
+      `;
 
 
-      <div class="modal-section">
+      document
+        .getElementById("variantBody")
+        .appendChild(row);
 
-        <h3>
-          Variants
-        </h3>
-
-        <p>
-          The production version should store
-          each exact variant separately rather
-          than assuming that every feature is
-          available on every trim.
-        </p>
+    }
+  );
 
 
-        <div class="variant-table-wrapper">
-
-          <table class="variant-table">
-
-            <thead>
-
-              <tr>
-
-                <th>
-                  Variant
-                </th>
-
-                <th>
-                  Fuel
-                </th>
-
-                <th>
-                  Transmission
-                </th>
-
-                <th>
-                  Seats
-                </th>
-
-                <th>
-                  Price
-                </th>
-
-              </tr>
-
-            </thead>
-
-            <tbody>
-
-              <tr>
-
-                <td>
-                  ${car.name}
-                  — model record
-                </td>
-
-                <td>
-                  ${car.fuel.join(" / ")}
-                </td>
-
-                <td>
-                  ${car.trans.join(" / ")}
-                </td>
-
-                <td>
-                  ${car.seats}
-                </td>
-
-                <td>
-                  ${money(car.price)}+
-                </td>
-
-              </tr>
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-      </div>
+  document.getElementById(
+    "featureGrid"
+  ).innerHTML =
+    car.features
+      .map(
+        feature =>
+          `<div>${feature}</div>`
+      )
+      .join("");
 
 
-      <div class="modal-section">
-
-        <h3>
-          Why this car may be right for you
-        </h3>
-
-        <p>
-          ${car.type}
-          with
-          ${car.seats} seats,
-          available with
-          ${car.fuel.join(", ")}
-          powertrain options and
-          ${car.trans.join(", ")}
-          transmission choices in the
-          current stored model data.
-        </p>
-
-      </div>
+  resetModalTabs();
 
 
-      <div class="modal-section">
-
-        <h3>
-          Important information
-        </h3>
-
-        <p>
-
-          Prices, variants, equipment,
-          colours, dimensions, mileage,
-          range and availability can change
-          by model year, location, variant
-          and manufacturer update.
-
-          Verify the current information
-          before purchase.
-
-        </p>
-
-      </div>
-
-
-      <a
-        class="official-link"
-        href="${car.official || "#"}"
-        target="_blank"
-        rel="noopener noreferrer">
-
-        Open manufacturer's official page ↗
-
-      </a>
-
-    `;
-
-
-  document
-    .getElementById("carModal")
-    .classList.add("show");
+  document.getElementById(
+    "carModal"
+  ).classList.add("show");
 
 
   document.body.style.overflow =
@@ -6042,32 +5006,107 @@ function openCar(id){
 
 
 /* =========================================================
-   GALLERY
+   MODAL TABS
    ========================================================= */
 
-function changeGalleryImage(src){
+function showModalTab(tab,button){
 
-  const main =
-    document.getElementById(
-      "galleryMainImage"
+  document
+    .querySelectorAll(".modal-tab")
+    .forEach(
+      item =>
+        item.classList.remove("active")
     );
 
-  if(main){
-    main.src = src;
-  }
+
+  button.classList.add("active");
+
+
+  document.getElementById(
+    "modalOverview"
+  ).style.display =
+    tab === "overview"
+      ? "block"
+      : "none";
+
+
+  document.getElementById(
+    "modalVariants"
+  ).style.display =
+    tab === "variants"
+      ? "block"
+      : "none";
+
+
+  document.getElementById(
+    "modalFeatures"
+  ).style.display =
+    tab === "features"
+      ? "block"
+      : "none";
+
+
+  document.getElementById(
+    "modalGallery"
+  ).style.display =
+    tab === "gallery"
+      ? "block"
+      : "none";
+
+}
+
+
+function resetModalTabs(){
+
+  document
+    .querySelectorAll(".modal-tab")
+    .forEach(
+      item =>
+        item.classList.remove("active")
+    );
+
+
+  document
+    .querySelector(".modal-tab")
+    .classList.add("active");
+
+
+  document.getElementById(
+    "modalOverview"
+  ).style.display =
+    "block";
+
+
+  document.getElementById(
+    "modalVariants"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "modalFeatures"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "modalGallery"
+  ).style.display =
+    "none";
 
 }
 
 
 /* =========================================================
-   MODAL
+   CLOSE MODAL
    ========================================================= */
 
-function closeModal(){
+function closeCarModal(){
 
   document
     .getElementById("carModal")
     .classList.remove("show");
+
 
   document.body.style.overflow =
     "";
@@ -6075,34 +5114,16 @@ function closeModal(){
 }
 
 
-function closeModalOutside(event){
+function outsideClose(event){
 
   if(
     event.target.id ===
     "carModal"
   ){
 
-    closeModal();
+    closeCarModal();
 
   }
-
-}
-
-
-/* =========================================================
-   FAVORITES
-   ========================================================= */
-
-function toggleFavorite(button){
-
-  button.classList.toggle(
-    "saved"
-  );
-
-  button.textContent =
-    button.classList.contains("saved")
-      ? "♥"
-      : "♡";
 
 }
 
@@ -6111,17 +5132,25 @@ function toggleFavorite(button){
    COMPARE
    ========================================================= */
 
-let compareIds = [];
-
-
 function addCompare(id){
 
+  const car =
+    cars.find(
+      item => item.id === id
+    );
+
+
+  if(!car) return;
+
+
   if(
-    compareIds.includes(id)
+    compareList.some(
+      item => item.id === id
+    )
   ){
 
     showToast(
-      "This car is already in Compare."
+      `${car.name} is already in Compare.`
     );
 
     return;
@@ -6129,9 +5158,7 @@ function addCompare(id){
   }
 
 
-  if(
-    compareIds.length >= 4
-  ){
+  if(compareList.length >= 4){
 
     showToast(
       "You can compare up to 4 cars."
@@ -6142,13 +5169,13 @@ function addCompare(id){
   }
 
 
-  compareIds.push(id);
+  compareList.push(car);
 
-  updateCompareBar();
+  updateCompareUI();
+
 
   showToast(
-    getCar(id).name +
-    " added to Compare."
+    `${car.name} added to Compare.`
   );
 
 }
@@ -6156,107 +5183,99 @@ function addCompare(id){
 
 function removeCompare(id){
 
-  compareIds =
-    compareIds.filter(
-      item => item !== id
+  compareList =
+    compareList.filter(
+      car => car.id !== id
     );
 
-  updateCompareBar();
 
-  renderCompare();
+  updateCompareUI();
 
 }
 
 
 function clearCompare(){
 
-  compareIds = [];
+  compareList = [];
 
-  updateCompareBar();
+  updateCompareUI();
 
-  document
-    .getElementById("compareOutput")
-    .innerHTML = `
+}
 
-      <div class="empty-compare">
 
-        Add cars using
-        <strong>+ Compare</strong>
-        to see them here.
+function updateCompareUI(){
 
+  document.getElementById(
+    "compareCount"
+  ).textContent =
+    compareList.length;
+
+
+  const drawer =
+    document.getElementById(
+      "compareDrawer"
+    );
+
+
+  const items =
+    document.getElementById(
+      "compareItems"
+    );
+
+
+  items.innerHTML = "";
+
+
+  compareList.forEach(car=>{
+
+    const item =
+      document.createElement("div");
+
+
+    item.className =
+      "compare-item";
+
+
+    item.innerHTML = `
+
+      <div class="compare-item-icon">
+        ${car.icon}
       </div>
+
+      <div class="compare-item-name">
+        ${car.name}
+      </div>
+
+      <button
+        class="remove-compare"
+        onclick="removeCompare('${car.id}')">
+
+        ×
+
+      </button>
 
     `;
 
-}
+
+    items.appendChild(item);
+
+  });
 
 
-function updateCompareBar(){
-
-  const bar =
-    document.getElementById(
-      "compareBar"
-    );
-
-  const chips =
-    document.getElementById(
-      "compareChips"
-    );
-
-
-  bar.classList.toggle(
+  drawer.classList.toggle(
     "show",
-    compareIds.length > 0
+    compareList.length > 0
   );
 
-
-  chips.innerHTML =
-    compareIds
-
-      .map(
-        id => {
-
-          const car =
-            getCar(id);
-
-          return `
-
-            <span class="compare-chip">
-
-              ${car.brand}
-              ${car.name}
-
-              <button
-                onclick="removeCompare('${id}')">
-
-                ×
-
-              </button>
-
-            </span>
-
-          `;
-
-        }
-      )
-
-      .join("");
-
 }
 
 
-/* =========================================================
-   COMPARE TABLE
-   ========================================================= */
+function openCompareModal(){
 
-function renderCompare(){
-
-  if(
-    !compareIds.length
-  ){
+  if(compareList.length < 2){
 
     showToast(
-      "Add at least one car to compare."
+      "Add at least 2 cars to compare."
     );
 
     return;
@@ -6264,391 +5283,355 @@ function renderCompare(){
   }
 
 
-  const selected =
-    compareIds.map(
-      id => getCar(id)
+  const table =
+    document.getElementById(
+      "compareTable"
     );
 
 
-  const rows = [
-
-    {
-      name:"Starting price",
-      value:
-        car => money(car.price) + "*"
-    },
-
-    {
-      name:"Price ceiling",
-      value:
+  const headings =
+    compareList
+      .map(
         car =>
-          car.maxPrice
-            ? money(car.maxPrice)
-            : "—"
-    },
-
-    {
-      name:"Fuel",
-      value:
-        car =>
-          car.fuel.join(" / ")
-    },
-
-    {
-      name:"Seats",
-      value:
-        car =>
-          car.seats
-    },
-
-    {
-      name:"Body type",
-      value:
-        car =>
-          car.type
-    },
-
-    {
-      name:"Transmission",
-      value:
-        car =>
-          car.trans.join(" / ")
-    },
-
-    {
-      name:"Mileage",
-      value:
-        car =>
-          car.fuel.includes("Electric")
-            ? (
-                car.range
-                  ? car.range +
-                    " km claimed range"
-                  : "Electric"
-              )
-            : (
-                car.mileage
-                  ? car.mileage +
-                    " km/l"
-                  : "—"
-              )
-    },
-
-    {
-      name:"Engine / motor",
-      value:
-        car =>
-          car.engine || "—"
-    },
-
-    {
-      name:"Boot space",
-      value:
-        car =>
-          car.boot || "Not configured"
-    },
-
-    {
-      name:"Official source",
-      value:
-        car =>
-          car.official
-            ? `
-              <a
-                href="${car.official}"
-                target="_blank"
-                rel="noopener noreferrer"
-                style="
-                  color:var(--blue);
-                  font-weight:850;
-                ">
-
-                Open official page ↗
-
-              </a>
-            `
-            : "—"
-    }
-
-  ];
+          `<th>${car.name}</th>`
+      )
+      .join("");
 
 
-  const html = `
+  table.innerHTML = `
 
-    <div class="compare-table-wrapper">
+    <tr>
 
-      <table class="compare-table">
+      <th>
+        Specification
+      </th>
 
-        <thead>
+      ${headings}
 
-          <tr>
-
-            <th>
-              Specification
-            </th>
-
-            ${selected
-              .map(
-                car => `
-
-                  <th>
-
-                    ${car.brand}
-                    <br>
-
-                    ${car.name}
-
-                    <br>
-
-                    <button
-                      class="remove-compare"
-                      onclick="removeCompare('${car.id}')">
-
-                      Remove
-
-                    </button>
-
-                  </th>
-
-                `
-              )
-              .join("")
-            }
-
-          </tr>
-
-        </thead>
+    </tr>
 
 
-        <tbody>
+    <tr>
 
-          ${rows
-            .map(
-              row => `
+      <td>
+        Brand
+      </td>
 
-                <tr>
+      ${compareList
+        .map(
+          car =>
+            `<td>${car.brand}</td>`
+        )
+        .join("")}
 
-                  <td>
-                    ${row.name}
-                  </td>
+    </tr>
 
-                  ${selected
-                    .map(
-                      car =>
-                        `<td>
-                          ${row.value(car)}
-                        </td>`
-                    )
-                    .join("")
-                  }
 
-                </tr>
+    <tr>
 
-              `
-            )
-            .join("")
-          }
+      <td>
+        Starting Price
+      </td>
 
-        </tbody>
+      ${compareList
+        .map(
+          car =>
+            `<td>₹${car.price.toFixed(2)} Lakh*</td>`
+        )
+        .join("")}
 
-      </table>
+    </tr>
 
-    </div>
+
+    <tr>
+
+      <td>
+        Body Type
+      </td>
+
+      ${compareList
+        .map(
+          car =>
+            `<td>${car.type}</td>`
+        )
+        .join("")}
+
+    </tr>
+
+
+    <tr>
+
+      <td>
+        Seats
+      </td>
+
+      ${compareList
+        .map(
+          car =>
+            `<td>${car.seats}</td>`
+        )
+        .join("")}
+
+    </tr>
+
+
+    <tr>
+
+      <td>
+        Fuel
+      </td>
+
+      ${compareList
+        .map(
+          car =>
+            `<td>${car.fuel}</td>`
+        )
+        .join("")}
+
+    </tr>
+
+
+    <tr>
+
+      <td>
+        Transmission
+      </td>
+
+      ${compareList
+        .map(
+          car =>
+            `<td>${car.transmission}</td>`
+        )
+        .join("")}
+
+    </tr>
+
+
+    <tr>
+
+      <td>
+        Variants
+      </td>
+
+      ${compareList
+        .map(
+          car =>
+            `<td>${car.variants.length} listed</td>`
+        )
+        .join("")}
+
+    </tr>
 
   `;
 
 
-  document
-    .getElementById(
-      "compareOutput"
-    )
-    .innerHTML = html;
+  document.getElementById(
+    "compareModal"
+  ).classList.add("show");
 
 
-  document
-    .getElementById("compare")
-    .scrollIntoView({
-      behavior:"smooth",
-      block:"center"
-    });
+  document.body.style.overflow =
+    "hidden";
 
 }
 
 
-/* =========================================================
-   POPULAR CARS
-   ========================================================= */
-
-function renderPopular(){
-
-  const popularIds = [
-
-    "punch",
-    "nexon",
-    "fronx",
-    "brezza",
-    "exter",
-    "venue",
-    "creta",
-    "seltos"
-
-  ];
-
-
-  document
-    .getElementById("popularGrid")
-    .innerHTML =
-
-    popularIds
-
-      .map(
-        id => {
-
-          const car =
-            getCar(id);
-
-          if(!car){
-            return "";
-          }
-
-
-          return `
-
-            <article
-              class="popular-card"
-              onclick="openCar('${car.id}')">
-
-              <div class="popular-image">
-
-                <img
-                  src="${carImage(car)}"
-                  alt="${car.brand} ${car.name}"
-                  loading="lazy"
-                  onerror="this.src='${placeholderImage(car)}'">
-
-              </div>
-
-              <h3>
-                ${car.brand}
-                ${car.name}
-              </h3>
-
-              <p>
-                ${car.type}
-                •
-                ${car.fuel.join(" / ")}
-              </p>
-
-              <div class="popular-price">
-
-                From
-                ${money(car.price)}*
-
-              </div>
-
-            </article>
-
-          `;
-
-        }
-      )
-
-      .join("");
-
-}
-
-
-/* =========================================================
-   RESET
-   ========================================================= */
-
-function resetFinder(){
-
-  document.getElementById(
-    "budget"
-  ).value = "8-12";
-
-  document.getElementById(
-    "fuel"
-  ).value = "Petrol";
-
-  document.getElementById(
-    "family"
-  ).value = "3-4";
-
-  document.getElementById(
-    "mileage"
-  ).value = "any";
-
-  document.getElementById(
-    "type"
-  ).value = "SUV";
-
-  document.getElementById(
-    "transmission"
-  ).value = "Manual";
-
-
-  updateProgress(16.66);
-
-  document.getElementById(
-    "step"
-  ).textContent =
-    "1 of 6 preferences";
-
-}
-
-
-/* =========================================================
-   PROGRESS
-   ========================================================= */
-
-function updateProgress(value){
+function closeCompareModal(){
 
   document
     .getElementById(
-      "progressBar"
+      "compareModal"
     )
-    .style.width =
-      value + "%";
+    .classList.remove("show");
+
+
+  document.body.style.overflow =
+    "";
 
 }
 
 
-[
-  "budget",
-  "fuel",
-  "family",
-  "mileage",
-  "type",
-  "transmission"
+function outsideCompareClose(event){
 
-].forEach(
-  (id,index) => {
+  if(
+    event.target.id ===
+    "compareModal"
+  ){
 
-    document
-      .getElementById(id)
-      .addEventListener(
-        "change",
-        () => {
-
-          const percentage =
-            ((index+1)/6)*100;
-
-          updateProgress(
-            percentage
-          );
-
-          document
-            .getElementById("step")
-            .textContent =
-              `${index+1} of 6 preferences`;
-
-        }
-      );
+    closeCompareModal();
 
   }
-);
+
+}
+
+
+/* =========================================================
+   BRAND EXPLORER
+   ========================================================= */
+
+function renderBrands(){
+
+  const strip =
+    document.getElementById(
+      "brandStrip"
+    );
+
+
+  strip.innerHTML = "";
+
+
+  brands.forEach(
+    (brand,index)=>{
+
+      const button =
+        document.createElement("button");
+
+
+      button.className =
+        "brand-btn" +
+        (index === 0
+          ? " active"
+          : "");
+
+
+      button.textContent =
+        brand;
+
+
+      button.onclick = ()=>{
+
+        document
+          .querySelectorAll(
+            ".brand-btn"
+          )
+          .forEach(
+            item =>
+              item.classList.remove(
+                "active"
+              )
+          );
+
+
+        button.classList.add(
+          "active"
+        );
+
+
+        renderBrandModels(
+          brand
+        );
+
+      };
+
+
+      strip.appendChild(
+        button
+      );
+
+    }
+  );
+
+
+  renderBrandModels("All");
+
+}
+
+
+function renderBrandModels(brand){
+
+  const container =
+    document.getElementById(
+      "brandModels"
+    );
+
+
+  const filtered =
+    brand === "All"
+      ? cars
+      : cars.filter(
+          car =>
+            car.brand === brand
+        );
+
+
+  container.innerHTML = "";
+
+
+  filtered.forEach(car=>{
+
+    const card =
+      document.createElement("div");
+
+
+    card.className =
+      "model-card";
+
+
+    card.innerHTML = `
+
+      <div class="model-image">
+
+        <span>
+          ${car.icon}
+        </span>
+
+      </div>
+
+      <h3>
+        ${car.name}
+      </h3>
+
+      <p>
+        ${car.type} • ${car.seats} seats
+      </p>
+
+      <div class="model-price">
+        From ₹${car.price.toFixed(2)} Lakh*
+      </div>
+
+      <button
+        class="card-btn details-btn"
+        style="width:100%;margin-top:12px;"
+        onclick="openCarModal('${car.id}')">
+
+        Explore Model
+
+      </button>
+
+    `;
+
+
+    container.appendChild(card);
+
+  });
+
+}
+
+
+/* =========================================================
+   SAVE
+   ========================================================= */
+
+function saveCar(button){
+
+  button.classList.toggle(
+    "saved"
+  );
+
+
+  button.textContent =
+    button.classList.contains("saved")
+      ? "♥"
+      : "♡";
+
+
+  showToast(
+    button.classList.contains("saved")
+      ? "Car saved."
+      : "Car removed from saved."
+  );
+
+}
 
 
 /* =========================================================
@@ -6657,10 +5640,11 @@ function updateProgress(value){
 
 function toggleFaq(button){
 
-  const item =
+  const faq =
     button.parentElement;
 
-  item.classList.toggle(
+
+  faq.classList.toggle(
     "open"
   );
 
@@ -6670,7 +5654,7 @@ function toggleFaq(button){
 
 
   symbol.textContent =
-    item.classList.contains("open")
+    faq.classList.contains("open")
       ? "−"
       : "+";
 
@@ -6708,34 +5692,87 @@ function showToast(message){
 
   toastTimer =
     setTimeout(
-      () => {
-
+      ()=>{
         toast.classList.remove(
           "show"
         );
-
       },
-      2200
+      2500
     );
 
 }
 
 
 /* =========================================================
-   KEYBOARD
+   SCROLL
+   ========================================================= */
+
+function scrollToFinder(){
+
+  document
+    .getElementById("find")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   ESCAPE
    ========================================================= */
 
 document.addEventListener(
   "keydown",
-  event => {
+  event=>{
 
-    if(
-      event.key === "Escape"
-    ){
+    if(event.key === "Escape"){
 
-      closeModal();
+      closeCarModal();
+      closeCompareModal();
 
     }
+
+  }
+);
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+const filterIds = [
+  "budget",
+  "fuel",
+  "family",
+  "mileage",
+  "type",
+  "transmission"
+];
+
+
+filterIds.forEach(
+  (id,index)=>{
+
+    document
+      .getElementById(id)
+      .addEventListener(
+        "change",
+        ()=>{
+
+          const progress =
+            ((index+1)/6)*100;
+
+
+          document
+            .getElementById(
+              "progressBar"
+            )
+            .style.width =
+              progress + "%";
+
+        }
+      );
 
   }
 );
@@ -6745,9 +5782,9 @@ document.addEventListener(
    INITIALIZE
    ========================================================= */
 
-renderPopular();
+renderBrands();
 
-updateCompareBar();
+updateCompareUI();
 
 </script>
 
