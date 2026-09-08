@@ -4,36 +4,58 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>CarDhundo | Find the Right Car for You</title>
+<title>CarDhundo — Find Your Perfect Car</title>
 
-<meta name="description"
-content="CarDhundo helps you find the right car based on your budget, fuel type, family size, mileage, car type and transmission.">
+<meta
+  name="description"
+  content="CarDhundo helps you discover the right car based on your budget, lifestyle, fuel preference, family size and driving needs."
+>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+  rel="stylesheet"
+>
 
 <style>
 
 /* =========================================================
-   CARDHUNDO — PROFESSIONAL V2
+   CAR DHUNDO — PREMIUM AUTOMOTIVE UI
    ========================================================= */
 
 :root {
-  --blue: #1769ff;
-  --blue-dark: #0b4dcc;
-  --navy: #101a33;
-  --text: #17213a;
-  --muted: #68758d;
-  --bg: #f5f8fc;
+  --bg: #050914;
+  --bg-soft: #091120;
+  --surface: rgba(255,255,255,.055);
+  --surface-strong: rgba(255,255,255,.085);
+
   --white: #ffffff;
-  --border: #e5eaf2;
-  --green: #16834b;
-  --green-bg: #eaf8f0;
-  --shadow: 0 18px 55px rgba(24, 55, 105, 0.10);
-  --radius: 20px;
+  --text: #eef4ff;
+  --muted: #91a0b9;
+
+  --blue: #4c8dff;
+  --blue-2: #2672ff;
+  --cyan: #42d9ff;
+
+  --green: #37d69a;
+  --yellow: #ffc857;
+
+  --border: rgba(255,255,255,.09);
+
+  --shadow:
+    0 30px 90px rgba(0,0,0,.38);
+
+  --radius-xl: 30px;
+  --radius-lg: 22px;
+  --radius-md: 15px;
 }
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -41,16 +63,23 @@ html {
 }
 
 body {
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Arial,
-    sans-serif;
-  background: var(--bg);
+  font-family: "DM Sans", sans-serif;
+  background:
+    radial-gradient(
+      circle at 15% 5%,
+      rgba(45,117,255,.13),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(66,217,255,.08),
+      transparent 25%
+    ),
+    var(--bg);
+
   color: var(--text);
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 button,
@@ -66,6 +95,29 @@ a {
   color: inherit;
 }
 
+/* =========================================================
+   GLOBAL GLOW
+   ========================================================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 600px;
+  height: 600px;
+
+  left: -250px;
+  top: 35%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(38,114,255,.08),
+      transparent 65%
+    );
+
+  pointer-events: none;
+  z-index: -1;
+}
 
 /* =========================================================
    HEADER
@@ -74,16 +126,22 @@ a {
 header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: rgba(255,255,255,0.94);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+
+  background:
+    rgba(5,9,20,.72);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border-bottom: 1px solid rgba(255,255,255,.07);
 }
 
 .navbar {
-  width: min(1180px, 92%);
+  width: min(1240px, 92%);
+  min-height: 78px;
+
   margin: auto;
-  min-height: 76px;
 
   display: flex;
   align-items: center;
@@ -92,44 +150,92 @@ header {
 
 .logo {
   text-decoration: none;
-  font-size: 29px;
-  font-weight: 900;
-  letter-spacing: -1.2px;
-  color: var(--blue);
+
+  font-family: "Manrope", sans-serif;
+  font-size: 27px;
+  font-weight: 800;
+
+  letter-spacing: -1.3px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
 }
 
-.logo span {
-  color: var(--navy);
+.logo-mark {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--cyan)
+    );
+
+  box-shadow:
+    0 0 30px rgba(66,217,255,.2);
+
+  font-size: 17px;
+}
+
+.logo-text {
+  background:
+    linear-gradient(
+      90deg,
+      white,
+      #b7d2ff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 31px;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #526079;
-  font-size: 14px;
-  font-weight: 700;
+
+  color: #aab6ca;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition: .25s;
 }
 
 .nav-links a:hover {
-  color: var(--blue);
+  color: white;
 }
 
 .nav-cta {
-  background: var(--blue);
-  color: white !important;
   padding: 11px 18px;
+
+  color: white !important;
+
   border-radius: 10px;
-}
 
-.nav-cta:hover {
-  background: var(--blue-dark);
-}
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--blue-2)
+    );
 
+  box-shadow:
+    0 8px 25px rgba(38,114,255,.2);
+}
 
 /* =========================================================
    HERO
@@ -138,239 +244,472 @@ header {
 .hero {
   position: relative;
   overflow: hidden;
+
+  padding:
+    105px
+    20px
+    145px;
+
   background:
-    radial-gradient(circle at 80% 20%, #dceaff 0, transparent 30%),
-    linear-gradient(135deg, #eef5ff 0%, #ffffff 65%);
-  padding: 90px 20px 115px;
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(47,124,255,.17),
+      transparent 40%
+    );
+}
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 750px;
+  height: 750px;
+
+  left: 50%;
+  top: -430px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(62,147,255,.11),
+      transparent 65%
+    );
+
+  pointer-events: none;
 }
 
 .hero-inner {
-  width: min(1100px, 92%);
+  width: min(1000px, 92%);
   margin: auto;
+
   text-align: center;
+
+  position: relative;
+  z-index: 2;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  background: #e9f2ff;
-  color: #1259cf;
-  border: 1px solid #cfe1ff;
+  gap: 8px;
+
   padding: 8px 14px;
+
   border-radius: 100px;
-  font-size: 13px;
-  font-weight: 800;
-  margin-bottom: 23px;
+
+  color: #a9d8ff;
+
+  background:
+    rgba(54,132,255,.09);
+
+  border:
+    1px solid rgba(73,145,255,.22);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.04);
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--cyan);
+
+  box-shadow:
+    0 0 12px var(--cyan);
 }
 
 .hero h1 {
+  margin: 25px auto 0;
+
   max-width: 900px;
-  margin: auto;
-  font-size: clamp(43px, 7vw, 78px);
-  line-height: 0.98;
-  letter-spacing: -3.5px;
-  font-weight: 900;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size:
+    clamp(
+      46px,
+      7vw,
+      82px
+    );
+
+  line-height: .99;
+
+  letter-spacing: -4px;
+
+  font-weight: 800;
 }
 
-.hero h1 span {
-  color: var(--blue);
+.gradient-text {
+  background:
+    linear-gradient(
+      90deg,
+      #4d8cff,
+      #4bdcff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  filter:
+    drop-shadow(
+      0 10px 35px
+      rgba(66,217,255,.12)
+    );
 }
 
 .hero-description {
-  max-width: 700px;
-  margin: 25px auto 0;
-  font-size: 19px;
+  max-width: 680px;
+
+  margin: 26px auto 0;
+
   color: var(--muted);
-  line-height: 1.7;
+
+  font-size: 17px;
+
+  line-height: 1.75;
 }
 
 .hero-buttons {
-  margin-top: 32px;
+  margin-top: 34px;
+
   display: flex;
   justify-content: center;
   gap: 12px;
+
   flex-wrap: wrap;
 }
 
-.primary-button {
+.primary-button,
+.secondary-button {
   border: none;
-  background: var(--blue);
-  color: white;
-  padding: 16px 25px;
-  border-radius: 12px;
+
+  padding:
+    15px
+    22px;
+
+  border-radius: 13px;
+
   font-weight: 800;
-  box-shadow: 0 10px 25px rgba(23,105,255,.22);
-  transition: .2s;
+
+  transition:
+    transform .25s,
+    box-shadow .25s,
+    background .25s;
+}
+
+.primary-button {
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #4c8dff,
+      #2672ff
+    );
+
+  box-shadow:
+    0 14px 35px
+    rgba(38,114,255,.27);
 }
 
 .primary-button:hover {
-  background: var(--blue-dark);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 18px 45px
+    rgba(38,114,255,.38);
 }
 
 .secondary-button {
-  border: 1px solid #d5deeb;
-  background: white;
-  color: var(--text);
-  padding: 16px 25px;
-  border-radius: 12px;
-  font-weight: 800;
+  color: #d7e1f2;
+
+  background:
+    rgba(255,255,255,.045);
+
+  border:
+    1px solid rgba(255,255,255,.10);
 }
 
 .secondary-button:hover {
-  border-color: var(--blue);
-  color: var(--blue);
+  background:
+    rgba(255,255,255,.08);
+
+  transform: translateY(-2px);
 }
 
-.hero-stats {
-  max-width: 760px;
+/* =========================================================
+   TRUST BAR
+   ========================================================= */
+
+.trust-bar {
   margin: 55px auto 0;
 
+  width: min(720px,100%);
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns:
+    repeat(3,1fr);
 
-  background: rgba(255,255,255,.8);
-  border: 1px solid #e3eaf5;
+  background:
+    rgba(255,255,255,.035);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
   border-radius: 18px;
+
+  backdrop-filter: blur(12px);
+
   overflow: hidden;
-  box-shadow: 0 15px 45px rgba(28,64,120,.08);
 }
 
-.hero-stat {
-  padding: 20px;
-  border-right: 1px solid #e8edf4;
+.trust-item {
+  padding: 19px;
+
+  border-right:
+    1px solid rgba(255,255,255,.07);
 }
 
-.hero-stat:last-child {
+.trust-item:last-child {
   border-right: none;
 }
 
-.hero-stat strong {
+.trust-item strong {
   display: block;
-  font-size: 25px;
+
+  font-family: "Manrope";
+
+  font-size: 22px;
 }
 
-.hero-stat span {
-  color: var(--muted);
-  font-size: 13px;
-}
+.trust-item span {
+  color: #78869e;
 
+  font-size: 11px;
+}
 
 /* =========================================================
-   COMMON
+   CONTAINER
    ========================================================= */
 
 .container {
-  width: min(1180px, 92%);
+  width: min(1180px,92%);
   margin: auto;
 }
 
 .section {
-  padding: 85px 0;
+  padding: 100px 0;
 }
 
 .section-heading {
   text-align: center;
-  max-width: 700px;
-  margin: 0 auto 42px;
+
+  max-width: 720px;
+
+  margin:
+    0
+    auto
+    48px;
 }
 
-.section-heading .eyebrow {
-  color: var(--blue);
+.eyebrow {
+  color: #69c9ff;
+
   text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 1.5px;
-  margin-bottom: 10px;
+
+  letter-spacing: 2px;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  margin-bottom: 11px;
 }
 
 .section-heading h2 {
-  font-size: clamp(31px, 4vw, 46px);
-  letter-spacing: -1.5px;
-  line-height: 1.1;
+  font-family: "Manrope";
+
+  font-size:
+    clamp(32px,4vw,49px);
+
+  letter-spacing: -2px;
+
+  line-height: 1.08;
 }
 
 .section-heading p {
   color: var(--muted);
-  margin-top: 12px;
-}
 
+  margin-top: 13px;
+
+  font-size: 14px;
+}
 
 /* =========================================================
    FINDER
    ========================================================= */
 
 .finder-section {
-  margin-top: -55px;
+  margin-top: -65px;
+
   position: relative;
-  z-index: 5;
+  z-index: 10;
 }
 
 .finder {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 26px;
-  padding: 35px;
-  box-shadow: var(--shadow);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20,32,56,.94),
+      rgba(8,15,29,.97)
+    );
+
+  border:
+    1px solid rgba(255,255,255,.10);
+
+  border-radius:
+    var(--radius-xl);
+
+  padding: 38px;
+
+  box-shadow:
+    var(--shadow);
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.finder::before {
+  content: "";
+
+  position: absolute;
+
+  width: 350px;
+  height: 350px;
+
+  right: -160px;
+  top: -170px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(48,133,255,.16),
+      transparent 70%
+    );
+
+  pointer-events: none;
 }
 
 .finder-top {
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
+  justify-content: space-between;
+
   gap: 20px;
+
   margin-bottom: 25px;
 }
 
 .finder-title h2 {
-  font-size: 27px;
-  letter-spacing: -.5px;
+  font-family: "Manrope";
+
+  font-size: 25px;
+
+  letter-spacing: -.8px;
 }
 
 .finder-title p {
-  color: var(--muted);
-  font-size: 14px;
+  color: #7f8da5;
+
+  font-size: 13px;
+
   margin-top: 4px;
 }
 
 .step-label {
-  background: #f0f5ff;
-  color: var(--blue);
-  padding: 8px 12px;
+  padding:
+    8px
+    12px;
+
   border-radius: 9px;
-  font-size: 12px;
-  font-weight: 900;
+
+  background:
+    rgba(64,139,255,.10);
+
+  border:
+    1px solid rgba(64,139,255,.18);
+
+  color: #76b1ff;
+
+  font-size: 11px;
+
+  font-weight: 800;
 }
 
 .progress {
-  height: 6px;
-  background: #edf1f7;
-  border-radius: 50px;
+  height: 5px;
+
+  background:
+    rgba(255,255,255,.07);
+
+  border-radius: 100px;
+
   overflow: hidden;
-  margin-bottom: 27px;
+
+  margin-bottom: 28px;
 }
 
 .progress-bar {
   width: 16.66%;
+
   height: 100%;
-  background: var(--blue);
+
   border-radius: inherit;
-  transition: width .3s ease;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--blue),
+      var(--cyan)
+    );
+
+  transition: .35s ease;
 }
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 19px;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap: 18px;
 }
 
 .field label {
   display: block;
-  font-size: 13px;
-  font-weight: 800;
+
+  color: #c8d3e5;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
   margin-bottom: 8px;
-  color: #35415a;
 }
 
 .select-wrap {
@@ -379,55 +718,107 @@ header {
 
 .select-wrap::after {
   content: "⌄";
+
   position: absolute;
+
   right: 15px;
   top: 50%;
-  transform: translateY(-55%);
+
+  transform: translateY(-50%);
+
+  color: #687893;
+
   pointer-events: none;
-  color: #77839a;
-  font-size: 17px;
 }
 
 select {
-  width: 100%;
   appearance: none;
-  background: white;
-  border: 1px solid #d8e0eb;
-  border-radius: 11px;
-  padding: 14px 40px 14px 14px;
-  color: var(--text);
+
+  width: 100%;
+
+  padding:
+    14px
+    40px
+    14px
+    14px;
+
+  color: #eaf1ff;
+
+  background:
+    rgba(255,255,255,.045);
+
+  border:
+    1px solid rgba(255,255,255,.10);
+
+  border-radius: 12px;
+
   outline: none;
+
   transition: .2s;
 }
 
+select:hover {
+  border-color:
+    rgba(95,157,255,.35);
+}
+
 select:focus {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(23,105,255,.10);
+  border-color: #4b8fff;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(75,143,255,.10);
+}
+
+select option {
+  background: #0c1527;
+  color: white;
 }
 
 .find-button {
   width: 100%;
-  border: none;
+
   margin-top: 23px;
-  padding: 17px;
-  border-radius: 12px;
-  background: var(--blue);
+
+  padding: 16px;
+
+  border: none;
+
+  border-radius: 13px;
+
   color: white;
-  font-weight: 900;
-  font-size: 17px;
-  transition: .2s;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  background:
+    linear-gradient(
+      100deg,
+      #3d82ff,
+      #2875ff,
+      #39caff
+    );
+
+  box-shadow:
+    0 12px 30px
+    rgba(38,114,255,.22);
+
+  transition: .25s;
 }
 
 .find-button:hover {
-  background: var(--blue-dark);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 17px 38px
+    rgba(38,114,255,.32);
 }
 
 .find-button.loading {
-  opacity: .75;
+  opacity: .65;
   pointer-events: none;
 }
-
 
 /* =========================================================
    MESSAGE
@@ -435,21 +826,31 @@ select:focus {
 
 .preferences-message {
   display: none;
-  margin: 20px 0;
-  background: #edf5ff;
-  border: 1px solid #cfe1ff;
-  color: #1458c7;
-  border-radius: 14px;
-  padding: 15px 18px;
+
+  margin-top: 18px;
+
+  padding: 13px;
+
   text-align: center;
-  font-size: 14px;
-  font-weight: 800;
+
+  border-radius: 11px;
+
+  color: #83cfff;
+
+  background:
+    rgba(64,139,255,.08);
+
+  border:
+    1px solid rgba(64,139,255,.15);
+
+  font-size: 12px;
+
+  font-weight: 700;
 }
 
 .preferences-message.show {
   display: block;
 }
-
 
 /* =========================================================
    RESULTS
@@ -465,32 +866,51 @@ select:focus {
 
 .results-heading {
   display: flex;
+
   justify-content: space-between;
+
   align-items: end;
+
   gap: 20px;
+
   margin-bottom: 28px;
 }
 
 .results-heading h2 {
+  font-family: "Manrope";
+
   font-size: 35px;
-  letter-spacing: -1px;
+
+  letter-spacing: -1.5px;
 }
 
 .results-heading p {
   color: var(--muted);
-  font-size: 14px;
+
+  font-size: 13px;
+
   margin-top: 4px;
 }
 
 .sort-note {
-  color: var(--blue);
-  background: #eef5ff;
+  padding:
+    9px
+    12px;
+
   border-radius: 10px;
-  padding: 9px 12px;
-  font-size: 12px;
+
+  color: #71d9b1;
+
+  background:
+    rgba(55,214,154,.08);
+
+  border:
+    1px solid rgba(55,214,154,.14);
+
+  font-size: 11px;
+
   font-weight: 800;
 }
-
 
 /* =========================================================
    BEST MATCH
@@ -498,85 +918,174 @@ select:focus {
 
 .best-match {
   display: none;
+
+  grid-template-columns:
+    250px 1fr auto;
+
+  gap: 28px;
+
+  align-items: center;
+
+  padding: 25px;
+
+  margin-bottom: 28px;
+
   background:
-    radial-gradient(circle at 95% 10%, #d9e8ff, transparent 35%),
-    white;
-  border: 1px solid #dbe6f5;
-  border-radius: 22px;
-  padding: 27px;
-  margin-bottom: 30px;
-  box-shadow: 0 15px 45px rgba(23,65,125,.08);
+    linear-gradient(
+      135deg,
+      rgba(26,53,91,.72),
+      rgba(9,17,32,.9)
+    );
+
+  border:
+    1px solid rgba(74,143,255,.18);
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 25px 65px
+    rgba(0,0,0,.25);
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.best-match::before {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  right: -120px;
+  top: -150px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(61,137,255,.16),
+      transparent 70%
+    );
 }
 
 .best-match.show {
   display: grid;
-  grid-template-columns: 260px 1fr auto;
-  align-items: center;
-  gap: 28px;
+}
+
+.best-image,
+.car-image,
+.popular-icon,
+.modal-car-image {
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(80,151,255,.13),
+      transparent 48%
+    ),
+    linear-gradient(
+      135deg,
+      #0e1c32,
+      #09111f
+    );
 }
 
 .best-image {
-  min-height: 175px;
-  border-radius: 17px;
-  background:
-    linear-gradient(135deg, #e5efff, #f7faff);
+  min-height: 165px;
+
+  border-radius: 18px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 82px;
+
+  font-size: 75px;
+
+  border:
+    1px solid rgba(255,255,255,.07);
 }
 
 .best-label {
-  color: var(--blue);
-  font-size: 12px;
-  font-weight: 900;
+  color: #69c9ff;
+
   text-transform: uppercase;
-  letter-spacing: 1px;
+
+  letter-spacing: 1.5px;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
   margin-bottom: 7px;
 }
 
 .best-info h3 {
-  font-size: 30px;
-  letter-spacing: -.7px;
+  font-family: "Manrope";
+
+  font-size: 28px;
+
+  letter-spacing: -1px;
 }
 
 .best-price {
-  color: var(--blue);
-  font-size: 18px;
-  font-weight: 900;
-  margin: 4px 0 12px;
+  color: #70a9ff;
+
+  font-size: 17px;
+
+  font-weight: 800;
+
+  margin: 3px 0 10px;
 }
 
 .best-reason {
+  max-width: 620px;
+
   color: var(--muted);
-  font-size: 14px;
-  max-width: 600px;
+
+  font-size: 13px;
 }
 
 .best-score {
-  min-width: 105px;
-  height: 105px;
+  width: 100px;
+  height: 100px;
+
   border-radius: 50%;
-  background: var(--green-bg);
-  border: 8px solid #d9f0e3;
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
-  color: var(--green);
+
+  color: #58dda9;
+
+  background:
+    rgba(55,214,154,.08);
+
+  border:
+    7px solid
+    rgba(55,214,154,.13);
 }
 
 .best-score strong {
-  font-size: 27px;
+  font-family: "Manrope";
+
+  font-size: 25px;
+
   line-height: 1;
 }
 
 .best-score span {
-  font-size: 10px;
-  font-weight: 900;
-  text-transform: uppercase;
-}
+  font-size: 9px;
 
+  font-weight: 900;
+
+  text-transform: uppercase;
+
+  margin-top: 3px;
+}
 
 /* =========================================================
    CAR GRID
@@ -584,262 +1093,446 @@ select:focus {
 
 .car-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap: 20px;
 }
 
 .car-card {
-  background: white;
-  border: 1px solid var(--border);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20,29,47,.78),
+      rgba(8,14,26,.88)
+    );
+
+  border:
+    1px solid rgba(255,255,255,.075);
+
   border-radius: 20px;
+
   overflow: hidden;
-  box-shadow: 0 9px 30px rgba(28,58,105,.07);
-  transition: .25s;
+
+  box-shadow:
+    0 15px 45px
+    rgba(0,0,0,.18);
+
+  transition:
+    transform .3s,
+    border .3s,
+    box-shadow .3s;
 }
 
 .car-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 42px rgba(28,58,105,.13);
+  transform: translateY(-7px);
+
+  border-color:
+    rgba(70,142,255,.27);
+
+  box-shadow:
+    0 25px 60px
+    rgba(0,0,0,.3);
 }
 
 .car-image {
   height: 190px;
+
   position: relative;
+
   display: flex;
+
   align-items: center;
   justify-content: center;
-  background:
-    radial-gradient(circle at 50% 45%, white 0, transparent 38%),
-    linear-gradient(135deg, #e5efff, #f7faff);
 }
 
 .car-emoji {
-  font-size: 75px;
-  filter: drop-shadow(0 12px 10px rgba(25,60,110,.14));
+  font-size: 72px;
+
+  filter:
+    drop-shadow(
+      0 14px 12px
+      rgba(0,0,0,.35)
+    );
 }
 
 .car-rank {
   position: absolute;
-  left: 14px;
-  top: 14px;
-  background: rgba(255,255,255,.92);
-  color: #42506a;
-  padding: 6px 9px;
+
+  top: 13px;
+  left: 13px;
+
+  padding:
+    6px
+    9px;
+
   border-radius: 8px;
-  font-size: 11px;
-  font-weight: 900;
+
+  color: #b8c8df;
+
+  background:
+    rgba(5,10,20,.65);
+
+  backdrop-filter: blur(8px);
+
+  font-size: 10px;
+
+  font-weight: 800;
 }
 
 .save-btn {
   position: absolute;
-  right: 14px;
-  top: 14px;
+
+  top: 12px;
+  right: 12px;
+
   width: 35px;
   height: 35px;
-  border: none;
+
+  border: 1px solid
+    rgba(255,255,255,.08);
+
   border-radius: 50%;
-  background: rgba(255,255,255,.94);
-  color: #59667e;
+
+  color: #8c9ab0;
+
+  background:
+    rgba(5,10,20,.65);
+
   font-size: 17px;
+
+  transition: .2s;
 }
 
+.save-btn:hover,
 .save-btn.saved {
-  color: var(--blue);
+  color: #65a1ff;
+
+  border-color:
+    rgba(65,137,255,.25);
 }
 
 .car-content {
-  padding: 20px;
+  padding: 19px;
 }
 
 .car-title-row {
   display: flex;
+
   justify-content: space-between;
+
   gap: 12px;
+
   align-items: start;
 }
 
 .car-content h3 {
-  font-size: 21px;
-  letter-spacing: -.3px;
+  font-family: "Manrope";
+
+  font-size: 18px;
+
+  letter-spacing: -.5px;
 }
 
 .price {
-  color: var(--blue);
-  font-size: 17px;
-  font-weight: 900;
+  color: #6da4ff;
+
+  font-weight: 800;
+
+  font-size: 15px;
+
   margin-top: 3px;
 }
 
 .match {
   flex-shrink: 0;
-  background: var(--green-bg);
-  color: var(--green);
-  padding: 6px 9px;
+
+  color: #56d9a5;
+
+  background:
+    rgba(55,214,154,.08);
+
+  border:
+    1px solid rgba(55,214,154,.12);
+
   border-radius: 8px;
-  font-size: 11px;
+
+  padding:
+    6px
+    8px;
+
+  font-size: 10px;
+
   font-weight: 900;
 }
 
 .specs {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin: 17px 0;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 7px;
+
+  margin: 16px 0;
 }
 
 .spec {
-  background: #f7f9fc;
+  padding: 9px;
+
   border-radius: 9px;
-  padding: 9px 10px;
-  color: #77839a;
-  font-size: 11px;
+
+  background:
+    rgba(255,255,255,.035);
+
+  color: #75849d;
+
+  font-size: 10px;
 }
 
 .spec strong {
   display: block;
-  color: #27334c;
-  font-size: 13px;
+
+  color: #d9e3f3;
+
+  font-size: 12px;
+
   margin-top: 2px;
 }
 
 .reason {
-  padding: 14px 0;
-  border-top: 1px solid #edf0f5;
-  color: var(--muted);
-  font-size: 13px;
-  min-height: 70px;
+  min-height: 67px;
+
+  padding:
+    13px 0;
+
+  border-top:
+    1px solid
+    rgba(255,255,255,.06);
+
+  color: #7f8da5;
+
+  font-size: 11px;
 }
 
 .reason strong {
-  color: var(--text);
+  color: #d9e3f3;
 }
 
 .card-actions {
   display: flex;
-  gap: 9px;
+
+  gap: 8px;
 }
 
 .details-btn {
   flex: 1;
-  border: none;
-  background: var(--blue);
-  color: white;
-  border-radius: 9px;
-  padding: 11px;
-  font-size: 13px;
-  font-weight: 800;
-}
 
-.details-btn:hover {
-  background: var(--blue-dark);
+  border: none;
+
+  border-radius: 9px;
+
+  padding: 10px;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3d82ff,
+      #286fff
+    );
+
+  font-size: 12px;
+
+  font-weight: 800;
 }
 
 .compare-btn {
-  border: 1px solid #d8e0eb;
-  background: white;
-  color: #3e4b64;
+  border:
+    1px solid
+    rgba(255,255,255,.09);
+
+  background:
+    rgba(255,255,255,.035);
+
+  color: #aab8cc;
+
   border-radius: 9px;
-  padding: 11px 12px;
-  font-size: 13px;
-  font-weight: 800;
+
+  padding:
+    10px
+    12px;
+
+  font-size: 12px;
+
+  font-weight: 700;
 }
 
-
 /* =========================================================
-   POPULAR CARS
+   POPULAR
    ========================================================= */
 
 .popular-section {
-  background: white;
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(255,255,255,.018),
+      transparent
+    );
 }
 
 .popular-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 17px;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap: 16px;
 }
 
 .popular-card {
-  border: 1px solid var(--border);
-  border-radius: 17px;
-  padding: 20px;
-  background: white;
-  transition: .2s;
+  padding: 15px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.075);
+
+  border-radius: 18px;
+
+  background:
+    rgba(255,255,255,.025);
+
+  transition: .25s;
 }
 
 .popular-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow);
+  transform: translateY(-5px);
+
+  border-color:
+    rgba(72,142,255,.22);
+
+  background:
+    rgba(255,255,255,.045);
 }
 
 .popular-icon {
-  height: 110px;
+  height: 125px;
+
   border-radius: 13px;
-  background: linear-gradient(135deg,#e9f1ff,#f8faff);
+
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   font-size: 55px;
+
   margin-bottom: 15px;
 }
 
 .popular-card h3 {
-  font-size: 17px;
+  font-family: "Manrope";
+
+  font-size: 16px;
 }
 
 .popular-card p {
-  color: var(--muted);
-  font-size: 12px;
+  color: #7d8ba3;
+
+  font-size: 11px;
+
   margin-top: 3px;
 }
 
 .popular-price {
-  color: var(--blue);
-  font-weight: 900;
-  margin-top: 9px;
+  color: #6fa7ff;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  margin-top: 8px;
 }
 
-
 /* =========================================================
-   WHY CARDHUNDO
+   FEATURES
    ========================================================= */
 
 .features {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap: 18px;
 }
 
 .feature {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 19px;
-  padding: 26px;
+  padding: 27px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.075);
+
+  border-radius: 20px;
+
+  background:
+    rgba(255,255,255,.025);
+
+  transition: .25s;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+
+  background:
+    rgba(255,255,255,.04);
+
+  border-color:
+    rgba(72,142,255,.20);
 }
 
 .feature-icon {
   width: 48px;
   height: 48px;
-  border-radius: 13px;
-  background: #eaf2ff;
-  color: var(--blue);
+
   display: flex;
+
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+
+  border-radius: 13px;
+
+  color: #75b0ff;
+
+  background:
+    rgba(69,139,255,.10);
+
+  border:
+    1px solid
+    rgba(69,139,255,.12);
+
+  font-size: 20px;
+
   margin-bottom: 17px;
 }
 
 .feature h3 {
-  font-size: 18px;
+  font-family: "Manrope";
+
+  font-size: 17px;
+
   margin-bottom: 7px;
 }
 
 .feature p {
-  color: var(--muted);
-  font-size: 14px;
-}
+  color: #7e8ca4;
 
+  font-size: 13px;
+}
 
 /* =========================================================
    FAQ
@@ -851,60 +1544,101 @@ select:focus {
 }
 
 .faq {
-  background: white;
-  border: 1px solid var(--border);
+  margin-bottom: 9px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.075);
+
   border-radius: 14px;
-  margin-bottom: 10px;
+
   overflow: hidden;
+
+  background:
+    rgba(255,255,255,.025);
 }
 
 .faq button {
   width: 100%;
-  border: none;
-  background: white;
-  padding: 18px 20px;
-  text-align: left;
-  font-weight: 800;
-  color: var(--text);
+
   display: flex;
+
   justify-content: space-between;
+
   gap: 15px;
+
+  border: none;
+
+  padding:
+    18px 20px;
+
+  text-align: left;
+
+  color: #e1e9f6;
+
+  background: transparent;
+
+  font-weight: 700;
+
+  font-size: 13px;
+}
+
+.faq button span {
+  color: #6da4ff;
+
+  font-size: 18px;
 }
 
 .faq-answer {
   display: none;
-  padding: 0 20px 19px;
-  color: var(--muted);
-  font-size: 14px;
+
+  padding:
+    0 20px
+    19px;
+
+  color: #7e8ca4;
+
+  font-size: 13px;
 }
 
 .faq.open .faq-answer {
   display: block;
 }
 
-
 /* =========================================================
-   EMPTY STATE
+   EMPTY
    ========================================================= */
 
 .no-results {
-  grid-column: 1 / -1;
-  background: white;
-  border: 1px solid var(--border);
-  padding: 45px 25px;
-  border-radius: 20px;
+  grid-column: 1/-1;
+
+  padding: 55px 25px;
+
   text-align: center;
+
+  border:
+    1px solid
+    rgba(255,255,255,.07);
+
+  border-radius: 20px;
+
+  background:
+    rgba(255,255,255,.025);
 }
 
 .no-results h3 {
-  font-size: 25px;
+  font-family: "Manrope";
+
+  font-size: 23px;
 }
 
 .no-results p {
-  color: var(--muted);
-  margin-top: 8px;
-}
+  color: #7d8ba3;
 
+  margin-top: 8px;
+
+  font-size: 13px;
+}
 
 /* =========================================================
    MODAL
@@ -912,13 +1646,22 @@ select:focus {
 
 .modal {
   display: none;
+
   position: fixed;
+
   inset: 0;
-  z-index: 300;
-  background: rgba(7,16,35,.62);
+
+  z-index: 3000;
+
   padding: 20px;
+
   align-items: center;
   justify-content: center;
+
+  background:
+    rgba(0,0,0,.76);
+
+  backdrop-filter: blur(12px);
 }
 
 .modal.show {
@@ -926,67 +1669,121 @@ select:focus {
 }
 
 .modal-box {
-  width: min(650px, 100%);
+  width: min(650px,100%);
+
   max-height: 90vh;
+
   overflow-y: auto;
-  background: white;
-  border-radius: 23px;
-  padding: 28px;
+
   position: relative;
+
+  padding: 28px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #101b30,
+      #07101e
+    );
+
+  box-shadow:
+    0 35px 100px
+    rgba(0,0,0,.55);
 }
 
 .modal-close {
   position: absolute;
-  right: 17px;
-  top: 17px;
+
+  right: 16px;
+  top: 16px;
+
   width: 35px;
   height: 35px;
-  border: none;
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+
   border-radius: 50%;
-  background: #f0f3f7;
+
+  color: #b3bfd1;
+
+  background:
+    rgba(255,255,255,.05);
+
   font-size: 18px;
 }
 
 .modal-car-image {
   height: 190px;
+
   border-radius: 17px;
-  background: linear-gradient(135deg,#e5efff,#f7faff);
+
   display: flex;
+
   align-items: center;
   justify-content: center;
-  font-size: 85px;
+
+  font-size: 80px;
+
   margin-bottom: 22px;
 }
 
 .modal-box h2 {
-  font-size: 29px;
+  font-family: "Manrope";
+
+  font-size: 28px;
+
+  letter-spacing: -1px;
 }
 
 .modal-price {
-  color: var(--blue);
-  font-size: 19px;
-  font-weight: 900;
-  margin: 4px 0 18px;
+  color: #70a6ff;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  margin:
+    4px 0
+    18px;
 }
 
 .modal-info {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 9px;
 }
 
 .modal-info div {
-  background: #f7f9fc;
-  border-radius: 10px;
   padding: 12px;
-  font-size: 12px;
-  color: var(--muted);
+
+  border-radius: 10px;
+
+  color: #78869d;
+
+  background:
+    rgba(255,255,255,.035);
+
+  font-size: 11px;
 }
 
 .modal-info strong {
   display: block;
-  color: var(--text);
-  font-size: 14px;
+
+  color: #d9e4f4;
+
+  font-size: 13px;
+
   margin-top: 2px;
 }
 
@@ -995,55 +1792,77 @@ select:focus {
 }
 
 .modal-section h4 {
+  font-size: 13px;
+
   margin-bottom: 6px;
 }
 
 .modal-section p {
-  color: var(--muted);
-  font-size: 14px;
-}
+  color: #7e8ca4;
 
+  font-size: 12px;
+}
 
 /* =========================================================
    FOOTER
    ========================================================= */
 
 footer {
-  background: var(--navy);
-  color: white;
-  padding: 55px 0 25px;
+  margin-top: 50px;
+
+  padding:
+    60px 0
+    25px;
+
+  background:
+    #030711;
+
+  border-top:
+    1px solid
+    rgba(255,255,255,.06);
 }
 
 .footer-grid {
-  width: min(1180px, 92%);
+  width: min(1180px,92%);
+
   margin: auto;
+
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+
+  grid-template-columns:
+    2fr 1fr 1fr 1fr;
+
   gap: 35px;
 }
 
-.footer-brand .logo {
-  display: inline-block;
-  margin-bottom: 13px;
-}
-
 .footer-brand p {
-  color: #9da8bc;
   max-width: 320px;
-  font-size: 13px;
+
+  margin-top: 13px;
+
+  color: #6f7c92;
+
+  font-size: 12px;
 }
 
 .footer-column h4 {
-  font-size: 13px;
+  font-size: 12px;
+
   margin-bottom: 13px;
 }
 
 .footer-column a {
   display: block;
+
+  color: #68758b;
+
   text-decoration: none;
-  color: #9da8bc;
-  font-size: 13px;
+
+  font-size: 12px;
+
   margin: 8px 0;
+
+  transition: .2s;
 }
 
 .footer-column a:hover {
@@ -1051,21 +1870,30 @@ footer {
 }
 
 .footer-bottom {
-  width: min(1180px, 92%);
-  margin: 40px auto 0;
-  padding-top: 20px;
-  border-top: 1px solid #28334c;
-  color: #7e8aa2;
-  font-size: 12px;
-  text-align: center;
-}
+  width: min(1180px,92%);
 
+  margin:
+    40px auto
+    0;
+
+  padding-top: 20px;
+
+  border-top:
+    1px solid
+    rgba(255,255,255,.06);
+
+  text-align: center;
+
+  color: #56637a;
+
+  font-size: 11px;
+}
 
 /* =========================================================
    RESPONSIVE
    ========================================================= */
 
-@media (max-width: 950px) {
+@media(max-width:950px) {
 
   .form-grid {
     grid-template-columns: 1fr 1fr;
@@ -1079,8 +1907,9 @@ footer {
     grid-template-columns: 1fr 1fr;
   }
 
-  .best-match.show {
-    grid-template-columns: 200px 1fr;
+  .best-match {
+    grid-template-columns:
+      190px 1fr;
   }
 
   .best-score {
@@ -1090,54 +1919,57 @@ footer {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
+
 }
 
-@media (max-width: 650px) {
+@media(max-width:650px) {
 
   .navbar {
     min-height: 65px;
-  }
-
-  .logo {
-    font-size: 25px;
   }
 
   .nav-links {
     display: none;
   }
 
+  .logo {
+    font-size: 24px;
+  }
+
   .hero {
-    padding: 65px 15px 90px;
+    padding:
+      70px 15px
+      105px;
   }
 
   .hero h1 {
-    letter-spacing: -2px;
+    letter-spacing: -2.5px;
   }
 
   .hero-description {
-    font-size: 16px;
+    font-size: 15px;
   }
 
-  .hero-stats {
+  .trust-bar {
     grid-template-columns: 1fr;
   }
 
-  .hero-stat {
+  .trust-item {
     border-right: none;
-    border-bottom: 1px solid #e8edf4;
+
+    border-bottom:
+      1px solid
+      rgba(255,255,255,.07);
   }
 
-  .hero-stat:last-child {
+  .trust-item:last-child {
     border-bottom: none;
-  }
-
-  .finder-section {
-    margin-top: -40px;
   }
 
   .finder {
     padding: 22px;
-    border-radius: 20px;
+
+    border-radius: 21px;
   }
 
   .finder-top {
@@ -1170,15 +2002,16 @@ footer {
 
   .sort-note {
     display: inline-block;
-    margin-top: 12px;
+
+    margin-top: 11px;
   }
 
-  .best-match.show {
+  .best-match {
     grid-template-columns: 1fr;
   }
 
   .best-image {
-    min-height: 150px;
+    min-height: 145px;
   }
 
   .footer-grid {
@@ -1186,8 +2019,9 @@ footer {
   }
 
   .section {
-    padding: 65px 0;
+    padding: 70px 0;
   }
+
 }
 
 </style>
@@ -1201,21 +2035,43 @@ footer {
 
 <header>
 
-  <div class="navbar">
+<div class="navbar">
 
-    <a class="logo" href="#">
-      Car<span>Dhundo</span>
-    </a>
+<a class="logo" href="#">
 
-    <nav class="nav-links">
-      <a href="#find">Find Cars</a>
-      <a href="#popular">Popular Cars</a>
-      <a href="#why">Why CarDhundo</a>
-      <a href="#faq">FAQ</a>
-      <a class="nav-cta" href="#find">Find My Car</a>
-    </nav>
+  <span class="logo-mark">⌁</span>
 
-  </div>
+  <span class="logo-text">
+    CarDhundo
+  </span>
+
+</a>
+
+<nav class="nav-links">
+
+<a href="#find">
+  Find Cars
+</a>
+
+<a href="#popular">
+  Popular
+</a>
+
+<a href="#why">
+  Why CarDhundo
+</a>
+
+<a href="#faq">
+  FAQ
+</a>
+
+<a class="nav-cta" href="#find">
+  Find My Car
+</a>
+
+</nav>
+
+</div>
 
 </header>
 
@@ -1226,58 +2082,98 @@ footer {
 
 <section class="hero">
 
-  <div class="hero-inner">
+<div class="hero-inner">
 
-    <div class="badge">
-      ✦ Smart car discovery
-    </div>
+<div class="badge">
 
-    <h1>
-      Find the right car for
-      <span>your life.</span>
-    </h1>
+<span class="badge-dot"></span>
 
-    <p class="hero-description">
-      Tell CarDhundo what matters to you — budget, fuel, family,
-      mileage and more. We'll help you discover cars that fit.
-    </p>
+Smart car discovery for India
 
-    <div class="hero-buttons">
+</div>
 
-      <button
-        class="primary-button"
-        onclick="document.getElementById('find').scrollIntoView({behavior:'smooth'})">
-        Find My Car →
-      </button>
+<h1>
 
-      <button
-        class="secondary-button"
-        onclick="document.getElementById('why').scrollIntoView({behavior:'smooth'})">
-        How CarDhundo Works
-      </button>
+Your next car
+<br>
 
-    </div>
+<span class="gradient-text">
+    starts with CarDhundo.
+</span>
 
-    <div class="hero-stats">
+</h1>
 
-      <div class="hero-stat">
-        <strong>6</strong>
-        <span>preferences used</span>
-      </div>
+<p class="hero-description">
 
-      <div class="hero-stat">
-        <strong>20+</strong>
-        <span>cars in our starter database</span>
-      </div>
+Stop scrolling through hundreds of cars.
+Tell us your budget, lifestyle and priorities —
+we'll help you discover the cars that fit you.
 
-      <div class="hero-stat">
-        <strong>0₹</strong>
-        <span>to use CarDhundo</span>
-      </div>
+</p>
 
-    </div>
+<div class="hero-buttons">
 
-  </div>
+<button
+class="primary-button"
+onclick="scrollToFinder()">
+
+Find My Perfect Car
+&nbsp;→
+
+</button>
+
+<button
+class="secondary-button"
+onclick="document.getElementById('why').scrollIntoView({behavior:'smooth'})">
+
+How It Works
+
+</button>
+
+</div>
+
+
+<div class="trust-bar">
+
+<div class="trust-item">
+
+<strong>
+6
+</strong>
+
+<span>
+Personal preferences
+</span>
+
+</div>
+
+<div class="trust-item">
+
+<strong>
+20+
+</strong>
+
+<span>
+Cars in database
+</span>
+
+</div>
+
+<div class="trust-item">
+
+<strong>
+Free
+</strong>
+
+<span>
+No signup required
+</span>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
@@ -1288,263 +2184,283 @@ footer {
 
 <main>
 
-<section class="finder-section" id="find">
+<section
+class="finder-section"
+id="find">
 
-  <div class="container">
+<div class="container">
 
-    <div class="finder">
+<div class="finder">
 
-      <div class="finder-top">
+<div class="finder-top">
 
-        <div class="finder-title">
+<div class="finder-title">
 
-          <h2>Find your perfect car</h2>
+<h2>
+Find a car that fits your life.
+</h2>
 
-          <p>
-            Answer six simple questions and we'll rank your matches.
-          </p>
+<p>
+Six preferences. Smarter matches. Less searching.
+</p>
 
-        </div>
+</div>
 
-        <div class="step-label" id="stepLabel">
-          1 of 6 preferences
-        </div>
+<div
+class="step-label"
+id="stepLabel">
 
-      </div>
+1 of 6
 
-      <div class="progress">
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
+</div>
 
+</div>
 
-      <div class="form-grid">
 
-        <!-- BUDGET -->
+<div class="progress">
 
-        <div class="field">
+<div
+class="progress-bar"
+id="progressBar">
+</div>
 
-          <label for="budget">
-            💰 Your Budget
-          </label>
+</div>
 
-          <div class="select-wrap">
 
-            <select id="budget">
+<div class="form-grid">
 
-              <option value="8-12">
-                ₹8–12 Lakh
-              </option>
 
-              <option value="5-8">
-                ₹5–8 Lakh
-              </option>
+<div class="field">
 
-              <option value="12-18">
-                ₹12–18 Lakh
-              </option>
+<label>
+Budget
+</label>
 
-              <option value="18-25">
-                ₹18–25 Lakh
-              </option>
+<div class="select-wrap">
 
-              <option value="25+">
-                ₹25+ Lakh
-              </option>
+<select id="budget">
 
-            </select>
+<option value="8-12">
+₹8–12 Lakh
+</option>
 
-          </div>
+<option value="5-8">
+₹5–8 Lakh
+</option>
 
-        </div>
+<option value="12-18">
+₹12–18 Lakh
+</option>
 
+<option value="18-25">
+₹18–25 Lakh
+</option>
 
-        <!-- FUEL -->
+<option value="25+">
+₹25+ Lakh
+</option>
 
-        <div class="field">
+</select>
 
-          <label for="fuel">
-            ⛽ Fuel Type
-          </label>
+</div>
 
-          <div class="select-wrap">
+</div>
 
-            <select id="fuel">
 
-              <option value="CNG">CNG</option>
-              <option value="Petrol">Petrol</option>
-              <option value="Diesel">Diesel</option>
-              <option value="Electric">Electric</option>
-              <option value="Hybrid">Hybrid</option>
+<div class="field">
 
-            </select>
+<label>
+Fuel Type
+</label>
 
-          </div>
+<div class="select-wrap">
 
-        </div>
+<select id="fuel">
 
+<option value="CNG">
+CNG
+</option>
 
-        <!-- FAMILY -->
+<option value="Petrol">
+Petrol
+</option>
 
-        <div class="field">
+<option value="Diesel">
+Diesel
+</option>
 
-          <label for="family">
-            👨‍👩‍👧 Family Size
-          </label>
+<option value="Electric">
+Electric
+</option>
 
-          <div class="select-wrap">
+<option value="Hybrid">
+Hybrid
+</option>
 
-            <select id="family">
+</select>
 
-              <option value="3-4">
-                3–4 people
-              </option>
+</div>
 
-              <option value="1-2">
-                1–2 people
-              </option>
+</div>
 
-              <option value="5-6">
-                5–6 people
-              </option>
 
-              <option value="7+">
-                7+ people
-              </option>
+<div class="field">
 
-            </select>
+<label>
+Family Size
+</label>
 
-          </div>
+<div class="select-wrap">
 
-        </div>
+<select id="family">
 
+<option value="3-4">
+3–4 people
+</option>
 
-        <!-- MILEAGE -->
+<option value="1-2">
+1–2 people
+</option>
 
-        <div class="field">
+<option value="5-6">
+5–6 people
+</option>
 
-          <label for="mileage">
-            📈 Minimum Mileage
-          </label>
+<option value="7+">
+7+ people
+</option>
 
-          <div class="select-wrap">
+</select>
 
-            <select id="mileage">
+</div>
 
-              <option value="any">
-                Any mileage
-              </option>
+</div>
 
-              <option value="15">
-                15+ km/l
-              </option>
 
-              <option value="18">
-                18+ km/l
-              </option>
+<div class="field">
 
-              <option value="20">
-                20+ km/l
-              </option>
+<label>
+Minimum Mileage
+</label>
 
-              <option value="25">
-                25+ km/l
-              </option>
+<div class="select-wrap">
 
-            </select>
+<select id="mileage">
 
-          </div>
+<option value="any">
+Any mileage
+</option>
 
-        </div>
+<option value="15">
+15+ km/l
+</option>
 
+<option value="18">
+18+ km/l
+</option>
 
-        <!-- TYPE -->
+<option value="20">
+20+ km/l
+</option>
 
-        <div class="field">
+<option value="25">
+25+ km/l
+</option>
 
-          <label for="type">
-            🚙 Car Type
-          </label>
+</select>
 
-          <div class="select-wrap">
+</div>
 
-            <select id="type">
+</div>
 
-              <option value="SUV">SUV</option>
 
-              <option value="Hatchback">
-                Hatchback
-              </option>
+<div class="field">
 
-              <option value="Sedan">
-                Sedan
-              </option>
+<label>
+Car Type
+</label>
 
-              <option value="MPV">
-                MPV
-              </option>
+<div class="select-wrap">
 
-              <option value="Compact SUV">
-                Compact SUV
-              </option>
+<select id="type">
 
-            </select>
+<option value="SUV">
+SUV
+</option>
 
-          </div>
+<option value="Compact SUV">
+Compact SUV
+</option>
 
-        </div>
+<option value="Hatchback">
+Hatchback
+</option>
 
+<option value="Sedan">
+Sedan
+</option>
 
-        <!-- TRANSMISSION -->
+<option value="MPV">
+MPV
+</option>
 
-        <div class="field">
+</select>
 
-          <label for="transmission">
-            ⚙️ Transmission
-          </label>
+</div>
 
-          <div class="select-wrap">
+</div>
 
-            <select id="transmission">
 
-              <option value="Manual">
-                Manual
-              </option>
+<div class="field">
 
-              <option value="Automatic">
-                Automatic
-              </option>
+<label>
+Transmission
+</label>
 
-              <option value="AMT">
-                AMT
-              </option>
+<div class="select-wrap">
 
-            </select>
+<select id="transmission">
 
-          </div>
+<option value="Manual">
+Manual
+</option>
 
-        </div>
+<option value="Automatic">
+Automatic
+</option>
 
-      </div>
+<option value="AMT">
+AMT
+</option>
 
+</select>
 
-      <button
-        class="find-button"
-        id="findButton"
-        onclick="findCars()">
+</div>
 
-        Find My Cars →
+</div>
 
-      </button>
+</div>
 
 
-      <div
-        class="preferences-message"
-        id="preferenceMessage">
-      </div>
+<button
+class="find-button"
+id="findButton"
+onclick="findCars()">
 
-    </div>
+Find My Matches
+&nbsp; →
 
-  </div>
+</button>
+
+
+<div
+class="preferences-message"
+id="preferenceMessage">
+</div>
+
+</div>
+
+</div>
 
 </section>
 
@@ -1553,234 +2469,264 @@ footer {
      RESULTS
      ======================================================= -->
 
-<section class="section results" id="results">
+<section
+class="section results"
+id="results">
 
-  <div class="container">
+<div class="container">
 
-    <div class="results-heading">
+<div class="results-heading">
 
-      <div>
+<div>
 
-        <h2>Your car matches</h2>
+<div class="eyebrow">
+Your shortlist
+</div>
 
-        <p id="resultCount">
-          Cars ranked according to your preferences.
-        </p>
+<h2>
+Cars matched for you.
+</h2>
 
-      </div>
+<p id="resultCount">
+Ranked according to your preferences.
+</p>
 
-      <div class="sort-note">
-        ⭐ Ranked by match score
-      </div>
+</div>
 
-    </div>
+<div class="sort-note">
+✓ Ranked by match score
+</div>
 
-
-    <!-- BEST MATCH -->
-
-    <div
-      class="best-match"
-      id="bestMatch">
-    </div>
-
-
-    <!-- RESULTS -->
-
-    <div
-      class="car-grid"
-      id="carGrid">
-    </div>
-
-  </div>
-
-</section>
+</div>
 
 
-<!-- =======================================================
-     POPULAR CARS
-     ======================================================= -->
-
-<section class="section popular-section" id="popular">
-
-  <div class="container">
-
-    <div class="section-heading">
-
-      <div class="eyebrow">
-        Explore
-      </div>
-
-      <h2>Popular cars</h2>
-
-      <p>
-        Some popular choices to help you start exploring.
-      </p>
-
-    </div>
+<div
+class="best-match"
+id="bestMatch">
+</div>
 
 
-    <div class="popular-grid">
+<div
+class="car-grid"
+id="carGrid">
+</div>
 
-      <div class="popular-card">
-
-        <div class="popular-icon">
-          🚙
-        </div>
-
-        <h3>Tata Punch</h3>
-
-        <p>
-          Compact SUV • CNG
-        </p>
-
-        <div class="popular-price">
-          From ₹8.8 Lakh*
-        </div>
-
-      </div>
-
-
-      <div class="popular-card">
-
-        <div class="popular-icon">
-          🚗
-        </div>
-
-        <h3>Maruti Fronx</h3>
-
-        <p>
-          Compact SUV • CNG
-        </p>
-
-        <div class="popular-price">
-          From ₹9.2 Lakh*
-        </div>
-
-      </div>
-
-
-      <div class="popular-card">
-
-        <div class="popular-icon">
-          🚙
-        </div>
-
-        <h3>Hyundai Creta</h3>
-
-        <p>
-          SUV • Petrol
-        </p>
-
-        <div class="popular-price">
-          From ₹16.5 Lakh*
-        </div>
-
-      </div>
-
-
-      <div class="popular-card">
-
-        <div class="popular-icon">
-          🚐
-        </div>
-
-        <h3>Maruti Ertiga</h3>
-
-        <p>
-          MPV • CNG
-        </p>
-
-        <div class="popular-price">
-          From ₹11.9 Lakh*
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
 <!-- =======================================================
-     WHY CARDHUNDO
+     POPULAR
      ======================================================= -->
 
-<section class="section" id="why">
+<section
+class="section popular-section"
+id="popular">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-heading">
+<div class="section-heading">
 
-      <div class="eyebrow">
-        Why CarDhundo
-      </div>
+<div class="eyebrow">
+Trending choices
+</div>
 
-      <h2>
-        Car shopping, made simpler.
-      </h2>
+<h2>
+Popular cars worth exploring.
+</h2>
 
-      <p>
-        Instead of searching through hundreds of cars,
-        start with what actually matters to you.
-      </p>
+<p>
+Start with some of India's popular choices.
+</p>
 
-    </div>
-
-
-    <div class="features">
-
-      <div class="feature">
-
-        <div class="feature-icon">
-          🎯
-        </div>
-
-        <h3>Personalized matches</h3>
-
-        <p>
-          CarDhundo considers six important preferences
-          and ranks cars according to your choices.
-        </p>
-
-      </div>
+</div>
 
 
-      <div class="feature">
-
-        <div class="feature-icon">
-          ⚡
-        </div>
-
-        <h3>Quick discovery</h3>
-
-        <p>
-          No complicated car research. Tell us what
-          you need and get a shortlist in seconds.
-        </p>
-
-      </div>
+<div class="popular-grid">
 
 
-      <div class="feature">
+<div class="popular-card">
 
-        <div class="feature-icon">
-          💡
-        </div>
+<div class="popular-icon">
+🚙
+</div>
 
-        <h3>Understand your options</h3>
+<h3>
+Tata Punch
+</h3>
 
-        <p>
-          Each match explains why a particular car
-          could suit your preferences.
-        </p>
+<p>
+Compact SUV • CNG
+</p>
 
-      </div>
+<div class="popular-price">
+From ₹8.8 Lakh*
+</div>
 
-    </div>
+</div>
 
-  </div>
+
+<div class="popular-card">
+
+<div class="popular-icon">
+🚗
+</div>
+
+<h3>
+Maruti Fronx
+</h3>
+
+<p>
+Compact SUV • CNG
+</p>
+
+<div class="popular-price">
+From ₹9.2 Lakh*
+</div>
+
+</div>
+
+
+<div class="popular-card">
+
+<div class="popular-icon">
+🚙
+</div>
+
+<h3>
+Hyundai Creta
+</h3>
+
+<p>
+SUV • Petrol
+</p>
+
+<div class="popular-price">
+From ₹16.5 Lakh*
+</div>
+
+</div>
+
+
+<div class="popular-card">
+
+<div class="popular-icon">
+🚐
+</div>
+
+<h3>
+Maruti Ertiga
+</h3>
+
+<p>
+MPV • CNG
+</p>
+
+<div class="popular-price">
+From ₹11.9 Lakh*
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     WHY
+     ======================================================= -->
+
+<section
+class="section"
+id="why">
+
+<div class="container">
+
+<div class="section-heading">
+
+<div class="eyebrow">
+Why CarDhundo
+</div>
+
+<h2>
+Less searching.
+Better decisions.
+</h2>
+
+<p>
+CarDhundo turns your preferences into a simple,
+personalized shortlist.
+</p>
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-icon">
+✦
+</div>
+
+<h3>
+Personalized matching
+</h3>
+
+<p>
+Your budget, fuel, family size, mileage,
+body type and transmission all influence
+your recommendations.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+⚡
+</div>
+
+<h3>
+Discover faster
+</h3>
+
+<p>
+Skip endless browsing. Get a focused
+shortlist of cars that fit your needs
+in seconds.
+</p>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-icon">
+◈
+</div>
+
+<h3>
+Understand the match
+</h3>
+
+<p>
+Every recommendation explains why the
+car matches your selected preferences.
+</p>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
@@ -1789,90 +2735,115 @@ footer {
      FAQ
      ======================================================= -->
 
-<section class="section" id="faq">
+<section
+class="section"
+id="faq">
 
-  <div class="container">
+<div class="container">
 
-    <div class="section-heading">
+<div class="section-heading">
 
-      <div class="eyebrow">
-        Questions
-      </div>
+<div class="eyebrow">
+FAQ
+</div>
 
-      <h2>
-        Frequently asked questions
-      </h2>
+<h2>
+Questions, answered.
+</h2>
 
-    </div>
-
-
-    <div class="faq-list">
-
-      <div class="faq">
-
-        <button onclick="toggleFaq(this)">
-          How does CarDhundo choose my matches?
-          <span>+</span>
-        </button>
-
-        <div class="faq-answer">
-          CarDhundo compares your budget, fuel type, family size,
-          mileage preference, car type and transmission with
-          the cars in its database and calculates a match score.
-        </div>
-
-      </div>
+</div>
 
 
-      <div class="faq">
-
-        <button onclick="toggleFaq(this)">
-          Does CarDhundo cost money?
-          <span>+</span>
-        </button>
-
-        <div class="faq-answer">
-          The CarDhundo car-finder experience is designed to be
-          free for visitors.
-        </div>
-
-      </div>
+<div class="faq-list">
 
 
-      <div class="faq">
+<div class="faq">
 
-        <button onclick="toggleFaq(this)">
-          Are the displayed prices final on-road prices?
-          <span>+</span>
-        </button>
+<button onclick="toggleFaq(this)">
 
-        <div class="faq-answer">
-          No. The prices currently shown are indicative starting
-          prices for the prototype and should be verified before
-          making a purchase decision.
-        </div>
+How does CarDhundo choose my matches?
 
-      </div>
+<span>+</span>
+
+</button>
+
+<div class="faq-answer">
+
+CarDhundo compares your budget, fuel type,
+family size, mileage preference, car type
+and transmission with the vehicles in its
+database and calculates a match score.
+
+</div>
+
+</div>
 
 
-      <div class="faq">
+<div class="faq">
 
-        <button onclick="toggleFaq(this)">
-          Will CarDhundo have more cars?
-          <span>+</span>
-        </button>
+<button onclick="toggleFaq(this)">
 
-        <div class="faq-answer">
-          Yes. The database can be expanded with more models,
-          variants, specifications and eventually more detailed
-          vehicle information.
-        </div>
+Is CarDhundo free?
 
-      </div>
+<span>+</span>
 
-    </div>
+</button>
 
-  </div>
+<div class="faq-answer">
+
+Yes. The current car discovery experience
+is designed to be free for visitors.
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button onclick="toggleFaq(this)">
+
+Are the displayed prices final?
+
+<span>+</span>
+
+</button>
+
+<div class="faq-answer">
+
+No. Prices shown on this prototype are
+indicative starting prices. Actual prices
+can vary by variant, city and other charges.
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+<button onclick="toggleFaq(this)">
+
+Will more cars be added?
+
+<span>+</span>
+
+</button>
+
+<div class="faq-answer">
+
+Yes. The database can be expanded with
+additional models, variants, specifications
+and vehicle information.
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
@@ -1880,68 +2851,73 @@ footer {
 
 
 <!-- =======================================================
-     CAR DETAILS MODAL
+     MODAL
      ======================================================= -->
 
 <div
-  class="modal"
-  id="carModal"
-  onclick="closeModalOutside(event)">
+class="modal"
+id="carModal"
+onclick="closeModalOutside(event)">
 
-  <div class="modal-box">
+<div class="modal-box">
 
-    <button
-      class="modal-close"
-      onclick="closeModal()">
-      ×
-    </button>
+<button
+class="modal-close"
+onclick="closeModal()">
 
-    <div
-      class="modal-car-image"
-      id="modalImage">
-      🚗
-    </div>
+×
 
-    <h2 id="modalName">
-      Car
-    </h2>
+</button>
 
-    <div
-      class="modal-price"
-      id="modalPrice">
-    </div>
+<div
+class="modal-car-image"
+id="modalImage">
 
-    <div
-      class="modal-info"
-      id="modalInfo">
-    </div>
+🚗
 
-    <div class="modal-section">
+</div>
 
-      <h4>
-        Why CarDhundo recommends it
-      </h4>
+<h2 id="modalName">
+Car
+</h2>
 
-      <p id="modalReason">
-      </p>
+<div
+class="modal-price"
+id="modalPrice">
+</div>
 
-    </div>
+<div
+class="modal-info"
+id="modalInfo">
+</div>
 
-    <div class="modal-section">
+<div class="modal-section">
 
-      <h4>
-        Important
-      </h4>
+<h4>
+Why CarDhundo recommends it
+</h4>
 
-      <p>
-        Specifications, prices and mileage can vary by
-        variant, location, driving conditions and updates
-        from the manufacturer. Verify details before buying.
-      </p>
+<p id="modalReason">
+</p>
 
-    </div>
+</div>
 
-  </div>
+<div class="modal-section">
+
+<h4>
+Important
+</h4>
+
+<p>
+Specifications, prices and mileage can vary
+by variant, location, driving conditions and
+manufacturer updates. Verify details before
+making a purchase decision.
+</p>
+
+</div>
+
+</div>
 
 </div>
 
@@ -1952,62 +2928,101 @@ footer {
 
 <footer>
 
-  <div class="footer-grid">
-
-    <div class="footer-brand">
-
-      <a class="logo" href="#">
-        Car<span>Dhundo</span>
-      </a>
-
-      <p>
-        A smarter way to discover cars based on
-        what matters to you.
-      </p>
-
-    </div>
+<div class="footer-grid">
 
 
-    <div class="footer-column">
+<div class="footer-brand">
 
-      <h4>Explore</h4>
+<a class="logo" href="#">
 
-      <a href="#find">Find Cars</a>
-      <a href="#popular">Popular Cars</a>
-      <a href="#why">Why CarDhundo</a>
+<span class="logo-mark">
+⌁
+</span>
 
-    </div>
+<span class="logo-text">
+CarDhundo
+</span>
 
+</a>
 
-    <div class="footer-column">
+<p>
+A smarter way to discover cars based on
+what actually matters to you.
+</p>
 
-      <h4>Information</h4>
-
-      <a href="#faq">FAQ</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-
-    </div>
-
-
-    <div class="footer-column">
-
-      <h4>CarDhundo</h4>
-
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Disclaimer</a>
-
-    </div>
-
-  </div>
+</div>
 
 
-  <div class="footer-bottom">
+<div class="footer-column">
 
-    © 2026 CarDhundo. Built to make car discovery easier.
+<h4>
+Explore
+</h4>
 
-  </div>
+<a href="#find">
+Find Cars
+</a>
+
+<a href="#popular">
+Popular Cars
+</a>
+
+<a href="#why">
+Why CarDhundo
+</a>
+
+</div>
+
+
+<div class="footer-column">
+
+<h4>
+Information
+</h4>
+
+<a href="#faq">
+FAQ
+</a>
+
+<a href="#">
+About
+</a>
+
+<a href="#">
+Contact
+</a>
+
+</div>
+
+
+<div class="footer-column">
+
+<h4>
+Legal
+</h4>
+
+<a href="#">
+Privacy
+</a>
+
+<a href="#">
+Terms
+</a>
+
+<a href="#">
+Disclaimer
+</a>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+© 2026 CarDhundo. Built for smarter car discovery.
+
+</div>
 
 </footer>
 
@@ -2020,225 +3035,225 @@ footer {
 
 const cars = [
 
-  {
-    name: "Maruti Suzuki Brezza",
-    price: 10.5,
-    fuel: "CNG",
-    family: "3-4",
-    mileage: 25.5,
-    type: "SUV",
-    transmission: "Manual",
-    icon: "🚙"
-  },
+{
+name:"Maruti Suzuki Brezza",
+price:10.5,
+fuel:"CNG",
+family:"3-4",
+mileage:25.5,
+type:"SUV",
+transmission:"Manual",
+icon:"🚙"
+},
 
-  {
-    name: "Maruti Suzuki Fronx",
-    price: 9.2,
-    fuel: "CNG",
-    family: "3-4",
-    mileage: 28.5,
-    type: "Compact SUV",
-    transmission: "Manual",
-    icon: "🚗"
-  },
+{
+name:"Maruti Suzuki Fronx",
+price:9.2,
+fuel:"CNG",
+family:"3-4",
+mileage:28.5,
+type:"Compact SUV",
+transmission:"Manual",
+icon:"🚗"
+},
 
-  {
-    name: "Hyundai Exter",
-    price: 8.5,
-    fuel: "CNG",
-    family: "3-4",
-    mileage: 27.1,
-    type: "SUV",
-    transmission: "Manual",
-    icon: "🚙"
-  },
+{
+name:"Hyundai Exter",
+price:8.5,
+fuel:"CNG",
+family:"3-4",
+mileage:27.1,
+type:"SUV",
+transmission:"Manual",
+icon:"🚙"
+},
 
-  {
-    name: "Tata Nexon",
-    price: 11.2,
-    fuel: "CNG",
-    family: "3-4",
-    mileage: 24,
-    type: "SUV",
-    transmission: "Manual",
-    icon: "🚙"
-  },
+{
+name:"Tata Nexon",
+price:11.2,
+fuel:"CNG",
+family:"3-4",
+mileage:24,
+type:"SUV",
+transmission:"Manual",
+icon:"🚙"
+},
 
-  {
-    name: "Tata Punch",
-    price: 8.8,
-    fuel: "CNG",
-    family: "3-4",
-    mileage: 26.9,
-    type: "SUV",
-    transmission: "Manual",
-    icon: "🚗"
-  },
+{
+name:"Tata Punch",
+price:8.8,
+fuel:"CNG",
+family:"3-4",
+mileage:26.9,
+type:"SUV",
+transmission:"Manual",
+icon:"🚗"
+},
 
-  {
-    name: "Hyundai Venue",
-    price: 11.4,
-    fuel: "Petrol",
-    family: "3-4",
-    mileage: 18.2,
-    type: "SUV",
-    transmission: "Manual",
-    icon: "🚙"
-  },
+{
+name:"Hyundai Venue",
+price:11.4,
+fuel:"Petrol",
+family:"3-4",
+mileage:18.2,
+type:"SUV",
+transmission:"Manual",
+icon:"🚙"
+},
 
-  {
-    name: "Kia Sonet",
-    price: 10.8,
-    fuel: "Petrol",
-    family: "3-4",
-    mileage: 18.7,
-    type: "Compact SUV",
-    transmission: "Manual",
-    icon: "🚙"
-  },
+{
+name:"Kia Sonet",
+price:10.8,
+fuel:"Petrol",
+family:"3-4",
+mileage:18.7,
+type:"Compact SUV",
+transmission:"Manual",
+icon:"🚙"
+},
 
-  {
-    name: "Maruti Suzuki Baleno",
-    price: 8.9,
-    fuel: "Petrol",
-    family: "3-4",
-    mileage: 22.3,
-    type: "Hatchback",
-    transmission: "Manual",
-    icon: "🚗"
-  },
+{
+name:"Maruti Suzuki Baleno",
+price:8.9,
+fuel:"Petrol",
+family:"3-4",
+mileage:22.3,
+type:"Hatchback",
+transmission:"Manual",
+icon:"🚗"
+},
 
-  {
-    name: "Honda Amaze",
-    price: 9.8,
-    fuel: "Petrol",
-    family: "3-4",
-    mileage: 18.6,
-    type: "Sedan",
-    transmission: "Manual",
-    icon: "🚘"
-  },
+{
+name:"Honda Amaze",
+price:9.8,
+fuel:"Petrol",
+family:"3-4",
+mileage:18.6,
+type:"Sedan",
+transmission:"Manual",
+icon:"🚘"
+},
 
-  {
-    name: "Maruti Suzuki Ertiga",
-    price: 11.9,
-    fuel: "CNG",
-    family: "5-6",
-    mileage: 26.1,
-    type: "MPV",
-    transmission: "Manual",
-    icon: "🚐"
-  },
+{
+name:"Maruti Suzuki Ertiga",
+price:11.9,
+fuel:"CNG",
+family:"5-6",
+mileage:26.1,
+type:"MPV",
+transmission:"Manual",
+icon:"🚐"
+},
 
-  {
-    name: "Toyota Rumion",
-    price: 12.2,
-    fuel: "CNG",
-    family: "5-6",
-    mileage: 26.1,
-    type: "MPV",
-    transmission: "Manual",
-    icon: "🚐"
-  },
+{
+name:"Toyota Rumion",
+price:12.2,
+fuel:"CNG",
+family:"5-6",
+mileage:26.1,
+type:"MPV",
+transmission:"Manual",
+icon:"🚐"
+},
 
-  {
-    name: "Toyota Hyryder",
-    price: 17.5,
-    fuel: "Hybrid",
-    family: "3-4",
-    mileage: 27.9,
-    type: "SUV",
-    transmission: "Automatic",
-    icon: "🚙"
-  },
+{
+name:"Toyota Hyryder",
+price:17.5,
+fuel:"Hybrid",
+family:"3-4",
+mileage:27.9,
+type:"SUV",
+transmission:"Automatic",
+icon:"🚙"
+},
 
-  {
-    name: "Hyundai Creta",
-    price: 16.5,
-    fuel: "Petrol",
-    family: "3-4",
-    mileage: 18.4,
-    type: "SUV",
-    transmission: "Automatic",
-    icon: "🚙"
-  },
+{
+name:"Hyundai Creta",
+price:16.5,
+fuel:"Petrol",
+family:"3-4",
+mileage:18.4,
+type:"SUV",
+transmission:"Automatic",
+icon:"🚙"
+},
 
-  {
-    name: "Tata Tiago",
-    price: 7.2,
-    fuel: "CNG",
-    family: "3-4",
-    mileage: 26.5,
-    type: "Hatchback",
-    transmission: "Manual",
-    icon: "🚗"
-  },
+{
+name:"Tata Tiago",
+price:7.2,
+fuel:"CNG",
+family:"3-4",
+mileage:26.5,
+type:"Hatchback",
+transmission:"Manual",
+icon:"🚗"
+},
 
-  {
-    name: "Maruti Suzuki Wagon R",
-    price: 7.4,
-    fuel: "CNG",
-    family: "3-4",
-    mileage: 33.4,
-    type: "Hatchback",
-    transmission: "Manual",
-    icon: "🚗"
-  },
+{
+name:"Maruti Suzuki Wagon R",
+price:7.4,
+fuel:"CNG",
+family:"3-4",
+mileage:33.4,
+type:"Hatchback",
+transmission:"Manual",
+icon:"🚗"
+},
 
-  {
-    name: "MG Comet EV",
-    price: 8.2,
-    fuel: "Electric",
-    family: "1-2",
-    mileage: 0,
-    type: "Hatchback",
-    transmission: "Automatic",
-    icon: "⚡"
-  },
+{
+name:"MG Comet EV",
+price:8.2,
+fuel:"Electric",
+family:"1-2",
+mileage:0,
+type:"Hatchback",
+transmission:"Automatic",
+icon:"⚡"
+},
 
-  {
-    name: "Tata Punch EV",
-    price: 12.5,
-    fuel: "Electric",
-    family: "3-4",
-    mileage: 0,
-    type: "SUV",
-    transmission: "Automatic",
-    icon: "⚡"
-  },
+{
+name:"Tata Punch EV",
+price:12.5,
+fuel:"Electric",
+family:"3-4",
+mileage:0,
+type:"SUV",
+transmission:"Automatic",
+icon:"⚡"
+},
 
-  {
-    name: "Mahindra XUV 3XO",
-    price: 12.8,
-    fuel: "Petrol",
-    family: "3-4",
-    mileage: 18,
-    type: "SUV",
-    transmission: "Manual",
-    icon: "🚙"
-  },
+{
+name:"Mahindra XUV 3XO",
+price:12.8,
+fuel:"Petrol",
+family:"3-4",
+mileage:18,
+type:"SUV",
+transmission:"Manual",
+icon:"🚙"
+},
 
-  {
-    name: "Mahindra Scorpio",
-    price: 18.8,
-    fuel: "Diesel",
-    family: "5-6",
-    mileage: 15,
-    type: "SUV",
-    transmission: "Manual",
-    icon: "🚙"
-  },
+{
+name:"Mahindra Scorpio",
+price:18.8,
+fuel:"Diesel",
+family:"5-6",
+mileage:15,
+type:"SUV",
+transmission:"Manual",
+icon:"🚙"
+},
 
-  {
-    name: "Toyota Innova Hycross",
-    price: 22.5,
-    fuel: "Hybrid",
-    family: "7+",
-    mileage: 21.1,
-    type: "MPV",
-    transmission: "Automatic",
-    icon: "🚐"
-  }
+{
+name:"Toyota Innova Hycross",
+price:22.5,
+fuel:"Hybrid",
+family:"7+",
+mileage:21.1,
+type:"MPV",
+transmission:"Automatic",
+icon:"🚐"
+}
 
 ];
 
@@ -2249,17 +3264,22 @@ const cars = [
 
 function getBudgetRange(value) {
 
-  if (value === "5-8") return [5, 8];
+if(value==="5-8")
+return [5,8];
 
-  if (value === "8-12") return [8, 12];
+if(value==="8-12")
+return [8,12];
 
-  if (value === "12-18") return [12, 18];
+if(value==="12-18")
+return [12,18];
 
-  if (value === "18-25") return [18, 25];
+if(value==="18-25")
+return [18,25];
 
-  if (value === "25+") return [25, 100];
+if(value==="25+")
+return [25,100];
 
-  return [0, 100];
+return [0,100];
 
 }
 
@@ -2270,659 +3290,643 @@ function getBudgetRange(value) {
 
 function familyMatch(carFamily, selectedFamily) {
 
-  if (carFamily === selectedFamily) {
-    return true;
-  }
+if(carFamily===selectedFamily)
+return true;
 
-  if (
-    selectedFamily === "5-6" &&
-    carFamily === "7+"
-  ) {
-    return true;
-  }
+if(
+selectedFamily==="5-6" &&
+carFamily==="7+"
+)
+return true;
 
-  if (
-    selectedFamily === "7+" &&
-    carFamily === "5-6"
-  ) {
-    return true;
-  }
+if(
+selectedFamily==="7+" &&
+carFamily==="5-6"
+)
+return true;
 
-  return false;
+return false;
+
 }
 
 
 /* =========================================================
-   FIND CARS
+   FIND
    ========================================================= */
 
 function findCars() {
 
-  const button =
-    document.getElementById("findButton");
+const button =
+document.getElementById("findButton");
 
-  button.classList.add("loading");
+button.classList.add("loading");
 
-  button.textContent =
-    "Finding your matches...";
+button.textContent =
+"Finding your best matches...";
 
-  const budget =
-    document.getElementById("budget").value;
 
-  const fuel =
-    document.getElementById("fuel").value;
+const budget =
+document.getElementById("budget").value;
 
-  const family =
-    document.getElementById("family").value;
+const fuel =
+document.getElementById("fuel").value;
 
-  const mileage =
-    document.getElementById("mileage").value;
+const family =
+document.getElementById("family").value;
 
-  const type =
-    document.getElementById("type").value;
+const mileage =
+document.getElementById("mileage").value;
 
-  const transmission =
-    document.getElementById("transmission").value;
+const type =
+document.getElementById("type").value;
 
+const transmission =
+document.getElementById("transmission").value;
 
-  const message =
-    document.getElementById("preferenceMessage");
 
-  message.textContent =
-    "Great! We'll use 6 preferences to find your matches.";
+const message =
+document.getElementById("preferenceMessage");
 
-  message.classList.add("show");
+message.textContent =
+"✓ Your preferences are being analyzed.";
 
+message.classList.add("show");
 
-  const progress =
-    document.getElementById("progressBar");
 
-  progress.style.width = "100%";
+document.getElementById("progressBar")
+.style.width="100%";
 
+document.getElementById("stepLabel")
+.textContent="6 of 6";
 
-  const step =
-    document.getElementById("stepLabel");
 
-  step.textContent =
-    "6 of 6 preferences";
+const [minBudget,maxBudget] =
+getBudgetRange(budget);
 
+const minimumMileage =
+mileage==="any"
+?0
+:Number(mileage);
 
-  const [minBudget, maxBudget] =
-    getBudgetRange(budget);
 
+const scoredCars =
+cars.map(car => {
 
-  const minimumMileage =
-    mileage === "any"
-      ? 0
-      : Number(mileage);
+let score=0;
 
+let reasons=[];
 
-  const scoredCars =
-    cars.map(car => {
 
-      let score = 0;
+/* BUDGET */
 
-      let reasons = [];
+if(
+car.price>=minBudget &&
+car.price<=maxBudget
+){
 
+score+=25;
 
-      /* BUDGET */
+reasons.push(
+"fits your budget"
+);
 
-      if (
-        car.price >= minBudget &&
-        car.price <= maxBudget
-      ) {
+}
 
-        score += 25;
+else {
 
-        reasons.push(
-          "fits your budget"
-        );
+const distance =
+car.price<minBudget
+?minBudget-car.price
+:car.price-maxBudget;
 
-      } else {
+if(distance<=2){
 
-        const distance =
-          car.price < minBudget
-            ? minBudget - car.price
-            : car.price - maxBudget;
+score+=12;
 
-        if (distance <= 2) {
+reasons.push(
+"is close to your budget"
+);
 
-          score += 12;
+}
 
-          reasons.push(
-            "is close to your budget"
-          );
+}
 
-        }
 
-      }
+/* FUEL */
 
+if(car.fuel===fuel){
 
-      /* FUEL */
+score+=20;
 
-      if (car.fuel === fuel) {
+reasons.push(
+`${fuel} fuel`
+);
 
-        score += 20;
+}
 
-        reasons.push(
-          `${fuel} fuel`
-        );
 
-      }
+/* FAMILY */
 
+if(
+familyMatch(
+car.family,
+family
+)
+){
 
-      /* FAMILY */
+score+=15;
 
-      if (
-        familyMatch(
-          car.family,
-          family
-        )
-      ) {
+reasons.push(
+"suits your family size"
+);
 
-        score += 15;
+}
 
-        reasons.push(
-          "suits your family size"
-        );
 
-      }
+/* MILEAGE */
 
+if(mileage==="any"){
 
-      /* MILEAGE */
+score+=10;
 
-      if (mileage === "any") {
+reasons.push(
+"matches your mileage preference"
+);
 
-        score += 10;
+}
 
-        reasons.push(
-          "meets your mileage preference"
-        );
+else if(car.fuel==="Electric"){
 
-      } else if (
-        car.fuel === "Electric"
-      ) {
+score+=10;
 
-        score += 10;
+reasons.push(
+"electric efficiency"
+);
 
-        reasons.push(
-          "electric efficiency"
-        );
+}
 
-      } else if (
-        car.mileage >= minimumMileage
-      ) {
+else if(
+car.mileage>=minimumMileage
+){
 
-        score += 15;
+score+=15;
 
-        reasons.push(
-          `offers ${car.mileage} km/l`
-        );
+reasons.push(
+`offers ${car.mileage} km/l`
+);
 
-      } else if (
-        car.mileage >=
-        minimumMileage - 3
-      ) {
+}
 
-        score += 7;
+else if(
+car.mileage>=minimumMileage-3
+){
 
-        reasons.push(
-          "has reasonable mileage"
-        );
+score+=7;
 
-      }
+reasons.push(
+"has reasonable mileage"
+);
 
+}
 
-      /* TYPE */
 
-      if (car.type === type) {
+/* TYPE */
 
-        score += 15;
+if(car.type===type){
 
-        reasons.push(
-          `${type} body style`
-        );
+score+=15;
 
-      }
+reasons.push(
+`${type} body style`
+);
 
+}
 
-      /* TRANSMISSION */
 
-      if (
-        car.transmission === transmission
-      ) {
+/* TRANSMISSION */
 
-        score += 15;
+if(
+car.transmission===transmission
+){
 
-        reasons.push(
-          `${transmission} transmission`
-        );
+score+=15;
 
-      }
+reasons.push(
+`${transmission} transmission`
+);
 
+}
 
-      return {
-        ...car,
-        score,
-        reasons
-      };
 
-    });
+return {
+...car,
+score,
+reasons
+};
 
+});
 
-  const results =
-    scoredCars
-      .filter(car => car.score >= 35)
-      .sort(
-        (a,b) => b.score - a.score
-      )
-      .slice(0, 9);
 
+const results =
+scoredCars
+.filter(car=>car.score>=35)
+.sort((a,b)=>b.score-a.score)
+.slice(0,9);
 
-  setTimeout(() => {
 
-    button.classList.remove("loading");
+setTimeout(()=>{
 
-    button.textContent =
-      "Find My Cars →";
+button.classList.remove("loading");
 
-    displayResults(results);
+button.textContent =
+"Find My Matches →";
 
-  }, 650);
+displayResults(results);
+
+},650);
 
 }
 
 
 /* =========================================================
-   DISPLAY RESULTS
+   DISPLAY
    ========================================================= */
 
-function displayResults(results) {
+function displayResults(results){
 
-  const section =
-    document.getElementById("results");
+const section =
+document.getElementById("results");
 
-  const grid =
-    document.getElementById("carGrid");
+const grid =
+document.getElementById("carGrid");
 
-  const best =
-    document.getElementById("bestMatch");
+const best =
+document.getElementById("bestMatch");
 
-  const count =
-    document.getElementById("resultCount");
+const count =
+document.getElementById("resultCount");
 
 
-  section.classList.add("show");
+section.classList.add("show");
 
-  grid.innerHTML = "";
+grid.innerHTML="";
 
-  best.classList.remove("show");
+best.classList.remove("show");
 
 
-  if (results.length === 0) {
+if(results.length===0){
 
-    count.textContent =
-      "We couldn't find a strong match.";
+count.textContent =
+"We couldn't find a strong match.";
 
-    grid.innerHTML = `
+grid.innerHTML=`
 
-      <div class="no-results">
+<div class="no-results">
 
-        <h3>
-          No strong matches yet
-        </h3>
+<h3>
+No strong matches yet
+</h3>
 
-        <p>
-          Try changing your budget,
-          mileage or car type.
-        </p>
+<p>
+Try adjusting your budget, mileage or car type.
+</p>
 
-      </div>
+</div>
 
-    `;
+`;
 
-    section.scrollIntoView({
-      behavior: "smooth"
-    });
+section.scrollIntoView({
+behavior:"smooth"
+});
 
-    return;
-  }
+return;
 
+}
 
-  count.textContent =
-    `We found ${results.length} cars that could match your preferences.`;
 
+count.textContent =
+`We found ${results.length} cars that could fit your preferences.`;
 
-  /* BEST MATCH */
 
-  const top =
-    results[0];
+const top=results[0];
 
+const topPercentage=
+Math.min(
+99,
+Math.max(
+60,
+Math.round(top.score)
+)
+);
 
-  const topPercentage =
-    Math.min(
-      99,
-      Math.max(
-        60,
-        Math.round(top.score)
-      )
-    );
 
+best.innerHTML=`
 
-  best.innerHTML = `
+<div class="best-image">
+${top.icon}
+</div>
 
-    <div class="best-image">
-      ${top.icon}
-    </div>
+<div class="best-info">
 
-    <div class="best-info">
+<div class="best-label">
+✦ Your Best Match
+</div>
 
-      <div class="best-label">
-        ⭐ Your Best Match
-      </div>
+<h3>
+${top.name}
+</h3>
 
-      <h3>
-        ${top.name}
-      </h3>
+<div class="best-price">
+₹${top.price} Lakh*
+</div>
 
-      <div class="best-price">
-        ₹${top.price} Lakh*
-      </div>
+<p class="best-reason">
+${top.reasons.slice(0,5).join(" • ")}
+</p>
 
-      <p class="best-reason">
-        ${top.reasons
-          .slice(0,5)
-          .join(" • ")}
-      </p>
+</div>
 
-    </div>
+<div class="best-score">
 
-    <div class="best-score">
+<strong>
+${topPercentage}%
+</strong>
 
-      <strong>
-        ${topPercentage}%
-      </strong>
+<span>
+Match
+</span>
 
-      <span>
-        Match
-      </span>
+</div>
 
-    </div>
+`;
 
-  `;
+best.classList.add("show");
 
-  best.classList.add("show");
 
+results.forEach((car,index)=>{
 
-  /* CAR CARDS */
+const percentage=
+Math.min(
+99,
+Math.max(
+60,
+Math.round(car.score)
+)
+);
 
-  results.forEach((car,index) => {
+const reasonText =
+car.reasons.length
+?car.reasons.slice(0,4).join(" • ")
+:"Matches several preferences.";
 
-    const percentage =
-      Math.min(
-        99,
-        Math.max(
-          60,
-          Math.round(car.score)
-        )
-      );
+const mileageText =
+car.fuel==="Electric"
+?"Electric"
+:`${car.mileage} km/l`;
 
 
-    const reasonText =
-      car.reasons.length
-        ? car.reasons
-            .slice(0,4)
-            .join(" • ")
-        : "Matches several preferences.";
+const card =
+document.createElement("article");
 
+card.className="car-card";
 
-    const mileageText =
-      car.fuel === "Electric"
-        ? "Electric"
-        : `${car.mileage} km/l`;
 
+card.innerHTML=`
 
-    const card =
-      document.createElement("article");
+<div class="car-image">
 
+<div class="car-rank">
+#${index+1} match
+</div>
 
-    card.className =
-      "car-card";
+<button
+class="save-btn"
+onclick="toggleSave(this)"
+aria-label="Save car">
 
+♡
 
-    card.innerHTML = `
+</button>
 
-      <div class="car-image">
+<div class="car-emoji">
+${car.icon}
+</div>
 
-        <div class="car-rank">
-          #${index + 1} match
-        </div>
+</div>
 
-        <button
-          class="save-btn"
-          onclick="toggleSave(this)"
-          aria-label="Save car">
-          ♡
-        </button>
 
-        <div class="car-emoji">
-          ${car.icon}
-        </div>
+<div class="car-content">
 
-      </div>
+<div class="car-title-row">
 
+<div>
 
-      <div class="car-content">
+<h3>
+${car.name}
+</h3>
 
-        <div class="car-title-row">
+<div class="price">
+₹${car.price} Lakh*
+</div>
 
-          <div>
+</div>
 
-            <h3>
-              ${car.name}
-            </h3>
+<div class="match">
+${percentage}% Match
+</div>
 
-            <div class="price">
-              ₹${car.price} Lakh*
-            </div>
+</div>
 
-          </div>
 
-          <div class="match">
-            ${percentage}% Match
-          </div>
+<div class="specs">
 
-        </div>
+<div class="spec">
+Fuel
+<strong>
+${car.fuel}
+</strong>
+</div>
 
+<div class="spec">
+Type
+<strong>
+${car.type}
+</strong>
+</div>
 
-        <div class="specs">
+<div class="spec">
+Mileage
+<strong>
+${mileageText}
+</strong>
+</div>
 
-          <div class="spec">
-            Fuel
-            <strong>
-              ${car.fuel}
-            </strong>
-          </div>
+<div class="spec">
+Gearbox
+<strong>
+${car.transmission}
+</strong>
+</div>
 
-          <div class="spec">
-            Type
-            <strong>
-              ${car.type}
-            </strong>
-          </div>
+</div>
 
-          <div class="spec">
-            Mileage
-            <strong>
-              ${mileageText}
-            </strong>
-          </div>
 
-          <div class="spec">
-            Gearbox
-            <strong>
-              ${car.transmission}
-            </strong>
-          </div>
+<div class="reason">
 
-        </div>
+<strong>
+Why it matches
+</strong>
 
+<br>
 
-        <div class="reason">
+${reasonText}
 
-          <strong>
-            Why it matches
-          </strong>
+</div>
 
-          <br>
 
-          ${reasonText}
+<div class="card-actions">
 
-        </div>
+<button
+class="details-btn"
+onclick='openDetails(${JSON.stringify(car)})'>
 
+View Details
 
-        <div class="card-actions">
+</button>
 
-          <button
-            class="details-btn"
-            onclick='openDetails(${JSON.stringify(car)})'>
-            View Details
-          </button>
+<button
+class="compare-btn"
+onclick="compareCar('${car.name}')">
 
-          <button
-            class="compare-btn"
-            onclick="compareCar('${car.name}')">
-            Compare
-          </button>
+Compare
 
-        </div>
+</button>
 
-      </div>
+</div>
 
-    `;
+</div>
 
+`;
 
-    grid.appendChild(card);
+grid.appendChild(card);
 
-  });
+});
 
 
-  setTimeout(() => {
+setTimeout(()=>{
 
-    section.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+section.scrollIntoView({
+behavior:"smooth",
+block:"start"
+});
 
-  }, 100);
+},100);
 
 }
 
 
 /* =========================================================
-   VIEW DETAILS
+   DETAILS
    ========================================================= */
 
-function openDetails(car) {
+function openDetails(car){
 
-  document.getElementById("modalImage").textContent =
-    car.icon;
+document.getElementById("modalImage")
+.textContent=car.icon;
 
-  document.getElementById("modalName").textContent =
-    car.name;
+document.getElementById("modalName")
+.textContent=car.name;
 
-  document.getElementById("modalPrice").textContent =
-    `₹${car.price} Lakh*`;
+document.getElementById("modalPrice")
+.textContent=
+`₹${car.price} Lakh*`;
 
-  document.getElementById("modalInfo").innerHTML = `
 
-    <div>
-      Fuel
-      <strong>
-        ${car.fuel}
-      </strong>
-    </div>
+document.getElementById("modalInfo")
+.innerHTML=`
 
-    <div>
-      Body Type
-      <strong>
-        ${car.type}
-      </strong>
-    </div>
+<div>
+Fuel
+<strong>
+${car.fuel}
+</strong>
+</div>
 
-    <div>
-      Mileage
-      <strong>
-        ${
-          car.fuel === "Electric"
-            ? "Electric"
-            : car.mileage + " km/l"
-        }
-      </strong>
-    </div>
+<div>
+Body Type
+<strong>
+${car.type}
+</strong>
+</div>
 
-    <div>
-      Transmission
-      <strong>
-        ${car.transmission}
-      </strong>
-    </div>
+<div>
+Mileage
+<strong>
+${
+car.fuel==="Electric"
+?"Electric"
+:car.mileage+" km/l"
+}
+</strong>
+</div>
 
-    <div>
-      Family
-      <strong>
-        ${car.family} people
-      </strong>
-    </div>
+<div>
+Transmission
+<strong>
+${car.transmission}
+</strong>
+</div>
 
-    <div>
-      Starting Price
-      <strong>
-        ₹${car.price} Lakh*
-      </strong>
-    </div>
+<div>
+Family
+<strong>
+${car.family} people
+</strong>
+</div>
 
-  `;
+<div>
+Starting Price
+<strong>
+₹${car.price} Lakh*
+</strong>
+</div>
 
-  document.getElementById("modalReason").textContent =
-    car.reasons && car.reasons.length
-      ? car.reasons.join(" • ")
-      : "This vehicle matches several of your selected preferences.";
+`;
 
-  document
-    .getElementById("carModal")
-    .classList.add("show");
 
-  document.body.style.overflow =
-    "hidden";
+document.getElementById("modalReason")
+.textContent=
+car.reasons?.join(" • ")
+||
+"This vehicle matches several of your selected preferences.";
+
+
+document.getElementById("carModal")
+.classList.add("show");
+
+document.body.style.overflow="hidden";
+
 }
 
 
 /* =========================================================
-   CLOSE MODAL
+   MODAL
    ========================================================= */
 
-function closeModal() {
+function closeModal(){
 
-  document
-    .getElementById("carModal")
-    .classList.remove("show");
+document.getElementById("carModal")
+.classList.remove("show");
 
-  document.body.style.overflow =
-    "";
+document.body.style.overflow="";
 
 }
 
 
-function closeModalOutside(event) {
+function closeModalOutside(event){
 
-  if (
-    event.target.id === "carModal"
-  ) {
-
-    closeModal();
-
-  }
+if(event.target.id==="carModal")
+closeModal();
 
 }
 
@@ -2931,14 +3935,14 @@ function closeModalOutside(event) {
    SAVE
    ========================================================= */
 
-function toggleSave(button) {
+function toggleSave(button){
 
-  button.classList.toggle("saved");
+button.classList.toggle("saved");
 
-  button.textContent =
-    button.classList.contains("saved")
-      ? "♥"
-      : "♡";
+button.textContent=
+button.classList.contains("saved")
+?"♥"
+:"♡";
 
 }
 
@@ -2947,11 +3951,11 @@ function toggleSave(button) {
    COMPARE
    ========================================================= */
 
-function compareCar(name) {
+function compareCar(name){
 
-  alert(
-    `${name} has been added to Compare. The full comparison system will be added next.`
-  );
+alert(
+`${name} has been added to Compare.\n\nThe full comparison experience can be added next.`
+);
 
 }
 
@@ -2960,89 +3964,92 @@ function compareCar(name) {
    FAQ
    ========================================================= */
 
-function toggleFaq(button) {
+function toggleFaq(button){
 
-  const faq =
-    button.parentElement;
+const faq=
+button.parentElement;
 
-  faq.classList.toggle("open");
+faq.classList.toggle("open");
 
-  const symbol =
-    button.querySelector("span");
+const symbol=
+button.querySelector("span");
 
-  symbol.textContent =
-    faq.classList.contains("open")
-      ? "−"
-      : "+";
+symbol.textContent=
+faq.classList.contains("open")
+?"−"
+:"+";
 
 }
 
 
 /* =========================================================
-   ESCAPE KEY
+   FINDER SCROLL
+   ========================================================= */
+
+function scrollToFinder(){
+
+document
+.getElementById("find")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================================================
+   ESCAPE
    ========================================================= */
 
 document.addEventListener(
-  "keydown",
-  function(event) {
+"keydown",
+event=>{
 
-    if (
-      event.key === "Escape"
-    ) {
+if(event.key==="Escape")
+closeModal();
 
-      closeModal();
-
-    }
-
-  }
+}
 );
 
 
 /* =========================================================
-   UPDATE PROGRESS WHEN USER CHANGES FILTERS
+   PROGRESS
    ========================================================= */
 
-const filterIds = [
-  "budget",
-  "fuel",
-  "family",
-  "mileage",
-  "type",
-  "transmission"
+const filterIds=[
+"budget",
+"fuel",
+"family",
+"mileage",
+"type",
+"transmission"
 ];
 
+filterIds.forEach((id,index)=>{
 
-filterIds.forEach(
-  (id,index) => {
+document
+.getElementById(id)
+.addEventListener(
+"change",
+function(){
 
-    document
-      .getElementById(id)
-      .addEventListener(
-        "change",
-        function() {
+const progress=
+((index+1)/6)*100;
 
-          const progress =
-            ((index + 1) / 6) * 100;
+document
+.getElementById("progressBar")
+.style.width=
+progress+"%";
 
-          document
-            .getElementById(
-              "progressBar"
-            )
-            .style.width =
-              progress + "%";
+document
+.getElementById("stepLabel")
+.textContent=
+`${index+1} of 6`;
 
-          document
-            .getElementById(
-              "stepLabel"
-            )
-            .textContent =
-              `${index + 1} of 6 preferences`;
-
-        }
-      );
-
-  }
+}
 );
+
+});
 
 </script>
 
