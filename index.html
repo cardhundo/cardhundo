@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CardHundo — Find Your Perfect Car</title>
+  <meta name="description" content="CardHundo helps you find cars based on your budget, fuel type, family size, mileage and more.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 18px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 27px;
+      font-weight: 800;
+      color: #1769ff;
+    }
+
+    .logo span {
+      color: #172033;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #4b5563;
+      margin-left: 25px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #eef5ff, #ffffff);
+      padding: 70px 6% 55px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: #1769ff;
+    }
+
+    .hero p {
+      color: #64748b;
+      font-size: 18px;
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .search-box {
+      max-width: 1050px;
+      margin: 35px auto 0;
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 15px 45px rgba(20, 40, 80, 0.12);
+      text-align: left;
+    }
+
+    .search-box h2 {
+      margin-bottom: 20px;
+      font-size: 21px;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 7px;
+      color: #374151;
+    }
+
+    select,
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #d7dce5;
+      border-radius: 9px;
+      background: white;
+      font-size: 14px;
+    }
+
+    .search-btn {
+      margin-top: 20px;
+      width: 100%;
+      border: none;
+      padding: 15px;
+      border-radius: 10px;
+      background: #1769ff;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .search-btn:hover {
+      background: #0d55d8;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 55px auto;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      color: #64748b;
+      margin-bottom: 25px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .feature h3 {
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      color: #64748b;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .cars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .car-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .car-image {
+      height: 175px;
+      background: linear-gradient(135deg, #dbeafe, #eef2ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 65px;
+    }
+
+    .car-info {
+      padding: 18px;
+    }
+
+    .car-info h3 {
+      margin-bottom: 8px;
+    }
+
+    .car-meta {
+      color: #64748b;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .price {
+      margin-top: 12px;
+      font-size: 19px;
+      font-weight: 800;
+      color: #1769ff;
+    }
+
+    footer {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+      margin-top: 70px;
+    }
+
+    footer p {
+      color: #9ca3af;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      .hero h1 {
+        font-size: 35px;
+      }
+
+      .filters,
+      .features,
+      .cars {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Card<span>Hundo</span></div>
+  <nav>
+    <a href="#find">Find Cars</a>
+    <a href="#why">Why CardHundo</a>
+    <a href="#popular">Popular Cars</a>
+  </nav>
+</header>
+
+<section class="hero" id="find">
+  <h1>Find the right car for <span>your life.</span></h1>
+  <p>
+    Tell us your budget, fuel preference, family size and driving needs.
+    CardHundo helps you discover cars that match.
+  </p>
+
+  <div class="search-box">
+    <h2>🔎 Find your perfect car</h2>
+
+    <div class="filters">
+
+      <div>
+        <label>Budget</label>
+        <select id="budget">
+          <option value="">Any budget</option>
+          <option>Under ₹5 Lakh</option>
+          <option>₹5–8 Lakh</option>
+          <option>₹8–12 Lakh</option>
+          <option>₹12–20 Lakh</option>
+          <option>Above ₹20 Lakh</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Fuel Type</label>
+        <select id="fuel">
+          <option value="">Any fuel</option>
+          <option>Petrol</option>
+          <option>Diesel</option>
+          <option>CNG</option>
+          <option>Electric</option>
+          <option>Hybrid</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Family Size</label>
+        <select id="family">
+          <option value="">Any size</option>
+          <option>1–2 people</option>
+          <option>3–4 people</option>
+          <option>5 people</option>
+          <option>6–7 people</option>
+          <option>8+ people</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Minimum Mileage</label>
+        <select id="mileage">
+          <option value="">Any mileage</option>
+          <option>15+ km/l</option>
+          <option>18+ km/l</option>
+          <option>20+ km/l</option>
+          <option>25+ km/l</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Car Type</label>
+        <select id="type">
+          <option value="">Any type</option>
+          <option>Hatchback</option>
+          <option>Sedan</option>
+          <option>SUV</option>
+          <option>MPV</option>
+          <option>Luxury</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Transmission</label>
+        <select id="transmission">
+          <option value="">Any transmission</option>
+          <option>Manual</option>
+          <option>Automatic</option>
+        </select>
+      </div>
+
+    </div>
+
+    <button class="search-btn" onclick="findCars()">
+      Find My Cars →
+    </button>
+
+    <p id="result" style="margin-top:15px;text-align:center;color:#1769ff;font-weight:700;"></p>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <h2>Why use CardHundo?</h2>
+  <p class="section-subtitle">Simple tools to make choosing a car easier.</p>
+
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">💰</div>
+      <h3>Budget First</h3>
+      <p>Discover cars that fit the amount you actually want to spend.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">⛽</div>
+      <h3>Fuel Choice</h3>
+      <p>Compare petrol, diesel, CNG, electric and hybrid options.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">👨‍👩‍👧‍👦</div>
+      <h3>Family Friendly</h3>
+      <p>Find practical options based on the number of people you travel with.</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">📊</div>
+      <h3>Smart Filters</h3>
+      <p>Filter cars by mileage, body type and transmission.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="popular">
+  <h2>Popular Car Categories</h2>
+  <p class="section-subtitle">A few examples to get you started.</p>
+
+  <div class="cars">
+
+    <div class="car-card">
+      <div class="car-image">🚗</div>
+      <div class="car-info">
+        <h3>Budget Hatchbacks</h3>
+        <div class="car-meta">Great for city driving<br>Fuel efficient<br>Easy to maintain</div>
+        <div class="price">From ₹5 Lakh*</div>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="car-image">🚙</div>
+      <div class="car-info">
+        <h3>Family SUVs</h3>
+        <div class="car-meta">More space<br>Comfortable for families<br>Higher ground clearance</div>
+        <div class="price">From ₹8 Lakh*</div>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <div class="car-image">⚡</div>
+      <div class="car-info">
+        <h3>Electric Cars</h3>
+        <div class="car-meta">Quiet driving<br>Lower running costs<br>Modern technology</div>
+        <div class="price">Explore EVs</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <strong>CardHundo</strong>
+  <p>Find a car that fits your budget, family and lifestyle.</p>
+  <p>© 2026 CardHundo. Information shown is for discovery purposes.</p>
+</footer>
+
+<script>
+  function findCars() {
+    const budget = document.getElementById("budget").value;
+    const fuel = document.getElementById("fuel").value;
+    const family = document.getElementById("family").value;
+    const mileage = document.getElementById("mileage").value;
+    const type = document.getElementById("type").value;
+    const transmission = document.getElementById("transmission").value;
+
+    const choices = [budget, fuel, family, mileage, type, transmission]
+      .filter(Boolean);
+
+    const result = document.getElementById("result");
+
+    if (choices.length === 0) {
+      result.textContent = "Choose at least one filter to discover matching cars.";
+      return;
+    }
+
+    result.textContent =
+      "Great! We'll use " + choices.length +
+      " preference" + (choices.length > 1 ? "s" : "") +
+      " to find your matches.";
+  }
+</script>
+
+</body>
+</html>
