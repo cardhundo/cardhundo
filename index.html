@@ -3,14 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>CardHundo — Find Your Perfect Car</title>
-  <meta name="description" content="CardHundo helps you find cars based on your budget, fuel type, family size, mileage and more.">
+
+  <meta
+    name="description"
+    content="CardHundo helps you find cars based on budget, fuel type, family size, mileage and more."
+  >
 
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -49,6 +58,10 @@
       font-weight: 600;
     }
 
+    nav a:hover {
+      color: #1769ff;
+    }
+
     .hero {
       background: linear-gradient(135deg, #eef5ff, #ffffff);
       padding: 70px 6% 55px;
@@ -65,7 +78,7 @@
       color: #1769ff;
     }
 
-    .hero p {
+    .hero > p {
       color: #64748b;
       font-size: 18px;
       max-width: 650px;
@@ -102,14 +115,19 @@
       color: #374151;
     }
 
-    select,
-    input {
+    select {
       width: 100%;
       padding: 13px;
       border: 1px solid #d7dce5;
       border-radius: 9px;
       background: white;
       font-size: 14px;
+      cursor: pointer;
+    }
+
+    select:focus {
+      outline: 2px solid #1769ff;
+      outline-offset: 1px;
     }
 
     .search-btn {
@@ -127,6 +145,91 @@
 
     .search-btn:hover {
       background: #0d55d8;
+    }
+
+    .search-btn:active {
+      transform: translateY(1px);
+    }
+
+    #result {
+      margin-top: 20px;
+    }
+
+    .results-title {
+      color: #172033;
+      font-size: 25px;
+      margin-bottom: 7px;
+    }
+
+    .results-subtitle {
+      color: #64748b;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .result-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+    }
+
+    .result-car-image {
+      height: 150px;
+      background: linear-gradient(135deg, #dbeafe, #eef2ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 65px;
+    }
+
+    .result-info {
+      padding: 18px;
+    }
+
+    .result-info h3 {
+      font-size: 18px;
+      margin-bottom: 9px;
+    }
+
+    .result-price {
+      color: #1769ff;
+      font-size: 19px;
+      font-weight: 800;
+      margin-top: 12px;
+    }
+
+    .result-details {
+      color: #64748b;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .match-badge {
+      display: inline-block;
+      background: #eaf2ff;
+      color: #1769ff;
+      padding: 5px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .no-results {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 12px;
+      padding: 18px;
+      color: #9a3412;
+      line-height: 1.6;
     }
 
     .section {
@@ -184,7 +287,7 @@
       border-radius: 16px;
       overflow: hidden;
       border: 1px solid #e5e7eb;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     }
 
     .car-image {
@@ -238,7 +341,8 @@
 
       .filters,
       .features,
-      .cars {
+      .cars,
+      .results-grid {
         grid-template-columns: 1fr;
       }
 
@@ -253,6 +357,7 @@
 
 <header>
   <div class="logo">Card<span>Hundo</span></div>
+
   <nav>
     <a href="#find">Find Cars</a>
     <a href="#why">Why CardHundo</a>
@@ -261,82 +366,91 @@
 </header>
 
 <section class="hero" id="find">
+
   <h1>Find the right car for <span>your life.</span></h1>
+
   <p>
     Tell us your budget, fuel preference, family size and driving needs.
     CardHundo helps you discover cars that match.
   </p>
 
   <div class="search-box">
+
     <h2>🔎 Find your perfect car</h2>
 
     <div class="filters">
 
       <div>
-        <label>Budget</label>
+        <label for="budget">Budget</label>
+
         <select id="budget">
           <option value="">Any budget</option>
-          <option>Under ₹5 Lakh</option>
-          <option>₹5–8 Lakh</option>
-          <option>₹8–12 Lakh</option>
-          <option>₹12–20 Lakh</option>
-          <option>Above ₹20 Lakh</option>
+          <option value="under5">Under ₹5 Lakh</option>
+          <option value="5to8">₹5–8 Lakh</option>
+          <option value="8to12">₹8–12 Lakh</option>
+          <option value="12to20">₹12–20 Lakh</option>
+          <option value="above20">Above ₹20 Lakh</option>
         </select>
       </div>
 
       <div>
-        <label>Fuel Type</label>
+        <label for="fuel">Fuel Type</label>
+
         <select id="fuel">
           <option value="">Any fuel</option>
-          <option>Petrol</option>
-          <option>Diesel</option>
-          <option>CNG</option>
-          <option>Electric</option>
-          <option>Hybrid</option>
+          <option value="Petrol">Petrol</option>
+          <option value="Diesel">Diesel</option>
+          <option value="CNG">CNG</option>
+          <option value="Electric">Electric</option>
+          <option value="Hybrid">Hybrid</option>
         </select>
       </div>
 
       <div>
-        <label>Family Size</label>
+        <label for="family">Family Size</label>
+
         <select id="family">
           <option value="">Any size</option>
-          <option>1–2 people</option>
-          <option>3–4 people</option>
-          <option>5 people</option>
-          <option>6–7 people</option>
-          <option>8+ people</option>
+          <option value="2">1–2 people</option>
+          <option value="4">3–4 people</option>
+          <option value="5">5 people</option>
+          <option value="7">6–7 people</option>
+          <option value="8">8+ people</option>
         </select>
       </div>
 
       <div>
-        <label>Minimum Mileage</label>
+        <label for="mileage">Minimum Mileage</label>
+
         <select id="mileage">
           <option value="">Any mileage</option>
-          <option>15+ km/l</option>
-          <option>18+ km/l</option>
-          <option>20+ km/l</option>
-          <option>25+ km/l</option>
+          <option value="15">15+ km/l</option>
+          <option value="18">18+ km/l</option>
+          <option value="20">20+ km/l</option>
+          <option value="25">25+ km/l</option>
         </select>
       </div>
 
       <div>
-        <label>Car Type</label>
+        <label for="type">Car Type</label>
+
         <select id="type">
           <option value="">Any type</option>
-          <option>Hatchback</option>
-          <option>Sedan</option>
-          <option>SUV</option>
-          <option>MPV</option>
-          <option>Luxury</option>
+          <option value="Hatchback">Hatchback</option>
+          <option value="Sedan">Sedan</option>
+          <option value="SUV">SUV</option>
+          <option value="MPV">MPV</option>
+          <option value="Luxury">Luxury</option>
         </select>
       </div>
 
       <div>
-        <label>Transmission</label>
+        <label for="transmission">Transmission</label>
+
         <select id="transmission">
           <option value="">Any transmission</option>
-          <option>Manual</option>
-          <option>Automatic</option>
+          <option value="Manual">Manual</option>
+          <option value="Automatic">Automatic</option>
         </select>
       </div>
 
@@ -346,107 +460,451 @@
       Find My Cars →
     </button>
 
-    <p id="result" style="margin-top:15px;text-align:center;color:#1769ff;font-weight:700;"></p>
+    <div id="result"></div>
+
   </div>
+
 </section>
 
 <section class="section" id="why">
+
   <h2>Why use CardHundo?</h2>
-  <p class="section-subtitle">Simple tools to make choosing a car easier.</p>
+
+  <p class="section-subtitle">
+    Simple tools to make choosing a car easier.
+  </p>
 
   <div class="features">
+
     <div class="feature">
       <div class="feature-icon">💰</div>
       <h3>Budget First</h3>
-      <p>Discover cars that fit the amount you actually want to spend.</p>
+      <p>
+        Discover cars that fit the amount you actually want to spend.
+      </p>
     </div>
 
     <div class="feature">
       <div class="feature-icon">⛽</div>
       <h3>Fuel Choice</h3>
-      <p>Compare petrol, diesel, CNG, electric and hybrid options.</p>
+      <p>
+        Compare petrol, diesel, CNG, electric and hybrid options.
+      </p>
     </div>
 
     <div class="feature">
       <div class="feature-icon">👨‍👩‍👧‍👦</div>
       <h3>Family Friendly</h3>
-      <p>Find practical options based on the number of people you travel with.</p>
+      <p>
+        Find practical options based on the number of people you travel with.
+      </p>
     </div>
 
     <div class="feature">
       <div class="feature-icon">📊</div>
       <h3>Smart Filters</h3>
-      <p>Filter cars by mileage, body type and transmission.</p>
+      <p>
+        Filter cars by mileage, body type and transmission.
+      </p>
     </div>
+
   </div>
+
 </section>
 
 <section class="section" id="popular">
+
   <h2>Popular Car Categories</h2>
-  <p class="section-subtitle">A few examples to get you started.</p>
+
+  <p class="section-subtitle">
+    A few examples to get you started.
+  </p>
 
   <div class="cars">
 
     <div class="car-card">
       <div class="car-image">🚗</div>
+
       <div class="car-info">
         <h3>Budget Hatchbacks</h3>
-        <div class="car-meta">Great for city driving<br>Fuel efficient<br>Easy to maintain</div>
-        <div class="price">From ₹5 Lakh*</div>
+
+        <div class="car-meta">
+          Great for city driving<br>
+          Fuel efficient<br>
+          Easy to maintain
+        </div>
+
+        <div class="price">
+          From ₹5 Lakh*
+        </div>
       </div>
     </div>
 
     <div class="car-card">
       <div class="car-image">🚙</div>
+
       <div class="car-info">
         <h3>Family SUVs</h3>
-        <div class="car-meta">More space<br>Comfortable for families<br>Higher ground clearance</div>
-        <div class="price">From ₹8 Lakh*</div>
+
+        <div class="car-meta">
+          More space<br>
+          Comfortable for families<br>
+          Higher ground clearance
+        </div>
+
+        <div class="price">
+          From ₹8 Lakh*
+        </div>
       </div>
     </div>
 
     <div class="car-card">
       <div class="car-image">⚡</div>
+
       <div class="car-info">
         <h3>Electric Cars</h3>
-        <div class="car-meta">Quiet driving<br>Lower running costs<br>Modern technology</div>
-        <div class="price">Explore EVs</div>
+
+        <div class="car-meta">
+          Quiet driving<br>
+          Lower running costs<br>
+          Modern technology
+        </div>
+
+        <div class="price">
+          Explore EVs
+        </div>
       </div>
     </div>
 
   </div>
+
 </section>
 
 <footer>
+
   <strong>CardHundo</strong>
-  <p>Find a car that fits your budget, family and lifestyle.</p>
-  <p>© 2026 CardHundo. Information shown is for discovery purposes.</p>
+
+  <p>
+    Find a car that fits your budget, family and lifestyle.
+  </p>
+
+  <p>
+    © 2026 CardHundo. Information shown is for discovery purposes.
+  </p>
+
 </footer>
 
 <script>
-  function findCars() {
-    const budget = document.getElementById("budget").value;
-    const fuel = document.getElementById("fuel").value;
-    const family = document.getElementById("family").value;
-    const mileage = document.getElementById("mileage").value;
-    const type = document.getElementById("type").value;
-    const transmission = document.getElementById("transmission").value;
 
-    const choices = [budget, fuel, family, mileage, type, transmission]
-      .filter(Boolean);
+const cars = [
 
-    const result = document.getElementById("result");
+  {
+    name: "Maruti Suzuki Swift",
+    price: 6.49,
+    fuel: "Petrol",
+    seats: 5,
+    mileage: 22.4,
+    type: "Hatchback",
+    transmission: "Manual",
+    icon: "🚗"
+  },
 
-    if (choices.length === 0) {
-      result.textContent = "Choose at least one filter to discover matching cars.";
-      return;
-    }
+  {
+    name: "Hyundai Grand i10 NIOS",
+    price: 5.92,
+    fuel: "Petrol",
+    seats: 5,
+    mileage: 18,
+    type: "Hatchback",
+    transmission: "Manual",
+    icon: "🚗"
+  },
 
-    result.textContent =
-      "Great! We'll use " + choices.length +
-      " preference" + (choices.length > 1 ? "s" : "") +
-      " to find your matches.";
+  {
+    name: "Maruti Suzuki WagonR CNG",
+    price: 6.44,
+    fuel: "CNG",
+    seats: 5,
+    mileage: 33.47,
+    type: "Hatchback",
+    transmission: "Manual",
+    icon: "🚗"
+  },
+
+  {
+    name: "Tata Punch",
+    price: 6.13,
+    fuel: "Petrol",
+    seats: 5,
+    mileage: 20.09,
+    type: "SUV",
+    transmission: "Manual",
+    icon: "🚙"
+  },
+
+  {
+    name: "Hyundai Exter",
+    price: 6.13,
+    fuel: "Petrol",
+    seats: 5,
+    mileage: 19.4,
+    type: "SUV",
+    transmission: "Automatic",
+    icon: "🚙"
+  },
+
+  {
+    name: "Maruti Suzuki Brezza",
+    price: 8.69,
+    fuel: "Petrol",
+    seats: 5,
+    mileage: 19.89,
+    type: "SUV",
+    transmission: "Manual",
+    icon: "🚙"
+  },
+
+  {
+    name: "Hyundai Creta",
+    price: 11.11,
+    fuel: "Petrol",
+    seats: 5,
+    mileage: 18.4,
+    type: "SUV",
+    transmission: "Automatic",
+    icon: "🚙"
+  },
+
+  {
+    name: "Maruti Suzuki Ertiga",
+    price: 8.84,
+    fuel: "Petrol",
+    seats: 7,
+    mileage: 20.51,
+    type: "MPV",
+    transmission: "Manual",
+    icon: "🚐"
+  },
+
+  {
+    name: "Toyota Innova Crysta",
+    price: 19.99,
+    fuel: "Diesel",
+    seats: 7,
+    mileage: 15.6,
+    type: "MPV",
+    transmission: "Manual",
+    icon: "🚐"
+  },
+
+  {
+    name: "Tata Nexon EV",
+    price: 12.49,
+    fuel: "Electric",
+    seats: 5,
+    mileage: 0,
+    type: "SUV",
+    transmission: "Automatic",
+    icon: "⚡"
   }
+
+];
+
+function matchesBudget(price, budget) {
+
+  if (!budget) return true;
+
+  if (budget === "under5") {
+    return price < 5;
+  }
+
+  if (budget === "5to8") {
+    return price >= 5 && price <= 8;
+  }
+
+  if (budget === "8to12") {
+    return price > 8 && price <= 12;
+  }
+
+  if (budget === "12to20") {
+    return price > 12 && price <= 20;
+  }
+
+  if (budget === "above20") {
+    return price > 20;
+  }
+
+  return true;
+}
+
+function matchesMileage(car, minimumMileage) {
+
+  if (!minimumMileage) return true;
+
+  if (car.fuel === "Electric") {
+    return true;
+  }
+
+  return car.mileage >= Number(minimumMileage);
+}
+
+function findCars() {
+
+  const budget =
+    document.getElementById("budget").value;
+
+  const fuel =
+    document.getElementById("fuel").value;
+
+  const family =
+    document.getElementById("family").value;
+
+  const mileage =
+    document.getElementById("mileage").value;
+
+  const type =
+    document.getElementById("type").value;
+
+  const transmission =
+    document.getElementById("transmission").value;
+
+  const selectedFilters = [
+    budget,
+    fuel,
+    family,
+    mileage,
+    type,
+    transmission
+  ].filter(Boolean);
+
+  const result =
+    document.getElementById("result");
+
+  if (selectedFilters.length === 0) {
+
+    result.innerHTML = `
+      <div class="no-results">
+        Please choose at least one preference so CardHundo can find suitable cars for you.
+      </div>
+    `;
+
+    return;
+  }
+
+  let results = cars.filter(car => {
+
+    const budgetMatch =
+      matchesBudget(car.price, budget);
+
+    const fuelMatch =
+      !fuel || car.fuel === fuel;
+
+    const familyMatch =
+      !family || car.seats >= Number(family);
+
+    const mileageMatch =
+      matchesMileage(car, mileage);
+
+    const typeMatch =
+      !type || car.type === type;
+
+    const transmissionMatch =
+      !transmission ||
+      car.transmission === transmission;
+
+    return (
+      budgetMatch &&
+      fuelMatch &&
+      familyMatch &&
+      mileageMatch &&
+      typeMatch &&
+      transmissionMatch
+    );
+  });
+
+  if (results.length === 0) {
+
+    result.innerHTML = `
+      <div class="no-results">
+        <strong>😕 No exact matches found.</strong><br>
+        Try removing one of your filters. CardHundo will then show more cars that may suit you.
+      </div>
+    `;
+
+    return;
+  }
+
+  result.innerHTML = `
+
+    <h2 class="results-title">
+      🎯 ${results.length}
+      ${results.length === 1 ? "car" : "cars"} matched for you
+    </h2>
+
+    <p class="results-subtitle">
+      Based on your selected preferences.
+    </p>
+
+    <div class="results-grid">
+
+      ${results.map(car => `
+
+        <div class="result-card">
+
+          <div class="result-car-image">
+            ${car.icon}
+          </div>
+
+          <div class="result-info">
+
+            <div class="match-badge">
+              MATCHED FOR YOU
+            </div>
+
+            <h3>
+              ${car.name}
+            </h3>
+
+            <div class="result-details">
+
+              Fuel: ${car.fuel}<br>
+
+              Seats: ${car.seats}<br>
+
+              Mileage:
+              ${
+                car.fuel === "Electric"
+                ? "Electric"
+                : car.mileage + " km/l"
+              }
+              <br>
+
+              Type: ${car.type}<br>
+
+              Transmission: ${car.transmission}
+
+            </div>
+
+            <div class="result-price">
+              ₹${car.price.toFixed(2)} Lakh*
+            </div>
+
+          </div>
+
+        </div>
+
+      `).join("")}
+
+    </div>
+  `;
+
+  result.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+}
+
 </script>
 
 </body>
