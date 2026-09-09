@@ -2127,126 +2127,1175 @@ img{
               in one place.
             </p>
 
-            <button
-              class="feature-link"
-              onclick="navigate('compare')">
-              Compare cars →
-            </button>
+<!-- =========================================================
+     GADIFINDER — COMPLETE HOME PAGE
+     REPLACE YOUR OLD #page-home SECTION WITH THIS ENTIRE BLOCK
+     ========================================================= -->
 
-          </div>
+<style>
+/* =========================================================
+   GADIFINDER HOME PAGE — PROFESSIONAL DESIGN
+   ========================================================= */
+
+#page-home {
+    --gf-navy: #0f172a;
+    --gf-navy-deep: #08111f;
+    --gf-navy-soft: #162238;
+    --gf-navy-card: #1b2940;
+    --gf-yellow: #ffd43b;
+    --gf-yellow-light: #ffea75;
+    --gf-white: #ffffff;
+    --gf-text: #e8eef8;
+    --gf-muted: #aab8cc;
+    --gf-border: rgba(255,255,255,0.12);
+
+    position: relative;
+    min-height: auto;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 82% 18%,
+            rgba(255,212,59,0.08),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            var(--gf-navy-deep) 0%,
+            var(--gf-navy) 55%,
+            #17233a 100%
+        );
+}
 
 
-          <div class="feature-card">
+/* =========================================================
+   MAIN HERO
+   ========================================================= */
 
-            <div class="feature-icon">✦</div>
+.gf-home-hero {
+    position: relative;
+    width: 100%;
+    min-height: 780px;
+    padding: 95px 5.5% 145px;
+    box-sizing: border-box;
 
-            <h3>
-              Promote
-            </h3>
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.12fr)
+        minmax(400px, 0.88fr);
 
-            <p>
-              Advertising, promotions, brand collaborations,
-              creator collaborations and business enquiries.
+    gap: 70px;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 78% 38%,
+            rgba(255,255,255,0.045),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(255,212,59,0.035),
+            transparent 28%
+        );
+}
+
+
+/* =========================================================
+   DECORATIVE BACKGROUND
+   ========================================================= */
+
+.gf-home-hero::before {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    right: -220px;
+    top: -240px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,212,59,0.06),
+            transparent 68%
+        );
+
+    pointer-events: none;
+}
+
+.gf-home-hero::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+
+    height: 145px;
+
+    background: #ffffff;
+
+    clip-path: ellipse(
+        82% 62%
+        at 50% 100%
+    );
+
+    z-index: 5;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   LEFT SIDE
+   ========================================================= */
+
+.gf-home-left {
+    position: relative;
+    z-index: 10;
+    max-width: 850px;
+}
+
+
+/* Small label */
+
+.gf-home-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+    padding: 0 20px;
+
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    color: #dce5f2;
+
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    margin-bottom: 34px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+
+/* Yellow dot */
+
+.gf-home-eyebrow::before {
+    content: "";
+
+    width: 8px;
+    height: 8px;
+
+    margin-right: 10px;
+
+    border-radius: 50%;
+
+    background: var(--gf-yellow);
+
+    box-shadow:
+        0 0 15px rgba(255,212,59,0.45);
+}
+
+
+/* Main heading */
+
+.gf-home-title {
+    margin: 0;
+
+    max-width: 900px;
+
+    color: var(--gf-white);
+
+    font-size: clamp(
+        58px,
+        6.2vw,
+        102px
+    );
+
+    line-height: 0.98;
+    letter-spacing: -4px;
+
+    font-weight: 900;
+
+    text-wrap: balance;
+}
+
+
+/* Yellow second line */
+
+.gf-home-title .gf-yellow-text {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--gf-yellow);
+
+    text-shadow:
+        0 8px 35px rgba(255,212,59,0.12);
+}
+
+
+/* Description */
+
+.gf-home-description {
+    max-width: 780px;
+
+    margin: 38px 0 0;
+
+    color: #b8c7da;
+
+    font-size: clamp(
+        18px,
+        1.6vw,
+        23px
+    );
+
+    line-height: 1.65;
+
+    font-weight: 450;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.gf-home-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    margin-top: 40px;
+}
+
+
+.gf-home-btn {
+    min-height: 62px;
+
+    padding: 0 29px;
+
+    border-radius: 17px;
+
+    border: 1px solid transparent;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    font-family: inherit;
+
+    font-size: 17px;
+    font-weight: 850;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease,
+        border-color 0.22s ease;
+}
+
+
+.gf-home-btn:hover {
+    transform: translateY(-3px);
+}
+
+
+.gf-home-btn-primary {
+    color: #101827;
+
+    background: var(--gf-yellow);
+
+    box-shadow:
+        0 15px 35px rgba(255,212,59,0.15);
+}
+
+
+.gf-home-btn-primary:hover {
+    background: var(--gf-yellow-light);
+
+    box-shadow:
+        0 18px 42px rgba(255,212,59,0.22);
+}
+
+
+.gf-home-btn-secondary {
+    color: var(--gf-white);
+
+    background: transparent;
+
+    border-color:
+        rgba(255,255,255,0.75);
+}
+
+
+.gf-home-btn-secondary:hover {
+    background: rgba(255,255,255,0.08);
+
+    border-color: var(--gf-white);
+}
+
+
+/* =========================================================
+   DATABASE STATUS
+   ========================================================= */
+
+.gf-home-status {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+
+    margin-top: 27px;
+
+    color: #aabbd1;
+
+    font-size: 14px;
+}
+
+
+.gf-home-status-pill {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 38px;
+
+    padding: 0 15px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,0.055);
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    color: #edf3fb;
+
+    font-weight: 750;
+}
+
+
+.gf-home-status-pill::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    margin-right: 8px;
+
+    border-radius: 50%;
+
+    background: #4ade80;
+}
+
+
+/* =========================================================
+   FOUNDER CARD
+   ========================================================= */
+
+.gf-founder-card {
+    position: relative;
+
+    max-width: 840px;
+
+    margin-top: 42px;
+
+    padding: 30px 38px;
+
+    border-radius: 30px;
+
+    border:
+        1px solid rgba(255,212,59,0.38);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.085),
+            rgba(255,255,255,0.035)
+        );
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.06);
+
+    overflow: hidden;
+}
+
+
+.gf-founder-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    right: -105px;
+    bottom: -130px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(255,212,59,0.18);
+
+    pointer-events: none;
+}
+
+
+.gf-founder-label {
+    margin: 0;
+
+    color: #b9c8db;
+
+    font-size: 13px;
+    font-weight: 850;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    text-align: center;
+}
+
+
+.gf-founder-name {
+    margin: 12px 0 0;
+
+    color: var(--gf-yellow);
+
+    font-size: clamp(
+        31px,
+        3vw,
+        46px
+    );
+
+    line-height: 1.1;
+
+    font-weight: 900;
+
+    text-align: center;
+}
+
+
+.gf-founder-description {
+    max-width: 760px;
+
+    margin: 13px auto 0;
+
+    color: #d0dbea;
+
+    font-size: 16px;
+
+    line-height: 1.65;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   RIGHT SIDE — ADVERTISEMENT
+   ========================================================= */
+
+.gf-home-right {
+    position: relative;
+    z-index: 10;
+
+    width: 100%;
+}
+
+
+.gf-ad-card {
+    width: 100%;
+
+    padding: 28px;
+
+    box-sizing: border-box;
+
+    border-radius: 34px;
+
+    border:
+        1px solid rgba(255,255,255,0.13);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.085),
+            rgba(255,255,255,0.035)
+        );
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,0.20),
+        inset 0 1px 0 rgba(255,255,255,0.055);
+
+    backdrop-filter: blur(12px);
+}
+
+
+.gf-ad-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+}
+
+
+.gf-ad-title {
+    margin: 0;
+
+    color: var(--gf-white);
+
+    font-size: 20px;
+
+    font-weight: 850;
+}
+
+
+.gf-ad-status {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: #b9c7da;
+
+    font-size: 14px;
+}
+
+
+.gf-ad-status::before {
+    content: "";
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #4ade80;
+
+    box-shadow:
+        0 0 14px rgba(74,222,128,0.3);
+}
+
+
+/* BLANK ADVERTISING IMAGE AREA */
+
+.gf-ad-image {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 390px;
+
+    border-radius: 27px;
+
+    border:
+        1px dashed rgba(255,255,255,0.18);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.018)
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+
+.gf-ad-image::before {
+    content: "";
+
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(255,255,255,0.045);
+
+    pointer-events: none;
+}
+
+
+.gf-ad-placeholder {
+    position: relative;
+    z-index: 2;
+
+    padding: 30px;
+
+    color: #9daec4;
+}
+
+
+.gf-ad-placeholder-icon {
+    width: 54px;
+    height: 54px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 16px;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    background:
+        rgba(255,255,255,0.045);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+}
+
+
+.gf-ad-placeholder-title {
+    margin: 0;
+
+    color: #bdc9d8;
+
+    font-size: 17px;
+
+    font-weight: 800;
+}
+
+
+.gf-ad-placeholder-text {
+    margin: 9px 0 0;
+
+    color: #8192aa;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   ADVERTISEMENT INFORMATION
+   ========================================================= */
+
+.gf-ad-note {
+    margin: 18px 4px 0;
+
+    color: #7f91aa;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   WHITE TRANSITION SECTION
+   This creates the "opening circle" effect requested.
+   ========================================================= */
+
+.gf-home-transition {
+    position: relative;
+
+    height: 125px;
+
+    margin-top: -1px;
+
+    background: #ffffff;
+
+    z-index: 6;
+}
+
+
+/* =========================================================
+   RESPONSIVE — LARGE TABLET
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .gf-home-hero {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(340px, 0.75fr);
+
+        gap: 42px;
+
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .gf-home-title {
+        font-size: clamp(
+            52px,
+            6vw,
+            78px
+        );
+    }
+
+    .gf-ad-image {
+        min-height: 330px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .gf-home-hero {
+        min-height: auto;
+
+        grid-template-columns: 1fr;
+
+        gap: 48px;
+
+        padding:
+            70px 5%
+            150px;
+    }
+
+    .gf-home-left {
+        max-width: 900px;
+
+        text-align: center;
+
+        margin: 0 auto;
+    }
+
+    .gf-home-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .gf-home-buttons {
+        justify-content: center;
+    }
+
+    .gf-home-status {
+        justify-content: center;
+    }
+
+    .gf-founder-card {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .gf-home-right {
+        max-width: 720px;
+
+        margin: 0 auto;
+    }
+
+    .gf-ad-image {
+        min-height: 360px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    #page-home {
+        overflow-x: hidden;
+    }
+
+    .gf-home-hero {
+        padding:
+            50px 20px
+            125px;
+
+        gap: 38px;
+    }
+
+    .gf-home-hero::after {
+        height: 105px;
+
+        clip-path:
+            ellipse(
+                100% 58%
+                at 50% 100%
+            );
+    }
+
+    .gf-home-eyebrow {
+        min-height: 38px;
+
+        padding: 0 14px;
+
+        font-size: 10px;
+
+        letter-spacing: 1.4px;
+
+        margin-bottom: 25px;
+    }
+
+    .gf-home-title {
+        font-size:
+            clamp(
+                45px,
+                13vw,
+                64px
+            );
+
+        line-height: 1.01;
+
+        letter-spacing: -2.5px;
+    }
+
+    .gf-home-description {
+        margin-top: 25px;
+
+        font-size: 16px;
+
+        line-height: 1.65;
+    }
+
+    .gf-home-buttons {
+        flex-direction: column;
+
+        width: 100%;
+
+        margin-top: 30px;
+    }
+
+    .gf-home-btn {
+        width: 100%;
+
+        min-height: 58px;
+
+        border-radius: 15px;
+    }
+
+    .gf-home-status {
+        margin-top: 20px;
+
+        flex-direction: column;
+
+        gap: 8px;
+
+        font-size: 12px;
+    }
+
+    .gf-founder-card {
+        margin-top: 30px;
+
+        padding:
+            25px 20px;
+
+        border-radius: 24px;
+    }
+
+    .gf-founder-label {
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+    .gf-founder-name {
+        font-size: 31px;
+    }
+
+    .gf-founder-description {
+        font-size: 14px;
+    }
+
+    .gf-ad-card {
+        padding: 18px;
+
+        border-radius: 25px;
+    }
+
+    .gf-ad-heading {
+        margin-bottom: 17px;
+    }
+
+    .gf-ad-title {
+        font-size: 17px;
+    }
+
+    .gf-ad-status {
+        font-size: 12px;
+    }
+
+    .gf-ad-image {
+        min-height: 280px;
+
+        border-radius: 21px;
+    }
+
+    .gf-ad-placeholder {
+        padding: 20px;
+    }
+
+    .gf-ad-placeholder-title {
+        font-size: 15px;
+    }
+
+    .gf-ad-placeholder-text {
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .gf-home-hero {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .gf-home-title {
+        font-size: 42px;
+
+        letter-spacing: -2px;
+    }
+
+    .gf-founder-name {
+        font-size: 28px;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .gf-home-btn {
+        transition: none;
+    }
+
+    .gf-home-btn:hover {
+        transform: none;
+    }
+}
+</style>
+
+
+<!-- =========================================================
+     HOME PAGE HTML
+     ========================================================= -->
+
+<section class="page active" id="page-home">
+
+    <!-- ================= HERO ================= -->
+
+    <div class="gf-home-hero">
+
+        <!-- ================= LEFT ================= -->
+
+        <div class="gf-home-left">
+
+            <!-- Eyebrow -->
+
+            <div class="gf-home-eyebrow">
+                India's Smarter Car Discovery Experience
+            </div>
+
+
+            <!-- Main Heading -->
+
+            <h1 class="gf-home-title">
+
+                Don't search for a car.
+
+                <span class="gf-yellow-text">
+                    Find your car.
+                </span>
+
+            </h1>
+
+
+            <!-- Description -->
+
+            <p class="gf-home-description">
+
+                GadiFinder brings Indian car research, comparisons,
+                buying tools, promotions and future insurance &amp;
+                finance partnerships into one clean experience.
+
             </p>
 
-            <button
-              class="feature-link"
-              onclick="navigate('promote')">
-              Promote with us →
-            </button>
 
-          </div>
+            <!-- Main Buttons -->
 
+            <div class="gf-home-buttons">
 
-          <div class="feature-card">
-
-            <div class="feature-icon">₹</div>
-
-            <h3>
-              Insurance & EMI
-            </h3>
-
-            <p>
-              Finance tools and a future insurance partner
-              area for companies that approach GadiFinder.
-            </p>
-
-            <button
-              class="feature-link"
-              onclick="navigate('finance')">
-              Open finance →
-            </button>
-
-          </div>
+                <button
+                    type="button"
+                    class="gf-home-btn gf-home-btn-primary"
+                    onclick="go('find')"
+                >
+                    Find My Car
+                    <span aria-hidden="true">→</span>
+                </button>
 
 
-          <div class="feature-card">
+                <button
+                    type="button"
+                    class="gf-home-btn gf-home-btn-secondary"
+                    onclick="go('cars')"
+                >
+                    Explore All Cars
+                </button>
 
-            <div class="feature-icon">✉</div>
+            </div>
 
-            <h3>
-              Contact
-            </h3>
 
-            <p>
-              Ask a question or contact GadiFinder for
-              advertising, collaboration and business enquiries.
-            </p>
+            <!-- Database Status -->
 
-            <button
-              class="feature-link"
-              onclick="navigate('contact')">
-              Contact GadiFinder →
-            </button>
+            <div class="gf-home-status">
 
-          </div>
+                <span class="gf-home-status-pill">
+                    Current Indian-market models
+                </span>
+
+                <span>
+                    16 selected Indian-market brands
+                </span>
+
+                <span>
+                    Research-ready car pages
+                </span>
+
+            </div>
+
+
+            <!-- ================= FOUNDER ================= -->
+
+            <div class="gf-founder-card">
+
+                <p class="gf-founder-label">
+                    Founder • Creator • Maintained By
+                </p>
+
+                <h2 class="gf-founder-name">
+                    Tanmay Thorat
+                </h2>
+
+                <p class="gf-founder-description">
+
+                    GadiFinder is created, managed and maintained by
+                    <strong>Tanmay Thorat</strong>, with a focus on
+                    clear automobile information, comparison tools
+                    and a professional car-discovery experience.
+
+                </p>
+
+            </div>
 
         </div>
 
-      </div>
 
-    </section>
+        <!-- ================= RIGHT ================= -->
+
+        <div class="gf-home-right">
+
+            <div class="gf-ad-card">
+
+                <!-- Advertisement Header -->
+
+                <div class="gf-ad-heading">
+
+                    <h2 class="gf-ad-title">
+                        GadiFinder Discovery
+                    </h2>
+
+                    <span class="gf-ad-status">
+                        Catalogue
+                    </span>
+
+                </div>
 
 
-    <!-- FOUNDER -->
+                <!-- =================
+                     BLANK IMAGE AREA
+                     ================= -->
 
-    <section class="founder-wrap">
+                <div
+                    class="gf-ad-image"
+                    aria-label="Advertising and featured image area"
+                >
 
-      <div class="container">
+                    <div class="gf-ad-placeholder">
 
-        <div class="founder-card">
+                        <div
+                            class="gf-ad-placeholder-icon"
+                            aria-hidden="true"
+                        >
+                            ✦
+                        </div>
 
-          <div class="founder-label">
-            Founder • Creator • Maintained By
-          </div>
+                        <p class="gf-ad-placeholder-title">
+                            Your advertising / featured image area
+                        </p>
 
-          <div class="founder-name">
-            Tanmay <span>Thorat</span>
-          </div>
+                        <p class="gf-ad-placeholder-text">
+                            Blank by design — upload your own image,
+                            campaign or featured content later.
+                        </p>
 
-          <p class="founder-text">
-            GadiFinder is created and maintained by
-            Tanmay Thorat as an independent automobile
-            discovery and information platform.
-          </p>
+                    </div>
 
-          <a
-            class="founder-email"
-            href="mailto:tanamy7773y@gmail.com">
-            tanamy7773y@gmail.com
-          </a>
+                </div>
+
+
+                <!-- Small Note -->
+
+                <p class="gf-ad-note">
+
+                    This space is reserved for future advertising,
+                    featured vehicles, manufacturer campaigns,
+                    promotions and brand collaborations.
+
+                </p>
+
+            </div>
 
         </div>
 
-      </div>
+    </div>
 
-      <div class="curve-transition"></div>
 
-    </section>
+    <!-- =================
+         CURVED WHITE OPENING
+         ================= -->
 
-  </div>
+    <div class="gf-home-transition"></div>
 
-</template>
+</section>
 <!-- =========================================================
      FIND PAGE
      ========================================================= -->
